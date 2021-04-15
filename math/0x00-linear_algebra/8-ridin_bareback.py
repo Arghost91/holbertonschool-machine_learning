@@ -4,7 +4,7 @@
 
 
 def mat_mul(mat1, mat2):
-    mat_p = []
+    mat_P = []
     # With two matrices as input, the function return the sum of the two matrices as new list if the two matrices have the same shape 
     if len(mat1[0]) == len(mat2):
         for i in range(len(mat1)):
