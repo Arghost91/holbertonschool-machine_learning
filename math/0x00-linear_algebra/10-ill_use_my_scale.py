@@ -1,6 +1,4 @@
-"""
-Module that calculates the shape of a numpy.ndarray:
-"""
+# Module that calculates the shape of a numpy.ndarray:
 
 #!/usr/bin/env python3
 
