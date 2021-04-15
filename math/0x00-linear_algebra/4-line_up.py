@@ -6,7 +6,7 @@
 def add_arrays(arr1, arr2):
 
     """With two arrays as input, the function return the sum
-       of the two arrays as new list if the two arrays have the same shape""" 
+       of the two arrays as new list if the two arrays have the same shape"""
 
     if len(arr1) != len(arr2):
         return None 
