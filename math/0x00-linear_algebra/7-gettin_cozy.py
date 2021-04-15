@@ -10,8 +10,7 @@ def cat_matrices2D(mat1, mat2, axis=0):
         return mat_P
     elif axis == 1:
         for i in range(len(mat1)):
-            mat_P = mat1[i] + mat2[i]
+            mat_P = [mat1[i] + mat2[i]]
         return mat_P
     else:
         return None
-        
