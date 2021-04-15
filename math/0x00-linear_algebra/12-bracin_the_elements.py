@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-# Module that performs element-wise addition, subtraction, multiplication, and division
+# Module that performs element-wise addition,
+# subtraction, multiplication, and division
 
 
 def np_elementwise(mat1, mat2):
