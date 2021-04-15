@@ -3,7 +3,6 @@
 
 
 def cat_matrices2D(mat1, mat2, axis=0):
-    ''' With 2 matrices as input and a value of axis the function return the concatonate of matrices'''
     if axis == 0:
         mat_P = [row.copy() for row in mat1] + mat2.copy()
         return mat_P
