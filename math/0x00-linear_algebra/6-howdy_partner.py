@@ -5,7 +5,7 @@
 
 def cat_arrays(arr1, arr2):
 
-    """With two arrays as input, the function return the 
+    """With two arrays as input, the function return the
     concatenates of the two arrays as a new list"""
 
     arr_P = []
