@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-"""
-    Module
-"""
+
+# Module that calculates the shape of a numpy.ndarray
 
 
 def np_shape(matrix):
