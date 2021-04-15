@@ -4,8 +4,8 @@
 
 
 def np_elementwise(mat1, mat2):
-    sume = np.add(mat1, mat2)
-    difference = np.substract(mat1, mat2)
-    product = np.multiply(mat1, mat2)
-    quotient = np.divide(mat1, mat2)
+    sume = mat1 + mat2
+    difference = mat1 - mat2
+    product = mat1 * mat2
+    quotient = mat1 / mat2
     return(sume, difference, product, quotient)
