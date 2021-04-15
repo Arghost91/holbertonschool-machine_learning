@@ -5,8 +5,8 @@
 
 def add_matrices2D(mat1, mat2):
 
-    """With two matrices as input, the function return the sum of the two matrices
-    as new matrix if the two matrices have the same shape and if not return None"""
+    """With two matrices as input, the function return the sum of those as new
+    matrix if the two matrices have the same shape and if not return None"""
 
     if len(mat1) != len(mat2):
         return None
