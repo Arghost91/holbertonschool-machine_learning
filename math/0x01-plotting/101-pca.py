@@ -15,7 +15,7 @@ pca_data = np.matmul(norm_data, Vh[:3].T)
 fig = plt.figure()
 ax = Axes3D(fig)
 
-x, y, z = np.stack(pca_data, axis==-1)
+x, y, z = np.stack(pca_data, axis=-1)
 ax.scatter(x, y, z)
 ax.set_xlabel('U1')
 ax.set_ylabel('U2')
