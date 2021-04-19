@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 np.random.seed(5)
 fruit = np.random.randint(0, 20, (4,3))
 
-bars = np.add(fruit[])
+bars = np.add(fruit[:])
 
 names = ['Farrah', 'Fred', 'Felicia']
 fruits_1 = ['apples', 'bananas', 'oranges', 'peaches']
