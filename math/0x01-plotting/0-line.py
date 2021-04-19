@@ -3,4 +3,4 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 y = np.arange(0, 11) ** 3
-plot(y, color = "red")
+plt.setp(y, color='r', linewidth=2.0)
