@@ -3,4 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 y = np.arange(0, 11) ** 3
-plt.setp(y, color='r', linewidth=2.0)
+plt.plot(y, 'ro')
+plt.axis([0, 10])
+plt.show()
