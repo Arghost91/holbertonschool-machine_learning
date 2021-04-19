@@ -11,3 +11,5 @@ y += 180
 plt.plot(x, y)
 plt.xlabel('Height (in)')
 plt.ylabel('Weight (lbs)')
+
+plt.show()
