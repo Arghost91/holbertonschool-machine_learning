@@ -52,7 +52,7 @@ plt.xlim(0, 20000)
 plt.ylim(0, 1)
 plt.legend(["C-14", "Ra-226"], loc="upper right")
 
-plt.subplot(grid(5, 2))
+plt.subplot(3, 2, 5, 2)
 plt.hist(student_grades, bins=(range(0, 110, 10)), edgecolor='black')
 plt.xlim(0, 100)
 plt.ylim(0, 30)
