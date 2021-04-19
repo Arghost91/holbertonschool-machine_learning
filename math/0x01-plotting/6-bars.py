@@ -18,3 +18,4 @@ plt.ylabel('Quantity of Fruit')
 plt.yticks(np.arange(0, 90, 10))
 
 plt.title('Number of Fruit per Person')
+plt.show()
