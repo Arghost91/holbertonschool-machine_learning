@@ -5,10 +5,14 @@ import matplotlib.pyplot as plt
 np.random.seed(5)
 fruit = np.random.randint(0, 20, (4,3))
 
-plt.bar(fruit, 'apples', color='red', width=0.5)
-plt.bar(fruit, 'bananas', color='yellow', width=0.5)
-plt.bar(fruit, 'oranges', color='#ff8000', width=0.5)
-plt.bar(fruit, 'peaches', color='#ffe5b4', width=0.5)
+names = ['Farrah', 'Fred', 'Felicia']
+fruits_1 = ['apples', 'bananas', 'oranges', 'peaches']
+colors = ['red', 'yellow', '#ff8000', '#ffe5b4']
+
+plt.bar(fruit[0], 'apples', color=colors[0], width=0.5)
+plt.bar(fruit[1], 'bananas', color=colors[1], width=0.5)
+plt.bar(fruit[2], 'oranges', color=colors[2], width=0.5)
+plt.bar(fruit[3], 'peaches', color=colors[3], width=0.5)
 plt.legend(["apples", "bananas", "oranges", "peaches"], loc="upper right")
 
 plt.xticks(fruit, 'Farrah', 'Fred', 'Felicia')
