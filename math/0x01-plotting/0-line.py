@@ -3,6 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 y = np.arange(0, 11) ** 3
-plt.plot(y, linewidth=2.0, 'ro')
+plt.plot(y, linewidth=2.0, 'r')
 plt.xlim(0, 10)
 plt.show()
