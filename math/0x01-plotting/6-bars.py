@@ -10,7 +10,7 @@ fruits_1 = ['apples', 'bananas', 'oranges', 'peaches']
 colors = ['red', 'yellow', '#ff8000', '#ffe5b4']
 
 for i in range(len(fruit)):
-    plt.bar(names, fruit[i], fruits_1[i], color=colors[i], width=0.5)
+    plt.bar(names, fruit[i], color=colors[i], width=0.5)
 
 plt.legend(["apples", "bananas", "oranges", "peaches"], loc="upper right")
 
