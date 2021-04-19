@@ -44,7 +44,7 @@ plt.yscale('log')
 plt.xlim(0, 28650)
 
 plt.subplot(3, 2, 4)
-plt.plot(x3, y31, 'r--', x, y32, 'g-')
+plt.plot(x3, y31, 'r--', x3, y32, 'g-')
 plt.xlabel('Time (years)')
 plt.ylabel('Fraction Remaining')
 plt.title('Exponential Decay of Radioactive Elements')
