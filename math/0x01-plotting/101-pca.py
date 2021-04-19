@@ -16,7 +16,7 @@ fig = plt.figure()
 ax = Axes3D(fig)
 
 x, y, z = np.stack(pca_data, axis=-1)
-ax.scatter(x, y, z)
+ax.scatter(x, y, z, c=labels, cmap=mpl.cm.plasma)
 ax.set_xlabel('U1')
 ax.set_ylabel('U2')
 ax.set_zlabel('U3')
