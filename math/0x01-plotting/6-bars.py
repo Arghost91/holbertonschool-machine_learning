@@ -9,10 +9,9 @@ names = ['Farrah', 'Fred', 'Felicia']
 fruits_1 = ['apples', 'bananas', 'oranges', 'peaches']
 colors = ['red', 'yellow', '#ff8000', '#ffe5b4']
 
-plt.bar(names, fruit[0], 'apples', color=colors[0], width=0.5)
-plt.bar(names, fruit[1], 'bananas', color=colors[1], width=0.5)
-plt.bar(names, fruit[2], 'oranges', color=colors[2], width=0.5)
-plt.bar(names, fruit[3], 'peaches', color=colors[3], width=0.5)
+for i in rage(len(fruit)):
+    plt.bar(names, fruit[i], fruits_1[i], color=colors[i], width=0.5)
+
 plt.legend(["apples", "bananas", "oranges", "peaches"], loc="upper right")
 
 plt.ylabel('Quantity of Fruit')
