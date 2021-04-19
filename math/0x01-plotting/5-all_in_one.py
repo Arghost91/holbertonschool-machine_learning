@@ -25,6 +25,8 @@ y32 = np.exp((r3 / t32) * x3)
 np.random.seed(5)
 student_grades = np.random.normal(68, 15, 50)
 
+plt.title('All in One')
+
 plt.subplot2grid((3, 2), (0, 0))
 plt.plot(y0, 'r-')
 plt.xlim(0, 10)
