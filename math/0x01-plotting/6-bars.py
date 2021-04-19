@@ -12,10 +12,10 @@ colors = ['red', 'yellow', '#ff8000', '#ffe5b4']
 #for i in range(len(fruit)):
 #    plt.bar(names, fruit[i], color=colors[i], width=0.5)
     
-plt.bar(fruit[0], color='red', label='apples', width=0.5)
-plt.bar(fruit[1], bottom=np.add(fruit[0]), color='yellow', label='bananas', width=0.5)
-plt.bar(fruit[2], bottom=np.add(fruit[0], fruit[2]), color='#ff8000', label='oranges', width=0.5)
-plt.bar(fruit[3], bottom=np.add(fruit[0], fruit[2], fruit[3]), color='#ffe5b4', label='peaches', width=0.5)
+plt.bar(names, fruit[0], color='red', label='apples', width=0.5)
+plt.bar(names, fruit[1], bottom=np.add(fruit[0]), color='yellow', label='bananas', width=0.5)
+plt.bar(names, fruit[2], bottom=np.add(fruit[0], fruit[2]), color='#ff8000', label='oranges', width=0.5)
+plt.bar(names, fruit[3], bottom=np.add(fruit[0], fruit[2], fruit[3]), color='#ffe5b4', label='peaches', width=0.5)
 
 
 plt.ylabel('Quantity of Fruit')
