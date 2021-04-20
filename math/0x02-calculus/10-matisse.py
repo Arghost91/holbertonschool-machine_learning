@@ -8,10 +8,9 @@ def poly_derivative(poly):
     if poly==0:
         return None
     else:
-        n = len(polly)-1
         der[n]
         i = 1
-        for i<=n:
+        for i in range(len(polly)-1):
             der[i] = polly[i]*i
             i += 1
         return der
