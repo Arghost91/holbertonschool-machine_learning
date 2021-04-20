@@ -6,10 +6,10 @@ Function that derivates a polinomy
 
 def poly_derivative(poly):
     """
-    Return de derivative of poly, if poly is 
+    Return de derivative of poly, if poly is
     different to 0
     """
-    if poly==0:
+    if poly == 0:
         return None
     else:
         der = poly.copy()
