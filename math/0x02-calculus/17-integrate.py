@@ -8,9 +8,9 @@ Function that integrates a polinomy
 def poly_integral(poly, C=0):
     """
     Return de integrate of poly, if poly is 
-    different to 0
+    different to 0 or C is an int
     """
-    if (poly==0) or (C is not int):
+    if (poly==0) or (type(C) is not int):
         return None
     else:
         integ = poly.copy()
