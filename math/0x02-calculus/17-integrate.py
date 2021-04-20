@@ -16,8 +16,8 @@ def poly_integral(poly, C=0):
         integ = poly.copy()
         i = 0
         for i in range(len(poly)):
-            if poly[i]==0:
-                integ[i] = 0
+            if poly[i]%1==0:
+                integ[i] = int(poly[i]/(i+1))
             else:
                 integ[i] = poly[i]/(i+1)
             i += 1
