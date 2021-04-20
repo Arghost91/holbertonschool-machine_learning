@@ -12,5 +12,5 @@ def summation_i_squared(n):
         return None
     else:
         cacl = (n*(n+1)*(2*n+1))/6
-        return int(calc)
+        return (int(calc))
 return calc
