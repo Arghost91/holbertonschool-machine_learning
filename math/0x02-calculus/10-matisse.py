@@ -8,6 +8,8 @@ def poly_derivative(poly):
     """
     Return de derivative of poly, if poly is
     different to 0
+    poly = [5, 3, 0, 1]
+    result: der = [3, 0, 3]
     """
     if poly == 0:
         return None
