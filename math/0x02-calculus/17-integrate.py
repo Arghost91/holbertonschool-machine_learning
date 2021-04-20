@@ -8,6 +8,8 @@ def poly_integral(poly, C=0):
     """
     Return de integrate of poly, if poly is
     different to 0 or C is an int
+    poly = [5, 3, 0, 1]
+    result: integ = [0, 5, 1.5, 0, 0.25]
     """
     if (poly == 0) or (type(C) is not int):
         return None
