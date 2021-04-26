@@ -38,6 +38,7 @@ class Poisson:
   def cdf(self, k):
     
       e = 2.7182818285
+      sumat = 0
       if type(k) is not int:
           k = int(k)
       elif k<0:
