@@ -15,8 +15,6 @@ class Poisson:
       if data is None:
           if lambtha<0:
               raise ValueError("lambtha must be a positive value")
-          else:
-              return self.lambtha
       else:
           self.lambtha = sum(data)/len(data)
           if type(data) is not list:
