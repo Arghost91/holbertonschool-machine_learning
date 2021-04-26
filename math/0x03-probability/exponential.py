@@ -12,7 +12,7 @@ class Exponential:
           if lambtha<0:
               raise ValueError("lambtha must be a positive value")
       else:
-          self.lambtha = sum(data)/len(data)
+          self.lambtha = 1/sum(data)/len(data)
           if type(data) is not list:
               raise TypeError("data must be a list")
           elif len(data)<2:
