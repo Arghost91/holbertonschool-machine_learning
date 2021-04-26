@@ -24,4 +24,4 @@ class Exponential:
         if x < 0:
             return 0
         else:
-            return self.lamptha*(e**-(self.lamptha*x)
+            return self.lamptha*(e**-(self.lamptha*x))
