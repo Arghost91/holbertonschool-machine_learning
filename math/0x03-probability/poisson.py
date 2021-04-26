@@ -30,4 +30,7 @@ class Poisson:
           k = int(k)
       elif k<0:
           return 0
-      return ((self.lambtha**k)*(e**-self.lambtha))/self.factorial(k)
+      facto = 1
+      for i in range(1, k+1):
+          facto = facto*i
+      return ((self.lambtha**k)*(e**-self.lambtha))/facto
