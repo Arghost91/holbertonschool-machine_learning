@@ -45,7 +45,7 @@ class Poisson:
           return 0
       for i in range(k+1):
           facto = 1
-          for i in range(1, k+1):
-              facto = facto*i
+          for j in range(1, k+1):
+              facto = facto*j
               sumat += ((self.lambtha**i)*(e**-self.lambtha))/facto
       return sumat
