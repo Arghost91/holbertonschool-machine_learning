@@ -7,6 +7,8 @@ class Poisson:
   """
   Class for Poisson
   """
+  e = 2.7182818285
+  
   def __init__(self, data=None, lambtha=1.):
       """
       Class Constructor
@@ -21,3 +23,11 @@ class Poisson:
               raise TypeError("data must be a list")
           elif len(data)<2:
               raise ValueError("data must contain multiple values")              
+  
+  def pmf(self, k):
+      
+      if type(k) is not int:
+          k = int(k)
+      elif k<0:
+          return 0
+      return ((self.lambda**k)*(Poisson.e**-self.lambda))/self.factorial(k)
