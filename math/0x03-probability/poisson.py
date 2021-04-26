@@ -7,7 +7,6 @@ class Poisson:
   """
   Class for Poisson
   """
-  e = 2.7182818285
   
   def __init__(self, data=None, lambtha=1.):
       """
@@ -26,8 +25,9 @@ class Poisson:
   
   def pmf(self, k):
       
+      e = 2.7182818285
       if type(k) is not int:
           k = int(k)
       elif k<0:
           return 0
-      return ((self.lambthaa**k)*(Poisson.e**-self.lambtha))/self.factorial(k)
+      return ((self.lambthaa**k)*(e**-self.lambtha))/self.factorial(k)
