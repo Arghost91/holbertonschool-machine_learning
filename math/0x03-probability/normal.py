@@ -14,8 +14,7 @@ class Normal:
                 raise ValueError("stddev must be a positive value")
         else:
             self.mean = sum(data)/len(data)
-            for x in data:
-                var = [(x  - self.mean)**2]
+            var = [(x  - self.mean)**2 for x in data]
             self.stddev = (sum(var)/len(data))**(1/2)
             if type(data) is not list:
                 raise TypeError("data must be a list")
