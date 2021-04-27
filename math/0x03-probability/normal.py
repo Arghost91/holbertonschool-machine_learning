@@ -16,7 +16,7 @@ class Normal:
             self.mean = sum(data)/len(data)
             for x in data:
                 var = (x  - self.mean)**2
-            self.stddev = (var/len(data))**(1/2)
+            self.stddev = (sum(var)/len(data))**(1/2)
             if type(data) is not list:
                 raise TypeError("data must be a list")
             elif len(data) < 2:
