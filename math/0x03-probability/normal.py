@@ -19,5 +19,5 @@ class Normal:
             self.stddev = (var/len(data))**(1/2)
             if type(data) is not list:
                 raise TypeError("data must be a list")
-            elif data < 2:
+            elif len(data) < 2:
                 raise ValueError("data must contain multiple values")
