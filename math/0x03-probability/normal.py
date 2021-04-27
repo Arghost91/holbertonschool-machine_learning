@@ -33,4 +33,4 @@ class Normal:
         
         e = 2.7182818285
         π = 3.1415926536
-        return (1/(self.stddev*(2*π)**(1/2))*e**(-(1/2)*((x-self.mean)/self.stddev)**2)
+        return (1/(self.stddev*(2*π)**(1/2))*e**(-(1/2)*((x-self.mean)/self.stddev)**2))
