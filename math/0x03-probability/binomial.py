@@ -22,3 +22,17 @@ class Binomial:
                 raise TypeError("data must be a list")
             elif len(data) < 2:
                 raise ValueError("data must contain multiple values")
+    
+    def pmf(self, k):
+        
+        nfact = 1
+        for i in range(1 ,self.n + 1):
+            nfact = nfact*i
+        kfact = 1
+        for i in range(1 ,k + 1):
+            pfact = pfact*i
+        nkfact = 1
+        for i in range(1 ,(self.n - k) + 1):
+            nkfact = nkfact*i
+        q = 1 - self.p
+        return (nfact / (kfact * nkfact)) * (self.p ** k) * (q ** (self.n - k))
