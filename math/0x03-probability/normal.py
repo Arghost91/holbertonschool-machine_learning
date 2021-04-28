@@ -7,7 +7,7 @@ Class that represents a Normal distribution
 class Normal:
     """
     Class for Normal
-    """    
+    """
     def __init__(self, data=None, mean=0., stddev=1.):
         """
         Class Constructor
@@ -25,7 +25,7 @@ class Normal:
                 raise TypeError("data must be a list")
             elif len(data) < 2:
                 raise ValueError("data must contain multiple values")
-                
+
     def z_score(self, x):
         """
         Calculates z-score of a given x-value
@@ -44,7 +44,8 @@ class Normal:
         """
         e = 2.7182818285
         π = 3.1415926536
-        return (1 / (self.stddev * (2 * π) ** (1/2)) * e ** (- (1 / 2) * ((x - self.mean) / self.stddev) ** 2))
+        return (1 / (self.stddev * (2 * π) ** (1/2)) * e ** 
+                (- (1 / 2) * ((x - self.mean) / self.stddev) ** 2))
 
     def cdf(self, x):
         """
