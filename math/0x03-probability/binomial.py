@@ -35,4 +35,14 @@ class Binomial:
         for i in range(1 ,(self.n - k) + 1):
             nkfact = nkfact*i
         q = 1 - self.p
+        if type(k) is not int:
+            k = int(k)
+        if k < 0:
+            return 0
         return (nfact / (kfact * nkfact)) * (self.p ** k) * (q ** (self.n - k))
+    
+    def cdf(self, k):
+        
+        for i in range (k + 1):
+            acum = acum + Binomial.pmf(self, i)
+        return acum
