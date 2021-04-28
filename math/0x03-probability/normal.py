@@ -33,13 +33,14 @@ class Normal:
         
         e = 2.7182818285
         π = 3.1415926536
-        return (1/(self.stddev*(2*π)**(1/2))*e**(-(1/2)*((x-self.mean)/self.stddev)**2))
+        return (1 / (self.stddev * (2 * π) ** (1/2)) * e ** (- (1 / 2) * ((x - self.mean) / self.stddev) ** 2))
     
     def cdf(self, x):
         
         e = 2.7182818285
         π = 3.1415926536
-        erf = (2/(π**(1/2)))*(x - (x**3)/3 + (x**5)/10 - (x**7)/42 + (x**9)/216)
-        return (1+erf)/2
+        xx = (x - self.mean) / (self.stddev * (2 ** (1 / 2))
+        erf = (2 / (π ** (1 / 2))) * (xx - (xx ** 3) / 3 + (xx ** 5) / 10 - (xx ** 7) / 42 + (xx ** 9) / 216)
+        return (1 + erf) / 2
         
         
