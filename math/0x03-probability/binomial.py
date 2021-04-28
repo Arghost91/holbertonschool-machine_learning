@@ -45,5 +45,9 @@ class Binomial:
         
         acum = 0
         for i in range (k + 1):
-            acum = acum + Binomial.pmf(self, i)
+            acum = acum + self.pmf(i)
+        if type(k) is not int:
+            k = int(k)
+        if k < 0:
+            return 0
         return acum
