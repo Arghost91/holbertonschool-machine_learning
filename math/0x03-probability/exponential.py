@@ -21,8 +21,8 @@ class Exponential:
             if type(data) is not list:
                 raise TypeError("data must be a list")
             elif len(data) < 2:
-                raise ValueError("data must contain multiple values")         
-    
+                raise ValueError("data must contain multiple values")
+
     def pdf(self, x):
         """
         pdf (Probability Density Function) for a Exponential Distribution
