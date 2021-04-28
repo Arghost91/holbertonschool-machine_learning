@@ -43,6 +43,7 @@ class Binomial:
     
     def cdf(self, k):
         
+        acum = 0
         for i in range (k + 1):
             acum = acum + Binomial.pmf(self, i)
         return acum
