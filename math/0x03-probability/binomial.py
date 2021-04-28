@@ -30,7 +30,7 @@ class Binomial:
             nfact = nfact*i
         kfact = 1
         for i in range(1 ,k + 1):
-            pfact = pfact*i
+            kfact = kfact*i
         nkfact = 1
         for i in range(1 ,(self.n - k) + 1):
             nkfact = nkfact*i
