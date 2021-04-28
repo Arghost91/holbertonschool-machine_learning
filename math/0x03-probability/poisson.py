@@ -21,8 +21,8 @@ class Poisson:
             if type(data) is not list:
                 raise TypeError("data must be a list")
             elif len(data) < 2:
-                raise ValueError("data must contain multiple values")              
-  
+                raise ValueError("data must contain multiple values")
+
     def pmf(self, k):
         """
         pmf (Probability Mass Function) for a Poisson Distribution
