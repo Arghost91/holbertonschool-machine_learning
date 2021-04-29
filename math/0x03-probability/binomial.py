@@ -54,11 +54,11 @@ class Binomial:
         """
         cdf (Cumulative Distributive Function) for a Binomial Distribution
         """
-        acum = 0
-        for i in range(k + 1):
-            acum += self.pmf(i)
         if type(k) is not int:
             k = int(k)
         if k < 0:
             return 0
+        acum = 0
+        for i in range(k + 1):
+            acum += self.pmf(i)
         return acum
