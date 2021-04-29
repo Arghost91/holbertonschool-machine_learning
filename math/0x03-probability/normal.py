@@ -18,13 +18,13 @@ class Normal:
             if stddev <= 0:
                 raise ValueError("stddev must be a positive value")
         else:
-            self.mean = sum(data) / len(data)
             var = [(x - self.mean) ** 2 for x in data]
             self.stddev = (sum(var) / len(data)) ** (1 / 2)
             if type(data) is not list:
                 raise TypeError("data must be a list")
             elif len(data) < 2:
                 raise ValueError("data must contain multiple values")
+            self.mean = sum(data) / len(data)
 
     def z_score(self, x):
         """
