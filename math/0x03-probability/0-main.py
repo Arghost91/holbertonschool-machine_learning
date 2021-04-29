@@ -4,7 +4,7 @@ import numpy as np
 Poisson = __import__('poisson').Poisson
 
 np.random.seed(0)
-data = [0, 1]
+data = [1]
 p1 = Poisson(data)
 print('Lambtha:', p1.lambtha)
 
