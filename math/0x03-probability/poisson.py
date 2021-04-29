@@ -30,11 +30,11 @@ class Poisson:
         e = 2.7182818285
         if type(k) is not int:
             k = int(k)
-        elif k < 0:
+        if k < 0:
             return 0
         facto = 1
         for i in range(1, k + 1):
-            facto = facto * i
+            facto *= i
         return ((self.lambtha ** k) * (e ** -self.lambtha)) / facto
 
     def cdf(self, k):
