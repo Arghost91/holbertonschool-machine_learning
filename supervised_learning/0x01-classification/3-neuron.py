@@ -30,4 +30,5 @@ class Neuron:
         return self.__A
       
     def cost(self, Y, A):
-        return (-1 / len(Y[0])) * np.sum(np.multiply(Y.T, np.log(A)) + np.multiply((1 - Y.T), np.log(1.0000001 - A)))            
+        m = len(Y[0])
+        return (-1 / m) * np.sum(np.multiply(Y, np.log(A)) + np.multiply((1 - Y), np.log(1.0000001 - A)))            
