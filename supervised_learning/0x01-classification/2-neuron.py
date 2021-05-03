@@ -24,6 +24,6 @@ class Neuron:
         return self.__A
     
     def forward_prop(self, X):
-        r = np.matmul(X, self.__W) + self.__b
+        r = np.dot(self.__W, X) + self.__b
         self.__A = 1 / (1 + np.exp(-r))
         return self.__A
