@@ -1,4 +1,3 @@
-alexa@ubuntu-xenial:$ cat 0-main.py
 #!/usr/bin/env python3
 
 import numpy as np
