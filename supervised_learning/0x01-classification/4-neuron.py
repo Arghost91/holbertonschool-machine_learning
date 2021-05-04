@@ -34,6 +34,6 @@ class Neuron:
       
     def evaluate(self, X, Y):
         A = self.forward_prop(X)
-        pred = np.where(A > 0, 1, 0)
+        pred = np.where(A >= 0.5, 1, 0)
         cost = self.cost(Y, A)
         return pred, cost
