@@ -69,7 +69,7 @@ class Neuron:
                     plt.title("Training Cost")
                     if type(step) is not int:
                         raise TypeError("step must be an integer")
-                    if step < 1 or > iterations:
+                    if step < 1 or step > iterations:
                         raise ValueError("step must be positive and <= iterations")
                 return self.evaluate(X, Y)   
       
