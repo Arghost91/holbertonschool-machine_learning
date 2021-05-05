@@ -57,9 +57,9 @@ class Neuron:
             raise ValueError("iterations must be a positive")
         iteration = 0
         for iteration in range(0 ,iterations+1, step):
-            self.__A = self.forward_prop(X)
-            self.gradient_descent(X, Y, self.__A, alpha)
-            cost = self.cost(Y, self.__A)
+            A = self.forward_prop(X)
+            self.gradient_descent(X, Y, A, alpha)
+            cost = self.cost(Y, A)
             if verbose:
                 print ("Cost after {} iterations: {}".format(iteration, cost))
             if graph:
