@@ -46,34 +46,45 @@ class Neuron:
         self.__W -= (alpha * (dW.T))
         self.__b -= (alpha * db)
         
-    def train(self, X, Y, iterations=5000, alpha=0.05, verbose=True, graph=True, step=100):
+    def train(self, X, Y, iterations=5000, alpha=0.05,
+              verbose=True, graph=True, step=100):
+        """
+        Trains the neuron by updating the private attributes __W, __b, and __A
+        - You are allowed to use one loop
+        - Returns the evaluation of the training data after
+          iterations of training have occurred
+        """
         if type(iterations) is not int:
             raise TypeError("iterations must be an integer")
-        if iterations < 1:
+        if iterations <= 0:
             raise ValueError("iterations must be a positive integer")
         if type(alpha) is not float:
-            raise TypeError("iterations must be a float")
+            raise TypeError("alpha must be a float")
         if alpha <= 0:
-            raise ValueError("iterations must be a positive")
-        list_cost = []
-        list_iteration = []
-        for iteration in range(0 ,iterations+1, step):
-            A = self.forward_prop(X)
-            self.gradient_descent(X, Y, A, alpha)
-            cost = self.cost(Y, A)
+            raise ValueError("alpha must be positive")
+        if verbose is True or graph is True:
+            if type(step) is not int:
+                raise TypeError("step must be an integer")
+            if step <= 0 or step > iterations:
+                raise ValueError("step must be positive and <= iterations")
+        step_list = []
+        cost_list = []
+        for i in range(iterations + 1):
+            self.forward_prop(X)
+            self.gradient_descent(X, Y, self.__A, alpha)
+            cost = self.cost(Y, self.__A)
+
             if verbose:
-                print ("Cost after {} iterations: {}".format(iteration, cost))
-                list_cost.append(cost)
-                list_iteration.append(iteration)
-       
-                if type(step) is not int:
-                    raise TypeError("step must be an integer")
-                if step < 1 or step > iterations:
-                     raise ValueError("step must be positive and <= iterations")
+                if i % step == 0 or step == iterations:
+                    step_list.append(i)
+                    cost_list.append(cost)
+                    print("Cost after {} iterations: {}".format(i, cost))
+
         if graph:
-            plt.plot(list_iteration, list_cost, 'b-')
+            plt.plot(step_list, cost_list)
             plt.xlabel('iteration')
             plt.ylabel('cost')
-            plt.title("Training Cost")
+            plt.title("Trainig Cost")
+            plt.show()
+
         return self.evaluate(X, Y)
-      
