@@ -64,7 +64,7 @@ class Neuron:
             if step < 1 or step > iterations:
                 raise ValueError("step must be positive and <= iterations")
 
-        for iteration in range(0 ,iterations+1, step):
+        for iteration in range(iterations+1):
             A = self.forward_prop(X)
             self.gradient_descent(X, Y, A, alpha)
             cost = self.cost(Y, A)
