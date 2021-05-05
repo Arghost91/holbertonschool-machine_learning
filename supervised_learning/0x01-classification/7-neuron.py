@@ -46,45 +46,38 @@ class Neuron:
         self.__W -= (alpha * (dW.T))
         self.__b -= (alpha * db)
         
-    def train(self, X, Y, iterations=5000, alpha=0.05,
-              verbose=True, graph=True, step=100):
-        """
-        Trains the neuron by updating the private attributes __W, __b, and __A
-        - You are allowed to use one loop
-        - Returns the evaluation of the training data after
-          iterations of training have occurred
-        """
+    def train(self, X, Y, iterations=5000, alpha=0.05, verbose=True, graph=True, step=100):
         if type(iterations) is not int:
             raise TypeError("iterations must be an integer")
-        if iterations <= 0:
+        if iterations < 1:
             raise ValueError("iterations must be a positive integer")
         if type(alpha) is not float:
-            raise TypeError("alpha must be a float")
+            raise TypeError("iterations must be a float")
         if alpha <= 0:
-            raise ValueError("alpha must be positive")
-        if verbose is True or graph is True:
+            raise ValueError("iterations must be a positive")
+        list_cost = []
+        list_iteration = []
+        
+        if verbose or graph:
             if type(step) is not int:
                 raise TypeError("step must be an integer")
-            if step <= 0 or step > iterations:
+            if step < 1 or step > iterations:
                 raise ValueError("step must be positive and <= iterations")
-        step_list = []
-        cost_list = []
-        for i in range(iterations + 1):
-            self.forward_prop(X)
-            self.gradient_descent(X, Y, self.__A, alpha)
-            cost = self.cost(Y, self.__A)
 
+        for iteration in range(0 ,iterations+1, step):
+            A = self.forward_prop(X)
+            self.gradient_descent(X, Y, A, alpha)
+            cost = self.cost(Y, A)
             if verbose:
-                if i % step == 0 or step == iterations:
-                    step_list.append(i)
-                    cost_list.append(cost)
-                    print("Cost after {} iterations: {}".format(i, cost))
+                print ("Cost after {} iterations: {}".format(iteration, cost))
+                list_cost.append(cost)
+                list_iteration.append(iteration)
+            iteratio += 100
 
         if graph:
-            plt.plot(step_list, cost_list)
+            plt.plot(list_iteration, list_cost, 'b-')
             plt.xlabel('iteration')
             plt.ylabel('cost')
-            plt.title("Trainig Cost")
-            plt.show()
-
+            plt.title("Training Cost")
         return self.evaluate(X, Y)
+      
