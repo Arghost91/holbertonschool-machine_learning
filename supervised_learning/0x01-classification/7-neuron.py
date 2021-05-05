@@ -72,7 +72,7 @@ class Neuron:
                 print ("Cost after {} iterations: {}".format(iteration, cost))
                 list_cost.append(cost)
                 list_iteration.append(iteration)
-            iteratio += 100
+            iteration += 100
 
         if graph:
             plt.plot(list_iteration, list_cost, 'b-')
