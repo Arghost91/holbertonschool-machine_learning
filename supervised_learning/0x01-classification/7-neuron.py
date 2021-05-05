@@ -61,7 +61,7 @@ class Neuron:
                 self.__A = self.forward_prop(X)
                 self.gradient_descent(X, Y, self.__A, alpha)
                 cost = self.cost(Y, self.__A)
-                print Cost after {iteration} iterations: {cost}
+                print ("Cost after", iteration, "iterations:", cost)
                 if graph == True:
                     plt.plot(iteration, cost, 'b-')
                     plt.xlabel('iteration')
