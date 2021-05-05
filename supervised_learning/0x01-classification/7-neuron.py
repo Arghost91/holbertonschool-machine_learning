@@ -71,5 +71,6 @@ class Neuron:
                         raise TypeError("step must be an integer")
                     if step < 1 or step > iterations:
                         raise ValueError("step must be positive and <= iterations")
-                return self.evaluate(X, Y)   
+                return self.evaluate(X, Y)
+                iteration += 100
       
