@@ -46,7 +46,7 @@ class NeuralNetwork:
         return (-1 / m) * np.sum(np.multiply(Y, np.log(A)) + np.multiply((1 - Y), np.log(1.0000001 - A)))
     
     def evaluate(self, X, Y):
-        A = self.forward_prop(X)
-        pred = np.where(A >= 0.5, 1, 0)
-        cost = self.cost(Y, A)
+        A2 = self.forward_prop(X)
+        pred = np.where(A2 >= 0.5, 1, 0)
+        cost = self.cost(Y, A2)
         return pred, cost
