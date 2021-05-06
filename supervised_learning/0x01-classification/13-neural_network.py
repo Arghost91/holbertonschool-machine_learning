@@ -51,8 +51,8 @@ class NeuralNetwork:
         cost = self.cost(Y, self.A2)
         return pred, cost
       
-   def gradient_descent(self, X, Y, A1, A2, alpha=0.05):
-       m = len(Y[0])
+    def gradient_descent(self, X, Y, A1, A2, alpha=0.05):
+        m = len(Y[0])
         dr2 = A2 - Y
         dW2 = (1 / m) * (np.dot(dr2, A1.T))
         db2 = (1 / m) * (np.sum(dr2), axis = 1, keepdims = Trues)
