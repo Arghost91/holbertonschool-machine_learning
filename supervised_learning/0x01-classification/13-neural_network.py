@@ -55,10 +55,10 @@ class NeuralNetwork:
         m = len(Y[0])
         dr2 = A2 - Y
         dW2 = (1 / m) * (np.dot(dr2, A1.T))
-        db2 = (1 / m) * (np.sum(dr2), axis = 1, keepdims = Trues)
+        db2 = (1 / m) * (np.sum(dr2), axis=1, keepdims=True)
         dr1 = np.multiply(np.dot(self.__W2.T, dr2), 1 - np.power(A1, 2))
         dW1 = (1 / m) * np.dot(dr1, X.T)
-        db1 = (1 / m) * np.sum(dr1, axis = 1, keepdims = True)
+        db1 = (1 / m) * np.sum(dr1, axis=1, keepdims=True)
         self.__W1 -= (alpha * (dW1.T))
         self.__b1 -= (alpha * db1)
         self.__W2 -= (alpha * (dW2.T))
