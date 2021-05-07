@@ -75,9 +75,6 @@ class DeepNeuralNetwork:
             raise ValueError("iterations must be a positive")
         list_cost = []
         list_iteration = []
-        for i in range(iterations):
-            self.__cache["A" + str(self.__L)], self.__cache = self.forward_prop(X)
-            self.gradient_descent(Y, self.__cache, alpha)
             
         for iteration in range(iterations+1):
             self.__cache["A" + str(self.__L)], self.__cache = self.forward_prop(X)
