@@ -51,23 +51,14 @@ class DeepNeuralNetwork:
         cost = self.cost(Y, self.__cache["A" + str(self.__L)])
         return pred, cost
       
-    def relu_grad(A, Z):
-        grad = np.zeros(Z.shape)
-        grad[Z>0] = 1
-        return grad  
-      
     def gradient_descent(self, Y, cache, alpha=0.05):
         m = len(Y[0])
+        dr = self.__cache["A{}".format(self.__L)] - Y
         for i in range(self.__L, 0, -1):
-            A, A_prev, Z = cache['A' + str(i)], cache['A' + str(i-1)], cache['Z' + str(i)]
+            A, A_prev = cache['A' + str(i)], cache['A' + str(i-1)]
             W = self.__weights["W" + str(i)]
-            if i == self.__L:
-                dA = -np.divide(Y, A) + np.divide(1 - Y, 1 - A)
-                dZ = np.multiply(dA, np.multiply(A, 1-A))
-            else:
-                dZ = np.multiply(dA, relu_grad(A, Z))
             dW = (1 / m) * np.dot(dZ, A_prev.T)
             db = (1 / m) * np.sum(dZ, axis=1, keepdims=True)
-            dA = np.dot(W.T, dZ)
-            self.__weights["W" + str(i)] = self.__weights["W" + str(i)] - (alpha * (dW.T))
-            self.__weights["b" + str(i)] = self.__weights["b" + str(i)] - (alpha * db)
+            dr1 = np.dot(W.T, dr) * (A * (1 - A))
+            self.__weights["W" + str(i)] -= alpha * dW
+            self.__weights["b" + str(i)] -= alpha * db
