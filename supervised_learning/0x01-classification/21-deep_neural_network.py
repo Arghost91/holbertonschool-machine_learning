@@ -59,6 +59,6 @@ class DeepNeuralNetwork:
             W = self.weights["W" + str(i)]
             dW = (1 / m) * np.dot(dr, A_prev.T)
             db = (1 / m) * np.sum(dr, axis=1, keepdims=True)
-            dr = np.dot(W.T, dr) * (A * (1 - A))
+            dr = np.dot(self.weights["W" + str(i)].T, dr) * (A * (1 - A))
             self.__weights["W" + str(i)] -= alpha * dW
             self.__weights["b" + str(i)] -= alpha * db
