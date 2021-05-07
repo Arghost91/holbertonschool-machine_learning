@@ -57,8 +57,8 @@ class DeepNeuralNetwork:
         for i in range(self.__L, 0, -1):
             A, A_prev = cache['A' + str(i)], cache['A' + str(i-1)]
             W = self.__weights["W" + str(i)]
-            dW = (1 / m) * np.dot(dZ, A_prev.T)
-            db = (1 / m) * np.sum(dZ, axis=1, keepdims=True)
+            dW = (1 / m) * np.dot(dr, A_prev.T)
+            db = (1 / m) * np.sum(dr, axis=1, keepdims=True)
             dr1 = np.dot(W.T, dr) * (A * (1 - A))
             self.__weights["W" + str(i)] -= alpha * dW
             self.__weights["b" + str(i)] -= alpha * db
