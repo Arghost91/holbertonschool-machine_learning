@@ -4,7 +4,7 @@
 def one_hot_encode(Y, classes):
     
     m = len(Y)
-    if type(Y) is not numpy.ndarray:
+    if type(Y) is not np.ndarray:
         return None
     else:
         one_hot_encode = np.zeros((classes, m))
