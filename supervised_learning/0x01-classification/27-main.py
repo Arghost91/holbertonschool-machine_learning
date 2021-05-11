@@ -3,7 +3,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-Deep = __import__('27-deep_neural_network').DeepNeuralNetwork
+Deep = __import__('Prueba2').DeepNeuralNetwork
 one_hot_encode = __import__('24-one_hot_encode').one_hot_encode
 one_hot_decode = __import__('25-one_hot_decode').one_hot_decode
 
