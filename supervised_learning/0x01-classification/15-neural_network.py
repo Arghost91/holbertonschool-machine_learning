@@ -137,8 +137,8 @@ class NeuralNetwork:
             cost = self.cost(Y, self.__A2)
             if verbose:
                 if iteration % step == 0:
-                    print ("Cost after {} iterations: {}".format(iteration,
-                                                                 cost))
+                    print("Cost after {} iterations: {}".format(iteration,
+                                                                cost))
                     list_cost.append(cost)
                     list_iteration.append(iteration)
         if graph:
