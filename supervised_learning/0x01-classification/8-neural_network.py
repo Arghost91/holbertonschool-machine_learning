@@ -1,10 +1,19 @@
 #!/usr/bin/env python3
 
 import numpy as np
+"""
+Define a neural network with one hidden layer performing binary classification
+"""
+
 
 class NeuralNetwork:
-    
+    """
+    Class that define a neural network with one hidden layer performing binary classification
+    """
     def __init__(self, nx, nodes):
+        """
+        Class constructor
+        """
         if type(nx) is not int:
             raise TypeError("nx must be an integer")
         if nx < 1:
