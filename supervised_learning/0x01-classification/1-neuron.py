@@ -28,14 +28,14 @@ class Neuron:
         getter function
         """
         return self.__W
-    
+
     @property
     def b(self):
         """
         getter function
         """
         return self.__b
-    
+
     @property
     def A(self):
         """
