@@ -8,7 +8,8 @@ Define a neural network with one hidden layer performing binary classification
 
 class NeuralNetwork:
     """
-    Class that define a neural network with one hidden layer performing binary classification
+    Class that define a neural network with one hidden layer
+    performing binary classification
     """
     def __init__(self, nx, nodes):
         """
