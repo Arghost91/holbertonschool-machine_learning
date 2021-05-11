@@ -94,7 +94,7 @@ class DeepNeuralNetwork:
       
     def save(self, filename):
         with open('filename.pickle', 'wb') as handle:
-        pickle.dump(your_data, handle, protocol=pickle.HIGHEST_PROTOCOL)
+        pickle.dump(filename, handle, protocol=pickle.HIGHEST_PROTOCOL)
         
         with open('filename.pickle', 'rb') as handle:
         unserialized_data = pickle.load(handle)
