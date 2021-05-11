@@ -96,7 +96,7 @@ class DeepNeuralNetwork:
         if not (filename.endswith('.pkl')):
             filename = filename + '.pkl'
         with open('filename.pickle', 'wb') as handle:
-            pickle.dump(filename, handle, protocol=pickle.HIGHEST_PROTOCOL
+            pickle.dump(filename, handle, protocol=pickle.HIGHEST_PROTOCOL)
         
     def load(filename):
         try:
