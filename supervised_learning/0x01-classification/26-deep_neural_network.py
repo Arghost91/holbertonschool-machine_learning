@@ -93,12 +93,16 @@ class DeepNeuralNetwork:
         return self.evaluate(X, Y)
       
     def save(self, filename):
+        if not (filename.endswith('.pkl')):
+            filename = filename + '.pkl'
         with open('filename.pickle', 'wb') as handle:
-            pickle.dump(filename, handle, protocol=pickle.HIGHEST_PROTOCOL)
+            pickle.dump(filename, handle, protocol=pickle.HIGHEST_PROTOCOL
         
-        with open('filename.pickle', 'rb') as handle:
-            unserialized_data = pickle.load(handle)
-        if filename.pickle:
-            return filename.pickle
-        else:
-            return None
+    def load(filename):
+        try:
+            with open('filename.pickle', 'rb') as handle:
+                object_filename = pickle.load(handle)
+                return object_filename
+        except FileNotFoundError: 
+            None
+      
