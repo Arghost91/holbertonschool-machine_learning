@@ -78,7 +78,8 @@ class Neuron:
         self.__W -= (alpha * (dW.T))
         self.__b -= (alpha * db)
 
-    def train(self, X, Y, iterations=5000, alpha=0.05, verbose=True, graph=True, step=100):
+    def train(self, X, Y, iterations=5000, alpha=0.05, verbose=True,
+              graph=True, step=100):
         """
         Trains the neuron by updating the private attributes __W, __b, and __A
         """
@@ -103,7 +104,8 @@ class Neuron:
             cost = self.cost(Y, A)
             if verbose:
                 if iteration % step == 0:
-                    print ("Cost after {} iterations: {}".format(iteration, cost))
+                    print("Cost after {} iterations: {}".format(iteration,
+                                                                cost))
                     list_cost.append(cost)
                     list_iteration.append(iteration)
         if graph:
