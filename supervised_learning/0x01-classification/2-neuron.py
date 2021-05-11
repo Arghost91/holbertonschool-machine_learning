@@ -21,7 +21,7 @@ class Neuron:
         self.__W = np.random.normal(size=(1, nx))
         self.__b = 0
         self.__A = 0
-        
+  
     @property
     def W(self):
         """
@@ -42,7 +42,7 @@ class Neuron:
         getter function
         """
         return self.__A
-    
+
     def forward_prop(self, X):
         """
         Calculates the forward propagation of the neuron
