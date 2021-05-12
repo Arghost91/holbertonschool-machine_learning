@@ -109,7 +109,7 @@ class DeepNeuralNetwork:
             dr = np.dot(W.T, dr) * (A_prev * (1 - A_prev))
             self.__weights["W" + str(i)] -= alpha * dW
             self.__weights["b" + str(i)] -= alpha * db
-     
+
     def train(self, X, Y, iterations=5000, alpha=0.05,
               verbose=True, graph=True, step=100):
         """
@@ -126,13 +126,14 @@ class DeepNeuralNetwork:
         list_cost = []
         list_iteration = []
         for iteration in range(iterations+1):
-            A = "A" + str(self.__L)         
+            A = "A" + str(self.__L)
             self.__cache[A], self.__cache = self.forward_prop(X)
             self.gradient_descent(Y, self.__cache, alpha)
             cost = self.cost(Y, self.__cache[A])
             if verbose:
                 if iteration % step == 0:
-                    print("Cost after {} iterations: {}".format(iteration, cost))
+                    print("Cost after {} iterations: {}"
+                          .format(iteration, cost))
                     list_cost.append(cost)
                     list_iteration.append(iteration)
         if graph:
@@ -159,5 +160,5 @@ class DeepNeuralNetwork:
             with open('filename', 'rb') as handle:
                 object_filename = pickle.load(handle)
                 return object_filename
-        except FileNotFoundError: 
+        except FileNotFoundError:
             None
