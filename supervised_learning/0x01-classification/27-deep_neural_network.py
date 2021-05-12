@@ -27,12 +27,14 @@ class DeepNeuralNetwork:
         self.__weights = {}
 
         for i in range(self.L):
+            W = 'W' + str(i+1)
+            sqr = np.sqrt(2 / (layers[i - 1]))
             if layers[i] < 0:
                 raise TypeError("layers must be a list of positive integers")
             if i == 0:
-                self.weights['W' + str(i+1)] = np.random.randn(layers[i], nx) * np.sqrt(2 / nx)
+                self.weights[W] = np.random.randn(layers[i], nx) * np.sqrt(2 / nx)
             else:
-                self.weights['W' + str(i+1)] = np.random.randn(layers[i], layers[i - 1]) * np.sqrt(2 / (layers[i - 1]))
+                self.weights[W] = np.random.randn(layers[i], layers[i - 1]) * sqr
             self.weights['b' + str(i+1)] = np.zeros((layers[i], 1))
 
     @property
@@ -62,7 +64,9 @@ class DeepNeuralNetwork:
         """
         self.__cache["A0"] = X
         for i in range(self.__L):
-            r = np.dot(self.__weights["W" + str(i+1)], self.cache["A" + str(i)]) + self.__weights["b" + str(i+1)]
+            W = "W" + str(i+1)
+            b1 = "b" + str(i+1)
+            r = np.dot(self.__weights[W], self.cache["A" + str(i)]) + self.__weights[b1]
             self.__cache["A" + str(i+1)] = 1 / (1 + np.exp(-r))
             if i == self.L:
                 t = np.exp(r) / np.sum(np.exp(r), axis=0)
@@ -83,7 +87,8 @@ class DeepNeuralNetwork:
         Evaluates the neural network’s predictions
         """
         self.forward_prop(X)
-        pred = np.where(self.__cache["A" + str(self.__L)] == np.amax(self.__cache["A" + str(self.__L)], axis=0), 1, 0)
+        maxi = np.amax(self.__cache["A" + str(self.__L)], axis=0), 1, 0)
+        pred = np.where(self.__cache["A" + str(self.__L)] == maxi)
         cost = self.cost(Y, self.__cache["A" + str(self.__L)])
         return pred, cost
 
@@ -102,7 +107,8 @@ class DeepNeuralNetwork:
             self.__weights["W" + str(i)] -= alpha * dW
             self.__weights["b" + str(i)] -= alpha * db
      
-    def train(self, X, Y, iterations=5000, alpha=0.05, verbose=True, graph=True, step=100):
+    def train(self, X, Y, iterations=5000, alpha=0.05,
+              verbose=True, graph=True, step=100):
         """
         Trains the deep neural network
         """
@@ -117,12 +123,13 @@ class DeepNeuralNetwork:
         list_cost = []
         list_iteration = []
         for iteration in range(iterations+1):
-            self.__cache["A" + str(self.__L)], self.__cache = self.forward_prop(X)
+            A = "A" + str(self.__L)         
+            self.__cache[A], self.__cache = self.forward_prop(X)
             self.gradient_descent(Y, self.__cache, alpha)
-            cost = self.cost(Y, self.__cache["A" + str(self.__L)])
+            cost = self.cost(Y, self.__cache[A])
             if verbose:
                 if iteration % step == 0:
-                    print ("Cost after {} iterations: {}".format(iteration, cost))
+                    print("Cost after {} iterations: {}".format(iteration, cost))
                     list_cost.append(cost)
                     list_iteration.append(iteration)
         if graph:
