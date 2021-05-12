@@ -26,8 +26,6 @@ class DeepNeuralNetwork:
         self.__cache = {}
         self.__weights = {}
         self.__activation = activation
-        
-
         for i in range(self.L):
             W = 'W' + str(i+1)
             sqr = np.sqrt(2 / (layers[i - 1]))
@@ -115,9 +113,10 @@ class DeepNeuralNetwork:
             self.__weights["W" + str(i)] -= alpha * dW
             self.__weights["b" + str(i)] -= alpha * db
             if self.__activation == 'sig':
-                dr = np.dot(weights_2["W" + str(i)].T, dr) * (A_prev * (1 - A_prev))
+                dr = np.dot(weights_2["W" + str(i)].T,
+                            dr) * (A_prev * (1 - A_prev))
             elif self.__activation == 'tanh':
-                dr = np.dot(weights_2["W" + str(i)].T, 
+                dr = np.dot(weights_2["W" + str(i)].T,
                             dr) * (1 - np.power(cache["A"+str(i-1)], 2))
         return self.__weights
 
