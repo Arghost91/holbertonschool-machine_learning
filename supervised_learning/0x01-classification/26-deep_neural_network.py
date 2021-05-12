@@ -145,7 +145,7 @@ class DeepNeuralNetwork:
             filename = filename + '.pkl'
         with open('filename', 'wb') as handle:
             pickle.dump(self, handle, protocol=pickle.HIGHEST_PROTOCOL)
-        
+
     def load(filename):
         """
         Loads a pickled DeepNeuralNetwork object
@@ -154,6 +154,5 @@ class DeepNeuralNetwork:
             with open('filename', 'rb') as handle:
                 object_filename = pickle.load(handle)
                 return object_filename
-        except FileNotFoundError: 
+        except FileNotFoundError:
             None
-      
