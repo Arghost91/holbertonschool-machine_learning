@@ -32,9 +32,11 @@ class DeepNeuralNetwork:
             if layers[i] < 0:
                 raise TypeError("layers must be a list of positive integers")
             if i == 0:
-                self.weights[W] = np.random.randn(layers[i], nx) * np.sqrt(2 / nx)
+                self.weights[W] = np.random.randn(layers[i],
+                                                  nx) * np.sqrt(2 / nx)
             else:
-                self.weights[W] = np.random.randn(layers[i], layers[i - 1]) * sqr
+                self.weights[W] = np.random.randn(layers[i],
+                                                  layers[i - 1]) * sqr
             self.weights['b' + str(i+1)] = np.zeros((layers[i], 1))
 
     @property
@@ -66,7 +68,8 @@ class DeepNeuralNetwork:
         for i in range(self.__L):
             W = "W" + str(i+1)
             b1 = "b" + str(i+1)
-            r = np.dot(self.__weights[W], self.cache["A" + str(i)]) + self.__weights[b1]
+            r = np.dot(self.__weights[W], 
+                       self.cache["A" + str(i)]) + self.__weights[b1]
             self.__cache["A" + str(i+1)] = 1 / (1 + np.exp(-r))
             if i == self.L:
                 t = np.exp(r) / np.sum(np.exp(r), axis=0)
@@ -81,7 +84,7 @@ class DeepNeuralNetwork:
         """
         m = len(Y[0])
         return (-1 / m) * np.sum(Y * np.log(A))
- 
+
     def evaluate(self, X, Y):
         """
         Evaluates the neural network’s predictions
