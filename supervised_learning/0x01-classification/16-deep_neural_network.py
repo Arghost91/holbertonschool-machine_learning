@@ -11,6 +11,9 @@ class DeepNeuralNetwork:
     Class that defines a deep neural network performing binary classification
     """
     def __init__(self, nx, layers):
+        """
+        Class constructor
+        """
         if type(nx) is not int:
             raise TypeError("nx must be an integer")
         if nx < 1:
