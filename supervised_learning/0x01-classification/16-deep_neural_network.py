@@ -23,6 +23,7 @@ class DeepNeuralNetwork:
         for i in range(self.L):
             W = 'W' + str(i+1)
             layers_1 = (layers[i - 1])
+            sq2 = np.sqrt(2 / (layers_1)
             if layers[i] < 0:
                 raise TypeError("layers must be a list of positive integers")
             if i == 0:
@@ -30,5 +31,5 @@ class DeepNeuralNetwork:
                                                   nx) * np.sqrt(2 / nx)
             else:
                 self.weights[W] = np.random.randn(layers[i], 
-                                                  layers_1) * np.sqrt(2 / (layers_1))
+                                                  layers_1) * sq2)
             self.weights['b' + str(i+1)] = np.zeros((layers[i], 1))
