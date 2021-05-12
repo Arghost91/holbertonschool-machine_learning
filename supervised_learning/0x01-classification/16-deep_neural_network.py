@@ -26,7 +26,9 @@ class DeepNeuralNetwork:
             if layers[i] < 0:
                 raise TypeError("layers must be a list of positive integers")
             if i == 0:
-                self.weights[W] = np.random.randn(layers[i], nx) * np.sqrt(2 / nx)
+                self.weights[W] = np.random.randn(layers[i], 
+                                                  nx) * np.sqrt(2 / nx)
             else:
-                self.weights[W] = np.random.randn(layers[i], layers_1) * np.sqrt(2 / (layers_1))
+                self.weights[W] = np.random.randn(layers[i], 
+                                                  layers_1) * np.sqrt(2 / (layers_1))
             self.weights['b' + str(i+1)] = np.zeros((layers[i], 1))
