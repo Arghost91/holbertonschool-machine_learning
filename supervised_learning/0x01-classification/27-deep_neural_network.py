@@ -68,7 +68,7 @@ class DeepNeuralNetwork:
         for i in range(self.__L):
             W = "W" + str(i+1)
             b1 = "b" + str(i+1)
-            r = np.dot(self.__weights[W], 
+            r = np.dot(self.__weights[W],
                        self.cache["A" + str(i)]) + self.__weights[b1]
             self.__cache["A" + str(i+1)] = 1 / (1 + np.exp(-r))
             if i == self.L:
@@ -90,8 +90,8 @@ class DeepNeuralNetwork:
         Evaluates the neural network’s predictions
         """
         self.forward_prop(X)
-        maxi = np.amax(self.__cache["A" + str(self.__L)], axis=0), 1, 0)
-        pred = np.where(self.__cache["A" + str(self.__L)] == maxi)
+        maxi = np.amax(self.__cache["A" + str(self.__L)], axis=0)
+        pred = np.where(self.__cache["A" + str(self.__L)] == maxi, 1, 0)
         cost = self.cost(Y, self.__cache["A" + str(self.__L)])
         return pred, cost
 
