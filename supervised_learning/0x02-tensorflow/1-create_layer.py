@@ -5,6 +5,7 @@ import tensorflow as tf
 Tensor output of the layer
 """
 
+
 def create_layer(prev, n, activation):
     """
     Function that return the tensor output of the layer
