@@ -16,6 +16,8 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes, activations, alpha, i
     Builds, trains, and saves a neural network classifier
     Returns: the path where the model was saved
     """
+    nx = X_train.shape[1]
+    classes = Y_train.shape[1]
     x, y = create_placeholders(nx, classes)
     tf.add_to_collection('x', x)
     tf.add_to_collection('y', y)
