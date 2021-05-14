@@ -2,7 +2,6 @@
 """
 Function that builds, trains, and saves a neural network classifier
 """
-import numpy as np
 import tensorflow as tf
 calculate_accuracy = __import__('3-calculate_accuracy').calculate_accuracy
 calculate_loss = __import__('4-calculate_loss').calculate_loss
@@ -38,12 +37,10 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
         for i in range(iterations + 1):
             training_cost, training_accuracy = session.run(
                 [loss, accuracy],
-                feed_dict={x: X_train, y: Y_train}
-            )
+                feed_dict={x: X_train, y: Y_train})
             validation_cost, validation_accuracy = session.run(
                 [loss, accuracy],
-                feed_dict={x: X_train, y: Y_train}
-            )
+                feed_dict={x: X_train, y: Y_train})
 
             if i % 100 == 0 or i == iterations:
                 print("After {} iterations:".format(i))
