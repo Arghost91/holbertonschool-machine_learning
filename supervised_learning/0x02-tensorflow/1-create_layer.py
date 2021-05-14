@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-
-import tensorflow as tf
 """
 Tensor output of the layer
 """
+import tensorflow as tf
 
 
 def create_layer(prev, n, activation):
