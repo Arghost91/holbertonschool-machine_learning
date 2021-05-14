@@ -16,5 +16,5 @@ def forward_prop(x, layer_sizes=[], activations=[]):
     * Returns: the prediction of the network in tensor form
     """
     for i in range(len(layer_sizes)):
-        forw = create_layer(x, layer_sizes[i], activations=[i])
+        forw = create_layer(x, layer_sizes[i], activations[i])
     return forw
