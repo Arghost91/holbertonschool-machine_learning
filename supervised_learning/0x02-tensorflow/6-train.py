@@ -35,11 +35,11 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes, activations, alpha, i
         for i in range(iterations + 1):
             training_cost, training_accuracy = session.run(
                 [loss, accuracy],
-                feed_dict=(x: X_train, y: Y_train)
+                feed_dict={x: X_train, y: Y_train}
             )
             validation_cost, validation_accuracy = session.run(
                 [loss, accuracy],
-                feed_dict=(x: X_train, y: Y_train)
+                feed_dict={x: X_train, y: Y_train}
             )
 
             if i % 100 == 0 or i = iterations:
