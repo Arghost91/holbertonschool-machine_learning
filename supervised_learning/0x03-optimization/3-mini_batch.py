@@ -45,7 +45,7 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
                     batch_end = batch_start + batch_size
                     batch_X = X_shuffled[batch_start:batch_end]
                     batch_Y = Y_shuffled[batch_start:batch_end]
-                    sess.run(train_op, feed_dict={x: X_train, y: Y_train})
+                    sess.run(y_pred, feed_dict={x: X_train, y: Y_train})
                     batch_cost, batch_accuracy = session.run(
                         [loss, accuracy],
                         feed_dict={x: batch_X, y: batch_Y})
