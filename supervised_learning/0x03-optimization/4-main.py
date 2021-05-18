@@ -2,6 +2,7 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
+import tkinter
 moving_average = __import__('4-moving_average').moving_average
 
 if __name__ == '__main__':
