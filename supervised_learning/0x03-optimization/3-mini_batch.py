@@ -38,8 +38,8 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
             print("\tTraining Accuracy: {}".format(training_accuracy))
             print("\tValidation Cost: {}".format(validation_cost))
             print("\tValidation Accuracy: {}".format(validation_accuracy))
-            X_shuffled, Y_shuffled = shuffle_data(X_train, Y_train)
             if i < epochs:
+                X_shuffled, Y_shuffled = shuffle_data(X_train, Y_train)
                 for j in range(batches):
                     batch_start = j * batch_size
                     batch_end = batch_start + batch_size
