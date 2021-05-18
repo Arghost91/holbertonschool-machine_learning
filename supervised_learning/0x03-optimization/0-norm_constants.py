@@ -6,4 +6,4 @@ def normalization_constants(X):
     """
     Function that the mean and standard deviation of each feature, respectively
     """
-    return X.mean(), X.std()
+    return X.mean(axis=0), X.std(axis=0)
