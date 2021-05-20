@@ -23,7 +23,7 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
         saver.restore(sess, load_path)
         x = tf.get_collection('x')[0]
         y = tf.get_collection('y')[0]
-        y_pred = tf.get_collection('y_pred')[0]
+        train_op = tf.get_collection('train_op')[0]
         accuracy = tf.get_collection('accuracy')[0]
         loss = tf.get_collection('loss')[0]
         for i in range(epochs + 1):
@@ -45,11 +45,11 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
                     batch_end = batch_start + batch_size
                     batch_X = X_shuffled[batch_start:batch_end]
                     batch_Y = Y_shuffled[batch_start:batch_end]
-                    sess.run(y_pred, feed_dict={x: X_train, y: Y_train})
-                    batch_cost, batch_accuracy = sess.run(
-                        [loss, accuracy],
-                        feed_dict={x: batch_X, y: batch_Y})
-                    if (j + 1) % 100 == 0:
+                    sess.run(train_op, feed_dict={x: batch_X, y: batch_Y})
+                    if (j + 1) % 100 == 0 and b != 0:
+                        batch_cost, batch_accuracy = sess.run(
+                            [loss, accuracy],
+                            feed_dict={x: batch_X, y: batch_Y})
                         print("\tStep {}".format(j + 1))
                         print("\t\tCost: {}".format(batch_cost))
                         print("\t\tAccuracy: {}".format(batch_accuracy))
