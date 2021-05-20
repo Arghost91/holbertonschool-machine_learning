@@ -14,8 +14,6 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
     * Trains a loaded neural network model using mini-batch gradient descent
     * Returns: the path where the model was saved
     """
-    m = X_train.shape[0]
-    batches = int(m / batch_size)
     init = tf.global_variables_initializer()
     with tf.Session() as sess:
         sess.run(init)
@@ -26,6 +24,12 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
         train_op = tf.get_collection('train_op')[0]
         accuracy = tf.get_collection('accuracy')[0]
         loss = tf.get_collection('loss')[0]
+            m = X_train.shape[0]
+            if m % batch_size == 0:
+                batches = int(m / batch_size)
+            else:
+                batches = int(m / batch_size) + 1
+                
         for i in range(epochs + 1):
             training_cost, training_accuracy = sess.run(
                 [loss, accuracy],
@@ -38,8 +42,10 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
             print("\tTraining Accuracy: {}".format(training_accuracy))
             print("\tValidation Cost: {}".format(validation_cost))
             print("\tValidation Accuracy: {}".format(validation_accuracy))
+            
             if i < epochs:
                 X_shuffled, Y_shuffled = shuffle_data(X_train, Y_train)
+                
                 for j in range(batches):
                     batch_start = j * batch_size
                     batch_end = batch_start + batch_size
