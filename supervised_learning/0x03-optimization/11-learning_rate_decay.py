@@ -13,6 +13,6 @@ def learning_rate_decay(alpha, decay_rate, global_step, decay_step):
     * the learning rate decay should occur in a stepwise fashion
     * Returns: the updated value for alpha
     """
-    epoch = global_step // decay_step
+    epoch = int(global_step / decay_step)
     alpha_new = (1 / (1 + decay_rate * epoch)) * alpha
     return alpha_new
