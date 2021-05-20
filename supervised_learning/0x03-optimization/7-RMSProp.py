@@ -2,7 +2,6 @@
 """
 Function that updates a variable using the RMSProp optimization algorithm
 """
-import tensorflow as tf
 
 
 def update_variables_RMSProp(alpha, beta2, epsilon, var, grad, s):
