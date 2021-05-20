@@ -49,9 +49,12 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
                 for j in range(batches):
                     batch_start = j * batch_size
                     batch_end = batch_start + batch_size
+                    if end > m:
+                        end = m
                     batch_X = X_shuffled[batch_start:batch_end]
                     batch_Y = Y_shuffled[batch_start:batch_end]
                     sess.run(train_op, feed_dict={x: batch_X, y: batch_Y})
+                    
                     if (j + 1) % 100 == 0 and j != 0:
                         batch_cost, batch_accuracy = sess.run(
                             [loss, accuracy],
