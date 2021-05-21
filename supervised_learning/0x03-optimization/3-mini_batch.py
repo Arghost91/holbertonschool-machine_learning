@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """
-Function that trains a loaded neural network model using mini-batch gradient descent
+Function that trains a loaded neural network model
+using mini-batch gradient descent
 """
-
-
 import tensorflow as tf
 shuffle_data = __import__('2-shuffle_data').shuffle_data
 
@@ -11,7 +10,8 @@ shuffle_data = __import__('2-shuffle_data').shuffle_data
 def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
                      epochs=5, load_path="/tmp/model.ckpt", save_path="/tmp/model.ckpt"):
     """
-    * Trains a loaded neural network model using mini-batch gradient descent
+    * Trains a loaded neural network model using
+      mini-batch gradient descent
     * Returns: the path where the model was saved
     """
     init = tf.global_variables_initializer()
@@ -29,7 +29,7 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
             batches = int(m / batch_size)
         else:
             batches = int(m / batch_size) + 1
-                
+
         for i in range(epochs + 1):
             training_cost, training_accuracy = sess.run(
                 [loss, accuracy],
@@ -42,7 +42,7 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
             print("\tTraining Accuracy: {}".format(training_accuracy))
             print("\tValidation Cost: {}".format(validation_cost))
             print("\tValidation Accuracy: {}".format(validation_accuracy))
-            
+
             if i < epochs:
                 X_shuffled, Y_shuffled = shuffle_data(X_train, Y_train)
                 
@@ -54,7 +54,7 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
                     batch_X = X_shuffled[batch_start:batch_end]
                     batch_Y = Y_shuffled[batch_start:batch_end]
                     sess.run(train_op, feed_dict={x: batch_X, y: batch_Y})
-                    
+
                     if (j + 1) % 100 == 0 and j != 0:
                         batch_cost, batch_accuracy = sess.run(
                             [loss, accuracy],
