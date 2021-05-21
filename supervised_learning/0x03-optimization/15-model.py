@@ -17,13 +17,13 @@ def create_placeholders(nx, classes):
         float, shape=[None, classes], name='y')
 
 
-
 def create_layer(prev, n, activation):
     """
     Function that return the tensor output of the layer
     """
     initial = tf.contrib.layers.variance_scaling_initializer(mode="FAN_AVG")
-    layer = tf.layers.Dense(n, activation=activation, kernel_initializer=initial,
+    layer = tf.layers.Dense(n, activation=activation,
+                            kernel_initializer=initial,
                             name='layer')
     return layer(prev)
 
