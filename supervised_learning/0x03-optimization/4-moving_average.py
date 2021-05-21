@@ -2,9 +2,8 @@
 """
 Function that calculates the weighted moving average of a data set
 """
-
-
 import numpy as np
+
 
 def moving_average(data, beta):
     """
@@ -19,4 +18,3 @@ def moving_average(data, beta):
         val = beta*val + (1 - beta) * data[i]
         wight.append(val / (1 - beta ** (i + 1)))
     return wight
-        
