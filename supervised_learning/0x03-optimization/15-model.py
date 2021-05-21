@@ -160,7 +160,6 @@ def model(Data_train, Data_valid, layers, activations, alpha=0.001,
     with tf.Session() as sess:
         sess.run(init)
         m = X_train.shape[0]
-        # mini batch definition
         if m % batch_size == 0:
             n_batches = int(m / batch_size)
         else:
