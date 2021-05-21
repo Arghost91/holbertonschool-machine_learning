@@ -36,9 +36,9 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
         loss = tf.get_collection("loss")[0]
         m = X_train.shape[0]
         if m % batch_size == 0:
-            n_batches = int(m / batch_size)
+            batches = int(m / batch_size)
         else:
-            n_batches = int(m / batch_size) + 1
+            batches = int(m / batch_size) + 1
         for i in range(epochs + 1):
             training_cost, training_accuracy = sess.run(
                 [loss, accuracy],
