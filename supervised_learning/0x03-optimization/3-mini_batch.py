@@ -45,7 +45,7 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
                 feed_dict={x: X_train, y: Y_train})
             validation_cost, validation_accuracy = sess.run(
                 [loss, accuracy],
-                feed_dict={x: X_train, y: Y_train})
+                feed_dict={x: X_valid, y: Y_valid})
             print("After {} epochs:".format(i))
             print("\tTraining Cost: {}".format(training_cost))
             print("\tTraining Accuracy: {}".format(training_accuracy))
