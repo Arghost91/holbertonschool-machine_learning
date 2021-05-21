@@ -20,6 +20,7 @@ def create_placeholders(nx, classes):
     y = tf.placeholder("float", shape=(None, classes), name='y')
     return x, y
 
+
 def create_layer(prev, n, activation):
     """
     Function that return the tensor output of the layer
@@ -30,6 +31,7 @@ def create_layer(prev, n, activation):
                             kernel_initializer=initial,
                             name='layer')
     return layer(prev)
+
 
 def forward_prop(x, layer_sizes=[], activations=[]):
     """
@@ -45,6 +47,7 @@ def forward_prop(x, layer_sizes=[], activations=[]):
         pred = create_layer(pred, layer_sizes[i], activations[i])
     return pred
 
+
 def calculate_accuracy(y, y_pred):
     """
     * y is a placeholder for the labels of the input data
@@ -57,6 +60,7 @@ def calculate_accuracy(y, y_pred):
     accuracy = tf.reduce_mean(tf.cast(evaluation, "float"))
     return accuracy
 
+
 def calculate_loss(y, y_pred):
     """
     * y is a placeholder for the labels of the input data
@@ -65,6 +69,7 @@ def calculate_loss(y, y_pred):
     """
     loss = tf.losses.softmax_cross_entropy(y_pred, y)
     return loss
+
 
 def shuffle_data(X, Y):
     """
@@ -80,6 +85,7 @@ def shuffle_data(X, Y):
     Y_shuffled = Y[np.random.permutation(len(Y))]
     return X_shuffled, Y_shuffled
 
+
 def create_Adam_op(loss, alpha, beta1, beta2, epsilon):
     """
     * loss is the loss of the network
@@ -92,6 +98,7 @@ def create_Adam_op(loss, alpha, beta1, beta2, epsilon):
     Adam_op = tf.train.AdamOptimizer(alpha, beta1, beta2, epsilon)
     return Adam_op.minimize(loss)
 
+
 def learning_rate_decay(alpha, decay_rate, global_step, decay_step):
     """
     * alpha is the original learning rate
@@ -103,6 +110,7 @@ def learning_rate_decay(alpha, decay_rate, global_step, decay_step):
     """
     learning_rate_de = tf.train.inverse_time_decay(alpha, global_step, decay_step, decay_rate, staircase=True)
     return learning_rate_de
+
 
 def create_batch_norm_layer(prev, n, activation):
     """
@@ -129,6 +137,7 @@ def create_batch_norm_layer(prev, n, activation):
         return Z
     else:
         return activation(Z)
+
 
 def model(Data_train, Data_valid, layers, activations, alpha=0.001,
           beta1=0.9, beta2=0.999, epsilon=1e-8, decay_rate=1, batch_size=32,
