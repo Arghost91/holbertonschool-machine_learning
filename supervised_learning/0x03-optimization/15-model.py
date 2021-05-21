@@ -54,11 +54,9 @@ def calculate_accuracy(y, y_pred):
     * y_pred is a tensor containing the network’s predictions
     * Returns: a tensor containing the decimal accuracy of the prediction
     """
-    y_max = tf.argmax(y, 1)
-    y_pred_max = tf.argmax(y_pred, 1)
-    evaluation = tf.equal(y_max, y_pred_max)
-    accuracy = tf.reduce_mean(tf.cast(evaluation, "float"))
-    return accuracy
+    accuracy = tf.equal(tf.argmax(y, 1), tf.argmax(y_pred, 1))
+    mean = tf.reduce_mean(tf.cast(accuracy, tf.float32))
+    return mean
 
 
 def calculate_loss(y, y_pred):
