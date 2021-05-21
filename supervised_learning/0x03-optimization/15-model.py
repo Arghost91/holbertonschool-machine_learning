@@ -37,13 +37,15 @@ def forward_prop(x, layer_sizes=[], activations=[]):
     each layer of the network
     * Returns: the prediction of the network in tensor form
     """
-    pred = create_batch_norm_layer(x, layer_sizes[0], activations[0])
-    for i in range(1, len(layer_sizes)):
-        if i != len(layer_sizes) - 1:
-            pred = create_layer(pred, layer_sizes[i], activations[i])
+    prediction = create_batch_norm_layer(x, layer_sizes[0], activations[0])
+    for layer in range(1, len(layer_sizes)):
+        if layer != len(layer_sizes) - 1:
+            prediction = create_batch_norm_layer(prediction, layer_sizes[
+                layer], activations[layer])
         else:
-            pred = create_layer(pred, layer_sizes[i], activations[i])
-    return pred
+            prediction = create_layer(prediction, layer_sizes[layer],
+                                      activations[layer])
+    return prediction
 
 
 def calculate_accuracy(y, y_pred):
