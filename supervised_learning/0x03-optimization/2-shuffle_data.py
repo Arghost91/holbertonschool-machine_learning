@@ -2,9 +2,8 @@
 """
 Function that shuffles the data points in two matrices the same way
 """
-
-
 import numpy as np
+
 
 def shuffle_data(X, Y):
     """
