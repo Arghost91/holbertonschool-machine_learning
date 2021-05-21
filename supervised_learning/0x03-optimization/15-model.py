@@ -16,8 +16,8 @@ def create_placeholders(nx, classes):
     * x is the placeholder for the input data to the neural network
     * y is the placeholder for the one-hot labels for the input data
     """
-    x = tf.placeholder("float", shape=(None, nx), name='x')
-    y = tf.placeholder("float", shape=(None, classes), name='y')
+    x = tf.placeholder(float, shape=(None, nx), name='x')
+    y = tf.placeholder(float, shape=(None, classes), name='y')
     return x, y
 
 
@@ -42,9 +42,12 @@ def forward_prop(x, layer_sizes=[], activations=[]):
     each layer of the network
     * Returns: the prediction of the network in tensor form
     """
-    pred = x
-    for i in range(len(layer_sizes)):
-        pred = create_layer(pred, layer_sizes[i], activations[i])
+    pred = create_batch_norm_layer(x, layer_sizes[0], activations[0])
+    for i in range(1, len(layer_sizes)):
+        if i != len(layer_sizes) - 1:
+            pred = create_layer(pred, layer_sizes[i], activations[i])
+        else:
+            pred = create_layer(pred, layer_sizes[i], activations[i])
     return pred
 
 
@@ -67,7 +70,7 @@ def calculate_loss(y, y_pred):
     * y_pred is a tensor containing the network’s predictions
     * Returns: a tensor containing the loss of the prediction
     """
-    loss = tf.losses.softmax_cross_entropy(y_pred, y)
+    loss = tf.losses.softmax_cross_entropy(y, y_pred)
     return loss
 
 
@@ -81,9 +84,8 @@ def shuffle_data(X, Y):
         * ny is the number of features in Y
     * Returns: the shuffled X and Y matrices
     """
-    X_shuffled = X[np.random.permutation(len(X))]
-    Y_shuffled = Y[np.random.permutation(len(Y))]
-    return X_shuffled, Y_shuffled
+    permutation = np.random.permutation(X.shape[0])
+    return X[permutation, :], Y[permutation, :]
 
 
 def create_Adam_op(loss, alpha, beta1, beta2, epsilon):
