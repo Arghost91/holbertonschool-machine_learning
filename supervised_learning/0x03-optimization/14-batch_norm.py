@@ -29,6 +29,6 @@ def create_batch_norm_layer(prev, n, activation):
     mean, var = tf.nn.moments(x, axes=0)
     Z = tf.nn.batch_normalization(x, mean, var, beta, gamma, variance_epsilon=1e-8)
     if activation is None:
-        return b_norm
+        return Z
     else:
-        return activation(b_norm)
+        return activation(Z)
