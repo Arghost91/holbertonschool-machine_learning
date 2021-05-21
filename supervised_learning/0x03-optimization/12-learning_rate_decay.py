@@ -15,5 +15,5 @@ def learning_rate_decay(alpha, decay_rate, global_step, decay_step):
     * the learning rate decay should occur in a stepwise fashion
     * Returns: the learning rate decay operation
     """
-    learning_rate_de = tf.train.inverse_time_decay(alpha, global_step, decay_step, decay_rate, staircase=False)
+    learning_rate_de = tf.train.inverse_time_decay(alpha, global_step, decay_step, decay_rate, staircase=True)
     return learning_rate_de
