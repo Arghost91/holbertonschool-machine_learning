@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 """
 Function that creates a batch normalization
@@ -24,10 +23,13 @@ def create_batch_norm_layer(prev, n, activation):
     init = tf.contrib.layers.variance_scaling_initializer(mode="FAN_AVG")
     out = tf.layers.Dense(units=n, kernel_initializer=init)
     x = out(prev)
-    gamma = tf.Variable(initial_value=tf.constant(1.0, shape=[n]), name="gamma")
-    beta = tf.Variable(initial_value=tf.constant(0.0, shape=[n]), name="beta")
+    gamma = tf.Variable(initial_value=tf.constant(1.0, shape=[n]),
+                        name="gamma")
+    beta = tf.Variable(initial_value=tf.constant(0.0, shape=[n]),
+                       name="beta")
     mean, var = tf.nn.moments(x, axes=0)
-    Z = tf.nn.batch_normalization(x, mean, var, beta, gamma, variance_epsilon=1e-8)
+    Z = tf.nn.batch_normalization(x, mean, var, beta, gamma,
+                                  variance_epsilon=1e-8)
     if activation is None:
         return Z
     else:
