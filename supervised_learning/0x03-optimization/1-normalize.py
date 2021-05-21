@@ -16,4 +16,4 @@ def normalize(X, m, s):
         the standard deviation of all features of X
     * Returns: The normalized X matrix
     """
-    return (X - m) / s 
+    return (X - m) / s
