@@ -17,49 +17,48 @@ def create_placeholders(nx, classes):
         float, shape=[None, classes], name='y')
 
 
+
 def create_layer(prev, n, activation):
     """
-    a function that create layers
-    :param prev: the tensor output of the previous layer
-    :param n: the number of nodes in the layer to create
-    :param activation: is the activation function that the layer should use
-    :return: the tensor output of the layer
+    Function that return the tensor output of the layer
     """
-    init = tf.contrib.layers.variance_scaling_initializer(mode="FAN_AVG")
-    layer = tf.layers.Dense(n, activation=activation, kernel_initializer=init,
-                            name="layer")
+    initial = tf.contrib.layers.variance_scaling_initializer(mode="FAN_AVG")
+    layer = tf.layers.Dense(units=n,
+                            activation=activation,
+                            kernel_initializer=initial,
+                            name='layer')
     return layer(prev)
 
 
 def forward_prop(x, layer_sizes=[], activations=[]):
     """
-    a function that creates the forward propagation graph
-    :param x: the placeholder for the input data
-    :param layer_sizes: a list contating the number of nodes in each layer
-    :param activations: a list containing the activation functions
-    :return: the prediction of the network in tensor form
+    * x is the placeholder for the input data
+    * layer_sizes is a list containing the number of nodes in
+    each layer of the network
+    * activations is a list containing the activation functions for
+    each layer of the network
+    * Returns: the prediction of the network in tensor form
     """
-    prediction = create_batch_norm_layer(x, layer_sizes[0], activations[0])
-    for layer in range(1, len(layer_sizes)):
-        if layer != len(layer_sizes) - 1:
-            prediction = create_batch_norm_layer(prediction, layer_sizes[
-                layer], activations[layer])
+    pred = create_batch_norm_layer(x, layer_sizes[0], activations[0])
+    for i in range(1, len(layer_sizes)):
+        if i != len(layer_sizes) - 1:
+            pred = create_layer(pred, layer_sizes[i], activations[i])
         else:
-            prediction = create_layer(prediction, layer_sizes[layer],
-                                      activations[layer])
-    return prediction
+            pred = create_layer(pred, layer_sizes[i], activations[i])
+    return pred
 
 
 def calculate_accuracy(y, y_pred):
     """
-    a function that calculates the accuracy of a prediction
-    :param y: a placeholders with the right labels of the input data
-    :param y_pred: tensor containing the network's predictions
-    :return: a tensor containing the decimal accuracy of the prediction
+    * y is a placeholder for the labels of the input data
+    * y_pred is a tensor containing the network’s predictions
+    * Returns: a tensor containing the decimal accuracy of the prediction
     """
-    accuracy = tf.equal(tf.argmax(y, 1), tf.argmax(y_pred, 1))
-    mean = tf.reduce_mean(tf.cast(accuracy, tf.float32))
-    return mean
+    y_max = tf.argmax(y, 1)
+    y_pred_max = tf.argmax(y_pred, 1)
+    evaluation = tf.equal(y_max, y_pred_max)
+    accuracy = tf.reduce_mean(tf.cast(evaluation, "float"))
+    return accuracy
 
 
 def calculate_loss(y, y_pred):
