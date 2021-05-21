@@ -151,7 +151,7 @@ def model(Data_train, Data_valid, layers, activations, alpha=0.001,
     tf.add_to_collection("accuracy", accuracy)
     loss = calculate_loss(y, y_pred)
     tf.add_to_collection("loss", loss)
-    lobal_step = tf.Variable(0)
+    global_step = tf.Variable(0)
     alpha_d = learning_rate_decay(alpha, decay_rate, global_step, 1)
     train_op = create_Adam_op(loss, alpha_d, beta1, beta2, epsilon)
     tf.add_to_collection("train_op", train_op)
