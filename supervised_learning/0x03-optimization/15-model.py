@@ -102,13 +102,16 @@ def create_Adam_op(loss, alpha, beta1, beta2, epsilon):
 def learning_rate_decay(alpha, decay_rate, global_step, decay_step):
     """
     * alpha is the original learning rate
-    * decay_rate is the weight used to determine the rate at which alpha will decay
+    * decay_rate is the weight used to determine the
+        rate at which alpha will decay
     * global_step is the number of passes of gradient descent that have elapsed
-    * decay_step is the number of passes of gradient descent that should occur before alpha is decayed further
+    * decay_step is the number of passes of gradient descent that should
+        occur before alpha is decayed further
     * the learning rate decay should occur in a stepwise fashion
     * Returns: the learning rate decay operation
     """
-    learning_rate_de = tf.train.inverse_time_decay(alpha, global_step, decay_step, decay_rate, staircase=True)
+    learning_rate_de = tf.train.inverse_time_decay(alpha, global_step, decay_step,
+                                                   decay_rate, staircase=True)
     return learning_rate_de
 
 
@@ -129,10 +132,13 @@ def create_batch_norm_layer(prev, n, activation):
     init = tf.contrib.layers.variance_scaling_initializer(mode="FAN_AVG")
     out = tf.layers.Dense(units=n, kernel_initializer=init)
     x = out(prev)
-    gamma = tf.Variable(initial_value=tf.constant(1.0, shape=[n]), name="gamma")
-    beta = tf.Variable(initial_value=tf.constant(0.0, shape=[n]), name="beta")
+    gamma = tf.Variable(initial_value=tf.constant(1.0, shape=[n]),
+                        name="gamma")
+    beta = tf.Variable(initial_value=tf.constant(0.0, shape=[n]),
+                       name="beta")
     mean, var = tf.nn.moments(x, axes=0)
-    Z = tf.nn.batch_normalization(x, mean, var, beta, gamma, variance_epsilon=1e-8)
+    Z = tf.nn.batch_normalization(x, mean, var, beta, gamma,
+                                  variance_epsilon=1e-8)
     if activation is None:
         return Z
     else:
@@ -144,8 +150,10 @@ def model(Data_train, Data_valid, layers, activations, alpha=0.001,
           epochs=5, save_path='/tmp/model.ckpt'):
     """
     * Returns: the path where the model was saved
-    * Your training function should allow for a smaller final batch (a.k.a. use the entire training set)
-    * the learning rate should remain the same within the an epoch (a.k.a. all mini-batches within an epoch should use the same learning rate)
+    * Your training function should allow for a smaller final batch (a.k.a.
+        use the entire training set)
+    * the learning rate should remain the same within the an epoch (a.k.a.
+        all mini-batches within an epoch should use the same learning rate)
     """
     (X_train, Y_train) = Data_train
     (X_valid, Y_valid) = Data_valid
