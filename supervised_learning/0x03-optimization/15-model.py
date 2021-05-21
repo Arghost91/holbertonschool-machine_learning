@@ -157,7 +157,7 @@ def model(Data_train, Data_valid, layers, activations, alpha=0.001,
     tf.add_to_collection("train_op", train_op)
     init = tf.global_variables_initializer()
     saver = tf.train.Saver()
-        with tf.Session() as sess:
+    with tf.Session() as sess:
         sess.run(init)
         m = X_train.shape[0]
         # mini batch definition
