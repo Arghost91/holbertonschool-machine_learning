@@ -39,3 +39,4 @@ def dropout_gradient_descent(Y, weights, cache, alpha, keep_prob, L):
         if i > 1:
             dr *= cache["D"+str(i - 1)]
             dr /= keep_prob
+    return weights
