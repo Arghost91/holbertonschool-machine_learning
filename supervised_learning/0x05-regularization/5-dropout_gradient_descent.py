@@ -23,7 +23,7 @@ def dropout_gradient_descent(Y, weights, cache, alpha, keep_prob, L):
     which uses the softmax activation function
     * The weights of the network should be updated in place
     """
-    m = Y.shape
+    m = Y.shape[1]
     weights_2 = weights.copy()
     dr = cache["A" + str(L)] - Y
     for i in range(L, 0, -1):
