@@ -23,22 +23,19 @@ def dropout_gradient_descent(Y, weights, cache, alpha, keep_prob, L):
     which uses the softmax activation function
     * The weights of the network should be updated in place
     """
-    v_weights = weights.copy()
-    classes, m = Y.shape
-    dz = cache["A"+str(L)] - Y
+    m = len(Y[1])
+    weights_2 = weights.copy()
+    dr = cache["A" + str(L)] - Y
     for i in range(L, 0, -1):
-        A_i = "A"+str(i-1)
-        wi = "W"+str(i)
-        bi = "b"+str(i)
-        dw = ((1/m) * np.matmul(
-            dz, cache["A"+str(i-1)].T))
-        db = (1/m) * np.sum(dz, axis=1, keepdims=True)
-        weights[wi] = weights[wi] - (dw * alpha)
-        weights[bi] = weights[bi] - (db * alpha)
-
-        dz = np.matmul(v_weights[wi].T, dz) * (
-            1 - np.power(cache[A_i], 2))
+        A_prev = cache['A' + str(i-1)]
+        W = weights["W" + str(i)]
+        dW = (1 / m) * np.dot(dr, A_prev.T) 
+        db = (1 / m) * np.sum(dr, axis=1, keepdims=True)
+        weights["W" + str(i)] -= alpha * dW
+        weights["b" + str(i)] -= alpha * db        
+        dr = np.dot(weights_2["W" + str(i)].T,
+                    dr) * (1 - (A * A))
         if i > 1:
-            dz *= cache["D"+str(i - 1)]
-            dz /= keep_prob
-    return weights
+            dr = dr * cache["D" + str(i-1)]
+            dr /= keep_prob
+
