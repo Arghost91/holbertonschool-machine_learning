@@ -20,6 +20,7 @@ def dropout_forward_prop(X, weights, L, keep_prob):
     * Returns: a dictionary containing the outputs of each layer and the
     dropout mask used on each layer (see example for format)
     """
+    cache = {}
     cache["A0"] = X
     for i in range(L):
         W = "W" + str(i+1)
