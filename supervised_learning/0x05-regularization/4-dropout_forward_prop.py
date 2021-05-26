@@ -36,6 +36,6 @@ def dropout_forward_prop(X, weights, L, keep_prob):
             d = d < keep_prob
             t = np.multiply(t, d)
             t /= keep_prob 
-            cache["D" + str(i+1)] = t
+            cache["D" + str(i+1)] = d
         cache["A" + str(i+1)] = t
     return cache
