@@ -37,7 +37,6 @@ def dropout_gradient_descent(Y, weights, cache, alpha, keep_prob, L):
         dr = np.dot(weights_2["W" + str(i)].T,
                     dr) * (1 - np.power(A_prev, 2))
         if i > 1:
-            if i > 1:
-            dz *= cache["D"+str(i - 1)]
-            dz /= keep_prob
+            dr *= cache["D"+str(i - 1)]
+            dr /= keep_prob
     return weights
