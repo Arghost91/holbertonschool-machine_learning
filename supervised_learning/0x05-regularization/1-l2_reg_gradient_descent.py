@@ -28,11 +28,11 @@ def l2_reg_gradient_descent(Y, weights, cache, alpha, lambtha, L):
         if i == L - 1:
             dr = A_prev - Y
         else:
-            dr = np.dot(weights_2["W" + str(i)].T,
+            dr = np.dot(weights_2["W" + str(i+1)].T,
                         dr) * (1 - np.power(A_prev, 2))
         W = weights["W" + str(i+1)]
         dW = (1 / m) * np.dot(dr, A_prev.T) + ((lambtha / m) *
-                                               weights["W" + str(i)])
+                                               weights["W" + str(i+1)])
         db = (1 / m) * np.sum(dr, axis=1, keepdims=True)
-        weights["W" + str(i)] -= alpha * dW
-        weights["b" + str(i)] -= alpha * db
+        weights["W" + str(i+1)] -= alpha * dW
+        weights["b" + str(i+1)] -= alpha * db
