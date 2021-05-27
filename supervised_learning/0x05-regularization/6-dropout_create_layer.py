@@ -2,7 +2,6 @@
 """
 Function that creates a layer of a neural network using dropout
 """
-import numpy as np
 import tensorflow as tf
 
 
