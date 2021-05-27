@@ -23,7 +23,7 @@ def l2_reg_gradient_descent(Y, weights, cache, alpha, lambtha, L):
     """
     m = len(Y[1])
     weights_2 = weights.copy()
-    for i in reverse(range(L)):
+    for i in reversed(range(L)):
         A_prev = cache['A' + str(i+1)]
         if i == L - 1:
             dr = A_prev - Y
