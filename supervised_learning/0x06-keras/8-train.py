@@ -30,7 +30,7 @@ def train_model(network, data, labels, batch_size, epochs,
                                                    verbose=verbose))
 
     if save_best and validation_data:
-        callbacks.append(k.callbacks.ModelCheckpoint(filepath=filepath,
+        callbacks.append(K.callbacks.ModelCheckpoint(filepath=filepath,
                                                      save_best_only=True))
 
     train = network.fit(data, labels, batch_size=batch_size, epochs=epochs,
