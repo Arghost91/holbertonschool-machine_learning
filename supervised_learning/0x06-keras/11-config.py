@@ -18,6 +18,7 @@ def save_config(network, filename):
         json_file.write(network_json)
     return None
 
+
 def load_config(filename):
     """
     * filename is the path of the file containing the model’s
