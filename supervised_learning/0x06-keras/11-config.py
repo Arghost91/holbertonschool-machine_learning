@@ -25,8 +25,6 @@ def load_config(filename):
     configuration in JSON format
     * Returns: the loaded model
     """
-    json_file = open(filename, 'r')
-    loaded_network_json = json_file.read()
-    json_file.close()
-    loaded_network = network_from_json(loaded_network_json)
-    return loaded_network
+    with open(filename, 'r') as json_file:
+        json_load = json_file.read()
+    return k.models.model_from_json(json_load)
