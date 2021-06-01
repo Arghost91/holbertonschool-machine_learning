@@ -20,18 +20,22 @@ def train_model(network, data, labels, batch_size, epochs,
         return alpha / (1 + (decay_rate * epochs))
 
     callbacks = []
-    if early_stopping and validation_data:
-        callbacks.append(K.callbacks.EarlyStopping(patience=patience,
-                                                   monitor="val_loss"))
-    if learning_rate_decay and validation_data:
-        callbacks.append(K.callbacks.LearningRateScheduler(learning_rate_decay,
+    if validation_data and learning_rate_decay:
+        callbacks.append(k.callbacks.LearningRateScheduler(learning_rate_decay,
                                                            verbose=1))
 
-    if save_best and validation_data:
-        callbacks.append(K.callbacks.ModelCheckpoint(filepath=filepath,
-                                                     save_best_only=True))
+    if validation_data and early_stopping:
+        callbacks.append(k.callbacks.EarlyStopping(monitor='val_loss',
+                                                   patience=patience,
+                                                   verbose=verbose))
 
-    train = nnetwork.fit(data, labels, batch_size=batch_size, epochs=epochs,
-                          verbose=verbose, validation_data=validation_data,
-                          shuffle=shuffle, callbacks=callbacks)
+    if save_best and validation_data:
+        callbacks.append(k.callbacks.ModelCheckpoint(
+            filepath=filepath, monitor='val_loss', verbose=0,
+            save_best_only=True, save_weights_only=False,
+            mode='auto', period=1))
+
+    train = network.fit(data, labels, batch_size=batch_size, epochs=epochs,
+                        verbose=verbose, validation_data=validation_data,
+                        shuffle=shuffle, callbacks=callbacks)
     return train
