@@ -1,4 +1,3 @@
-  
 #!/usr/bin/env python3
 """
 Update the function to also train the model using early stopping
