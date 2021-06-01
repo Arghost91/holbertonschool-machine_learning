@@ -20,7 +20,7 @@ def train_model(network, data, labels, batch_size, epochs,
         return alpha / (1 + (decay_rate * epochs))
 
     callbacks = []
-    if validation_data:
+    if validation_data and learning_rate_decay:
         callbacks.append(k.callbacks.LearningRateScheduler(learning_rate_decay,
                                                            verbose=1))
 
@@ -29,9 +29,8 @@ def train_model(network, data, labels, batch_size, epochs,
                                                    patience=patience,
                                                    verbose=verbose))
 
-    if save_best:
+    if save_best and validation_data:
         callbacks.append(k.callbacks.ModelCheckpoint(filepath,
-                                                     monitor='val_loss',
                                                      save_best_only=True))
 
     train = network.fit(data, labels, batch_size=batch_size, epochs=epochs,
