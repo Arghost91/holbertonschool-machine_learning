@@ -14,6 +14,7 @@ def save_model(network, filename):
     k.models.save_model(network, filename)
     return None
 
+
 def load_model(filename):
     """
     * filename is the path of the file that the model should be loaded from
