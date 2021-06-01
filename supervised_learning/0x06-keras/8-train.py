@@ -29,7 +29,7 @@ def train_model(network, data, labels, batch_size, epochs,
                                                    patience=patience,
                                                    verbose=verbose))
 
-     if save_best:
+    if save_best:
         callbacks.append(k.callbacks.ModelCheckpoint(filepath, monitor='val_loss',
                                                      save_best_only=True))
 
