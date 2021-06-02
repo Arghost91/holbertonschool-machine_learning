@@ -39,7 +39,7 @@ def convolve_grayscale_same(images, kernel):
     output = np.zeros((num, output_height, output_width))
     image_padded = np.zeros((num, height_im, width_im))
     image_padded = np.pad(images, ((0,0), (padding_h,padding_h),
-                                   (padding_w,padding_w)), mode='constatnt')
+                                   (padding_w,padding_w)), mode='constant')
     for x in range(output_width):
         for y in range(output_height):
             output[:, y, x] = (kernel * image_padded[:, y:y + height_ker,
