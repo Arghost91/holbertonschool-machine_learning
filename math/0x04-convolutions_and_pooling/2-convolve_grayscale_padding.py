@@ -28,8 +28,8 @@ def convolve_grayscale_padding(images, kernel, padding):
     height_ker = kernel.shape[0]
     width_ker = kernel.shape[1]
     
-    padding_h = padding.shape[0]
-    padding_w = padding.shape[1]
+    padding_h = padding[0]
+    padding_w = padding[1]
 
     output_height = height_im - height_ker + (2 * padding_h) + 1
     output_width = width_im - width_ker + (2 * padding_w) + 1
