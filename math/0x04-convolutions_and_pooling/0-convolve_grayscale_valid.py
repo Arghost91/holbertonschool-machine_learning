@@ -18,12 +18,12 @@ def convolve_grayscale_valid(images, kernel):
         * kw is the width of the kernel
     * Returns: a numpy.ndarray containing the convolved images
     """
-    num = images[0]
-    height_im = images[1]
-    width_im = images[2]
+    num = images.shape[0]
+    height_im = images.shape[1]
+    width_im = images.shape[2]
     
-    height_ker = kernel[0]
-    width_ker = kernel[1]
+    height_ker = kernel.shape[0]
+    width_ker = kernel.shape[1]
     
     output_height = height_im - height_ker + 1
     output_width = width_im - width_ker + 1
