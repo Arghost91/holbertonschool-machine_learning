@@ -34,6 +34,9 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     height_ker = kernel.shape[0]
     width_ker = kernel.shape[1]
 
+    sh = stride[0]
+    sw = stride[1]
+
     if padding == 'valid':
         output_height = (height_im - height_ker) // sh + 1
         output_width = (width_im - width_ker) // sw + 1
