@@ -7,12 +7,14 @@ import numpy as np
 
 def convolve(images, kernels, padding='same', stride=(1, 1)):
     """
-    * images is a numpy.ndarray with shape (m, h, w, c) containing multiple images
+    * images is a numpy.ndarray with shape (m, h, w, c) containing
+    multiple images
         * m is the number of images
         * h is the height in pixels of the images
         * w is the width in pixels of the images
         * c is the number of channels in the image
-    * kernels is a numpy.ndarray with shape (kh, kw, c, nc) containing the kernels for the convolution
+    * kernels is a numpy.ndarray with shape (kh, kw, c, nc) containing
+    the kernels for the convolution
         * kh is the height of a kernel
         * kw is the width of a kernel
         * nc is the number of kernels
