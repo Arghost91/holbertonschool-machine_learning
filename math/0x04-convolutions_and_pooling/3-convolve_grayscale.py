@@ -44,16 +44,12 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
         image_padded = np.copy(images)
 
     elif padding == 'same':
-        if height_ker % 2 != 0:
-            padding_h = (height_ker - 1) // 2
-        else:
-            padding_h = height_ker // 2
-        if width_ker % 2 != 0:
-            padding_w = (width_ker - 1) // 2
-        else:
-            padding_w = width_ker // 2
-        output_height = height_im // sh
-        output_width = width_im // sw
+        padding_h = (((height_im - 1) * sh + height_ker -
+                      height_im) / 2) + 1
+        padding_w = (((width_im - 1) * sw + width_ker -
+                      width_im) / 2) + 1
+        output_height = (height_im - height_ker + (2 * padding_h)) // sh + 1
+        output_width = (width_im - width_ker + (2 * padding_w)) // sw + 1
         image_padded = np.zeros((num, height_im, width_im))
         image_padded = np.pad(images,
                               ((0, 0), (padding_h, padding_h),
