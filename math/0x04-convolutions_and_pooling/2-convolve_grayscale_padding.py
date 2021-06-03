@@ -8,11 +8,13 @@ import numpy as np
 
 def convolve_grayscale_padding(images, kernel, padding):
     """
-    * images is a numpy.ndarray with shape (m, h, w) containing multiple grayscale images
+    * images is a numpy.ndarray with shape (m, h, w) containing
+    multiple grayscale images
         * m is the number of images
         * h is the height in pixels of the images
         * w is the width in pixels of the images
-    * kernel is a numpy.ndarray with shape (kh, kw) containing the kernel for the convolution
+    * kernel is a numpy.ndarray with shape (kh, kw) containing the
+    kernel for the convolution
         * kh is the height of the kernel
         * kw is the width of the kernel
     * padding is a tuple of (ph, pw)
@@ -24,10 +26,10 @@ def convolve_grayscale_padding(images, kernel, padding):
     num = images.shape[0]
     height_im = images.shape[1]
     width_im = images.shape[2]
-    
+
     height_ker = kernel.shape[0]
     width_ker = kernel.shape[1]
-    
+
     padding_h = padding[0]
     padding_w = padding[1]
 
@@ -35,10 +37,11 @@ def convolve_grayscale_padding(images, kernel, padding):
     output_width = width_im - width_ker + (2 * padding_w) + 1
     output = np.zeros((num, output_height, output_width))
     image_padded = np.zeros((num, output_height, output_width))
-    image_padded = np.pad(images, ((0,0), (padding_h,padding_h),
-                                   (padding_w,padding_w)), mode='constant')
+    image_padded = np.pad(images, ((0, 0), (padding_h, padding_h),
+                                   (padding_w, padding_w)), mode='constant')
     for x in range(output_width):
         for y in range(output_height):
-            output[:, y, x] = (kernel * image_padded[:, y:y + height_ker,
-                                               x:x + width_ker]).sum(axis=(1, 2))
+            output[:, y, x] = (kernel *image_padded[:, 
+                                                    y:y + height_ker, 
+                                                    x:x + width_ker]).sum(axis=(1, 2))
     return output
