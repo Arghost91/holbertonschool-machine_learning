@@ -32,9 +32,11 @@ def convolve_channels(images, kernel, padding='same', stride=(1, 1)):
     num = images.shape[0]
     height_im = images.shape[1]
     width_im = images.shape[2]
+    c = images.shape[3]
 
     height_ker = kernel.shape[0]
     width_ker = kernel.shape[1]
+    c = kernel.shape[2]
 
     sh = stride[0]
     sw = stride[1]
