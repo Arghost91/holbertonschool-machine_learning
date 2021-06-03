@@ -21,16 +21,16 @@ def convolve_grayscale_valid(images, kernel):
     num = images.shape[0]
     height_im = images.shape[1]
     width_im = images.shape[2]
-    
+
     height_ker = kernel.shape[0]
     width_ker = kernel.shape[1]
-    
+
     output_height = height_im - height_ker + 1
     output_width = width_im - width_ker + 1
     output = np.zeros((num, output_height, output_width))
-    
+
     for x in range(output_width):
         for y in range(output_height):
-            output[:, y, x] = (kernel * images[:, y:y + height_ker,
-                                               x:x + width_ker]).sum(axis=(1, 2))
+            output[:, y, x] = (kernel * images[
+                :, y:y + height_ker, x:x + width_ker]).sum(axis=(1, 2))
     return output
