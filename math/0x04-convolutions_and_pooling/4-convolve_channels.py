@@ -44,30 +44,24 @@ def convolve_channels(images, kernel, padding='same', stride=(1, 1)):
         output_width = (width_im - width_ker) // sw + 1
         image_padded = np.copy(images)
 
-    elif padding == 'same':
-        padding_h = (((height_im - 1) * sh + height_ker -
-                      height_im) / 2) + 1
-        padding_w = (((width_im - 1) * sw + width_ker -
-                      width_im) / 2) + 1
-        output_height = (height_im - height_ker + (2 * padding_h)) // sh + 1
-        output_width = (width_im - width_ker + (2 * padding_w)) // sw + 1
-        image_padded = np.zeros((num, height_im, width_im))
-        image_padded = np.pad(images,
-                              ((0, 0), (padding_h, padding_h),
-                               (padding_w, padding_w), (0, 0)),
-                              mode='constant')
-
     else:
-        padding_h = padding[0]
-        padding_w = padding[1]
+        if padding == 'same':
+            padding_h = (((height_im - 1) * sh + height_ker -
+                          height_im) / 2) + 1
+            padding_w = (((width_im - 1) * sw + width_ker -
+                          width_im) / 2) + 1
+
+        else:
+            padding_h = padding[0]
+            padding_w = padding[1]
+            
         output_height = (height_im - height_ker + (2 * padding_h)) // sh + 1
         output_width = (width_im - width_ker + (2 * padding_w)) // sw + 1
-        image_padded = np.zeros((num, output_height, output_width))
+        image_padded = np.zeros((num, output_height, output_width, c))
         image_padded = np.pad(images,
                               ((0, 0), (padding_h, padding_h),
                                (padding_w, padding_w), (0, 0)),
                               mode='constant')
-
     output = np.zeros((num, output_height, output_width))
     for x in range(output_width):
         for y in range(output_height):
