@@ -1,4 +1,3 @@
-  
 #!/usr/bin/env python3
 """
 Function that performs a convolution on grayscale images
@@ -8,11 +7,13 @@ import numpy as np
 
 def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     """
-    * images is a numpy.ndarray with shape (m, h, w) containing multiple grayscale images
+    * images is a numpy.ndarray with shape (m, h, w) containing multiple
+    grayscale images
         * m is the number of images
         * h is the height in pixels of the images
         * w is the width in pixels of the images
-    * kernel is a numpy.ndarray with shape (kh, kw) containing the kernel for the convolution
+    * kernel is a numpy.ndarray with shape (kh, kw) containing the kernel
+    for the convolution
         * kh is the height of the kernel
         * kw is the width of the kernel
     * padding is either a tuple of (ph, pw), ‘same’, or ‘valid’
@@ -54,7 +55,7 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
         output_height = height_im // sh
         output_width = width_im // sw
         image_padded = np.zeros((num, height_im, width_im))
-        image_padded = np.pad(images, 
+        image_padded = np.pad(images,
                               ((0, 0), (padding_h, padding_h),
                                (padding_w, padding_w)),
                               mode='constant')
@@ -73,5 +74,6 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     for x in range(output_width):
         for y in range(output_height):
             output[:, y, x] = (kernel * image_padded[
-                :, (sh * y):(sh * y) + height_ker, (sw * x):(sw * x) + width_ker]).sum(axis=(1, 2))
+                :, (sh * y):(sh * y) + height_ker, (sw * x):(sw * x) + width_ker])
+            .sum(axis=(1, 2))
     return output
