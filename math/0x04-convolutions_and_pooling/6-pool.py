@@ -28,9 +28,9 @@ def pool(images, kernel_shape, stride, mode='max'):
     width_im = images.shape[2]
     c = images.shape[3]
 
-    height_ker = kernel_shape.shape[0]
-    width_ker = kernel_shape.shape[1]
-    c = kernel_shape.shape[2]
+    height_ker = kernel_shape[0]
+    width_ker = kernel_shape[1]
+    c = kernel_shape[2]
 
     sh = stride[0]
     sw = stride[1]
