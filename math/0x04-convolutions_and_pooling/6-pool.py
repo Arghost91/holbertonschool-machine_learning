@@ -43,7 +43,7 @@ def pool(images, kernel_shape, stride, mode='max'):
             image_ = images[:, (sh * y):(sh * y) + height_ker,
                              (sw * x):(sw * x) + width_ker]
             if mode == 'max':
-                output[:, y, x] = np.max(img, axis=(1, 2))
+                output[:, y, x] = np.max(image_, axis=(1, 2))
             else:
-                output[:, y, x] = np.average(img, axis=(1, 2))
+                output[:, y, x] = np.average(image_, axis=(1, 2))
     return output
