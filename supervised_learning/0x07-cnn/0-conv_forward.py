@@ -37,7 +37,8 @@ def conv_forward(A_prev, W, b, activation, padding="same", stride=(1, 1)):
         ph = 0
         pw = 0
 
-    out_pad = np.pad(A_prev, ((0, 0), (ph, ph), (pw, pw), (0, 0)), mode='constant', constant_values=(0, 0))
+    out_pad = np.pad(A_prev, ((0, 0), (ph, ph), (pw, pw), (0, 0)),
+                     mode='constant', constant_values=(0, 0))
     out_h = (h_prev - kh + (2 * ph)) // (sh + 1)
     out_w = (w_prev - kw + (2 * pw)) // (sw + 1)
     out_conv = np.zeros((m, out_h, out_w, c_new))
@@ -45,6 +46,6 @@ def conv_forward(A_prev, W, b, activation, padding="same", stride=(1, 1)):
     for z in range(c_new):
         for x in range(out_h):
             for y in range(out_w):
-                out_conv[:, y, x, z] = (W[:, :, :, z] * out_pad[
+                out_conv[:, x, y, z] = (W[:, :, :, z] * out_pad[
                     :, (sh * x):(sh * x) + kh, (sw * y):(sw * y) + kw]).sum(axis=(1, 2, 3))
     return activation(out_conv + b)
