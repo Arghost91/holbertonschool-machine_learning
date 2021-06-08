@@ -39,8 +39,8 @@ def conv_forward(A_prev, W, b, activation, padding="same", stride=(1, 1)):
 
     out_pad = np.pad(A_prev, ((0, 0), (ph, ph), (pw, pw), (0, 0)),
                      mode='constant', constant_values=(0, 0))
-    out_h = (h_prev - kh + (2 * ph)) // (sh + 1)
-    out_w = (w_prev - kw + (2 * pw)) // (sw + 1)
+    out_h = (h_prev - kh + (2 * ph)) // sh + 1
+    out_w = (w_prev - kw + (2 * pw)) // sw + 1
     out_conv = np.zeros((m, out_h, out_w, c_new))
 
     for z in range(c_new):
