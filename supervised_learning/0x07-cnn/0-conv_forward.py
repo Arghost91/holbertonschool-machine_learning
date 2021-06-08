@@ -46,5 +46,5 @@ def conv_forward(A_prev, W, b, activation, padding="same", stride=(1, 1)):
         for x in range(out_h):
             for y in range(out_w):
                 output[:, y, x, z] = activation((W[:, :, :, z] * out_pad[
-                    :, (sh * y):(sh * y) + kw, (sw * x):(sw * x) + kw]).sum(axis=(1, 2, 3)) + b)
+                    :, (sh * x):(sh * x) + kh, (sw * y):(sw * y) + kw]).sum(axis=(1, 2, 3)) + b)
     return output
