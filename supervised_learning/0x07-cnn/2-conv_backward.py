@@ -50,13 +50,16 @@ def conv_backward(dZ, A_prev, W, b, padding="same", stride=(1, 1)):
                      mode='constant', constant_values=0)
     dW = np.zeros_like(W)
     dA_prev = np.zeros(out_pad.shape)
-    
 
     for x in range(m):
         for y in range(h_new):
             for z in range(w_new):
                 for i in range(c_new):
-                    dA_prev[x, (sh * y):(sh * y) + kh, (sw * z):(sw * z) + kw, :] += dZ[x, y, z, i] * W[:, :, :, i]
-                    dW[:, :, :, i] = dW[:, :, :, i] + out_pad[x, (sh * y):(sh * y) + kh,
-                                                              (sw * z):(sw * z) + kw, :] * dZ[x, y, z, i]
+                    dA_prev[x, (sh * y):(sh * y) + kh,
+                            (sw * z):(sw * z) + kw,
+                            :] += dZ[x, y, z, i] * W[:, :, :, i]
+                    dW[:, :, :, i] += out_pad[x,
+                                              (sh * y):(sh * y) + kh,
+                                              (sw * z):(sw * z) + kw,
+                                              :] * dZ[x, y, z, i]
     return dA_prev, dW, db
