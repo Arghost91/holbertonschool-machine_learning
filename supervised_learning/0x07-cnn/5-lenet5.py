@@ -6,7 +6,7 @@ architecture using keras
 import tensorflow.keras as K
 
 
-def lenet5(x, y):
+def lenet5(X):
     """
     * X is a K.Input of shape (m, 28, 28, 1) containing the input images for
     the network
@@ -30,7 +30,7 @@ def lenet5(x, y):
     activation = K.activations.relu
 
     conv_6 = K.layers.Conv2D(filters=6, kernel_size=(5, 5), padding='same',
-                             activation=activation, kernel_initializer=init)(x)
+                             activation=activation, kernel_initializer=init)(X)
     pool_6 = K.layers.MaxPooling2D(pool_size=(2, 2), strides=(2, 2))(conv_6)
     conv_16 = K.layers.Conv2D(filters=16, kernel_size=(5, 5), padding='valid',
                               activation=activation,
@@ -44,6 +44,7 @@ def lenet5(x, y):
     fc_10 = K.layers.Dense(units=10, activation=None,
                            kernel_initializer=init)(fc_84)
 
+    network = K.models.Model(inputs=X, outputs=fc3)
     # Train
     optim = K.optimizers.Adam()
 
