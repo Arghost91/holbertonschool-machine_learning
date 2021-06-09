@@ -49,7 +49,7 @@ def conv_backward(dZ, A_prev, W, b, padding="same", stride=(1, 1)):
     out_pad = np.pad(A_prev, ((0, 0), (ph, ph), (pw, pw), (0, 0)),
                      mode='constant', constant_values=0)
     dW = np.zeros_like(W)
-    dx = np.zeros(out_pad.shape)
+    dA_prev = np.zeros(out_pad.shape)
 
     for x in range(m):
         for y in range(h_new):
