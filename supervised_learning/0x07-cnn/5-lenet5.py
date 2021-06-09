@@ -33,7 +33,8 @@ def lenet5(x, y):
                              activation=activation, kernel_initializer=init)(x)
     pool_6 = K.layers.MaxPooling2D(pool_size=(2, 2), strides=(2, 2))(conv_6)
     conv_16 = K.layers.Conv2D(filters=16, kernel_size=(5, 5), padding='valid',
-                              activation=activation, kernel_initializer=init)(pool_6)
+                              activation=activation,
+                              kernel_initializer=init)(pool_6)
     pool_16 = K.layers.MaxPooling2D(pool_size=(2, 2), strides=(2, 2))(conv_16)
     flatten = K.layers.Flatten()(pool_16)
     fc_120 = K.layers.Dense(units=120, activation=activation,
@@ -41,7 +42,7 @@ def lenet5(x, y):
     fc_84 = K.layers.Dense(units=84, activation=activation,
                            kernel_initializer=init)(fc_120)
     fc_10 = K.layers.Dense(units=10, activation=None,
-                            kernel_initializer=init)(fc_84)
+                           kernel_initializer=init)(fc_84)
 
     # Train
     optim = K.optimizers.Adam()
