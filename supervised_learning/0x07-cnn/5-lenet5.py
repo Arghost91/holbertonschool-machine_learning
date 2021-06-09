@@ -26,7 +26,7 @@ def lenet5(X):
     * Returns: a K.Model compiled to use Adam optimization (with default
     hyperparameters) and accuracy metrics
     """
-    init = K.initializers.he_normal
+    init = K.initializers.he_normal()
     activation = K.activations.relu
 
     conv_6 = K.layers.Conv2D(filters=6, kernel_size=(5, 5), padding='same',
