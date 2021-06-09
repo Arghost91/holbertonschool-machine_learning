@@ -41,7 +41,7 @@ def lenet5(X):
                             kernel_initializer=init)(flatten)
     fc_84 = K.layers.Dense(units=84, activation=activation,
                            kernel_initializer=init)(fc_120)
-    fc_10 = K.layers.Dense(units=10, activation=None,
+    fc_10 = K.layers.Dense(units=10, activation="softmax",
                            kernel_initializer=init)(fc_84)
 
     network = K.models.Model(inputs=X, outputs=fc_10)
