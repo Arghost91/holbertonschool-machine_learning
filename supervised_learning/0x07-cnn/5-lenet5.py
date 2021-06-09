@@ -44,7 +44,7 @@ def lenet5(X):
     fc_10 = K.layers.Dense(units=10, activation=None,
                            kernel_initializer=init)(fc_84)
 
-    network = K.models.Model(inputs=X, outputs=fc3)
+    network = K.models.Model(inputs=X, outputs=fc_10)
     # Train
     optim = K.optimizers.Adam()
 
