@@ -27,7 +27,7 @@ def lenet5(X):
     hyperparameters) and accuracy metrics
     """
     init = K.initializers.he_normal()
-    activation = K.activations.relu
+    activation = "relu"
 
     conv_6 = K.layers.Conv2D(filters=6, kernel_size=(5, 5), padding='same',
                              activation=activation, kernel_initializer=init)(X)
