@@ -47,7 +47,7 @@ def lenet5(x, y):
                             kernel_initializer=init)(flatten)
     fc_84 = tf.layers.Dense(units=84, activation=activation,
                            kernel_initializer=init)(fc_120)
-    fc_10 = tf.layers.Dense(units=10, activation='softmax',
+    fc_10 = tf.layers.Dense(units=10, activation=None,
                             kernel_initializer=init)(fc_84)
 
     # Softmax
