@@ -55,8 +55,8 @@ def conv_backward(dZ, A_prev, W, b, padding="same", stride=(1, 1)):
         for y in range(h_new):
             for z in range(w_new):
                 for i in range(c_new):
-                    dA_prev[x, (sh * y):(sh * y) + kh, (sw * z):(sw * z) + kw, :]
-                    =+ dZ[x, y, z, i] * W[:, :, :, i]
+                    dA_prev[x, (sh * y):(sh * y) + kh, (sw * z):(sw * z) + kw, :] +=
+                    dZ[x, y, z, i] * W[:, :, :, i]
 
                     dW[:, :, :, i] =+ out_pad[x, (sh * y):(sh * y) + kh,
                                               (sw * z):(sw * z) + kw, :] * dZ[x, y, z, i]
