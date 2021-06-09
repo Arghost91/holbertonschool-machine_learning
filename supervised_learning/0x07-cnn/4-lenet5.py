@@ -37,16 +37,17 @@ def lenet5(x, y):
     activation = tf.nn.relu
 
     conv_6 = tf.layers.Conv2D(filters=6, kernel_size=(5, 5), padding='same',
-                             activation=activation, kernel_initializer=init)(x)
+                              activation=activation, kernel_initializer=init)(x)
     pool_6 = tf.layers.MaxPooling2D(pool_size=(2, 2), strides=(2, 2))(conv_6)
     conv_16 = tf.layers.Conv2D(filters=16, kernel_size=(5, 5), padding='valid',
-                              activation=activation, kernel_initializer=init)(pool_6)
+                               activation=activation,
+                               kernel_initializer=init)(pool_6)
     pool_16 = tf.layers.MaxPooling2D(pool_size=(2, 2), strides=(2, 2))(conv_16)
     flatten = tf.layers.Flatten()(pool_16)
     fc_120 = tf.layers.Dense(units=120, activation=activation,
-                            kernel_initializer=init)(flatten)
+                             kernel_initializer=init)(flatten)
     fc_84 = tf.layers.Dense(units=84, activation=activation,
-                           kernel_initializer=init)(fc_120)
+                            kernel_initializer=init)(fc_120)
     fc_10 = tf.layers.Dense(units=10, activation=None,
                             kernel_initializer=init)(fc_84)
 
