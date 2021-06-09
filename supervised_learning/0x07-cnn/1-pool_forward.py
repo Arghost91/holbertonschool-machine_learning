@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 """
 Function that performs forward propagation over a
