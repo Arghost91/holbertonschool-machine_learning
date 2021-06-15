@@ -28,7 +28,7 @@ def inception_block(A_prev, filters):
     conv_3R = K.layers.Conv2D(filters=F3R, kernel_size=(1, 1), padding='same',
                               activation=activation, kernel_initializer=init)(A_prev)
     conv_3 = K.layers.Conv2D(filters=F3, kernel_size=(3, 3), padding='same',
-                             activation=activation, kernel_initializer=init)(conv_3)
+                             activation=activation, kernel_initializer=init)(conv_3R)
     conv_5R = K.layers.Conv2D(filters=F5R, kernel_size=(1, 1), padding='same',
                               activation=activation, kernel_initializer=init)(A_prev)
     conv_5 = K.layers.Conv2D(filters=F5, kernel_size=(5, 5), padding='same',
