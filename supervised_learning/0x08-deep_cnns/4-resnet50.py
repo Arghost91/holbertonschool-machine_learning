@@ -23,7 +23,7 @@ def resnet50():
 
     conv_1 = K.layers.Conv2D(filters=64, kernel_size=(7, 7),
                              strides=(2, 2), padding='same',
-                             activation=activ, kernel_initializer=init)(Y)
+                             kernel_initializer=init)(Y)
     normal_1 = K.layers.BatchNormalization()(conv_1)
     activ_1 = K.layers.Activation(activ)(normal_1)
     max_pool1 = K.layers.MaxPooling2D(pool_size=(3, 3), strides=(2, 2),
