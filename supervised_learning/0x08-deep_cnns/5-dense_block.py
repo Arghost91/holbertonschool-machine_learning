@@ -33,7 +33,7 @@ def dense_block(X, nb_filters, growth_rate, layers):
 
         normal_2 = K.layers.BatchNormalization()(bottleneck)
         activ_2 = K.layers.Activation(activ)(normal_2)
-        conv = K.layers.Conv2D(filters=grouth_rate, kernel_size=(3, 3),
+        conv = K.layers.Conv2D(filters=growth_rate, kernel_size=(3, 3),
                                padding='same',
                                kernel_initializer=init)(activ_2)
 
