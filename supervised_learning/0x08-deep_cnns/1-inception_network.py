@@ -45,5 +45,5 @@ def inception_network():
     dropout = K.layers.Dropout(rate=0.4)(avg_pool1)
     softmax = K.layers.Dense(units=1000, activation='softmax',
                             kernel_initializer=init)(dropout)
-    model = K.model(inputs=Y, outputs=softmax)
+    model = K.Model(inputs=Y, outputs=softmax)
     return model
