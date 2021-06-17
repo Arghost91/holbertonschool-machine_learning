@@ -36,8 +36,7 @@ def identity_block(A_prev, filters):
     conv_12 = K.layers.Conv2D(filters=F11, kernel_size=(1, 1), padding='same',
                               kernel_initializer=init)(activ_3)
     normal_12 = K.layers.BatchNormalization()(conv_12)
-    activ_12 = K.layers.Activation(activ)(normal_12)
 
-    added = K.layers.Add()([activ_12, A_prev])
+    added = K.layers.Add()([normal_12, A_prev])
     activat = K.layers.Activation(activ)(added)
     return activat
