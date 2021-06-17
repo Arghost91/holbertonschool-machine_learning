@@ -40,7 +40,7 @@ def projection_block(A_prev, filters, s=2):
                               padding='same', kernel_initializer=init)(activ_3)
     normal_12 = K.layers.BatchNormalization()(conv_12)
 
-    conv_4f = K.layers.Conv2D(filters=F12, kernel_size=(1, 1), strides=s, 
+    conv_4f = K.layers.Conv2D(filters=F12, kernel_size=(1, 1), strides=s,
                               padding='same', kernel_initializer=init)(A_prev)
     normal_4f = K.layers.BatchNormalization()(conv_4f)
 
