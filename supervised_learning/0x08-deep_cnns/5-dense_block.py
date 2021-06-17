@@ -17,7 +17,8 @@ def dense_block(X, nb_filters, growth_rate, layers):
     * All convolutions should be preceded by Batch Normalization
     and a rectified linear activation (ReLU), respectively
     * Returns: The concatenated output of each layer within the Dense
-    Block and the number of filters within the concatenated outputs, respectively
+    Block and the number of filters within the concatenated
+    outputs, respectively
     """
     init = K.initializers.he_normal()
     activ = "relu"
@@ -27,13 +28,15 @@ def dense_block(X, nb_filters, growth_rate, layers):
         activ_1 = K.layers.Activation(activ)(normal_1)
         filt = 4 * growth_rate
         bottleneck = K.layers.Conv2D(filters=filt, kernel_size=(1, 1),
-                                     padding='same', kernel_initializer=init)(activ_1)
+                                     padding='same',
+                                     kernel_initializer=init)(activ_1)
 
         normal_2 = K.layers.BatchNormalization()(bottleneck)
         activ_2 = K.layers.Activation(activ)(normal_2)
         conv = K.layers.Conv2D(filters=grouth_rate, kernel_size=(3, 3),
-                               padding='same', kernel_initializer=init)(activ_2)
+                               padding='same',
+                               kernel_initializer=init)(activ_2)
 
         X = K.layers.concatenate([X, conv])
         nb_filters += growth_rate
-return X, nb_filters
+    return X, nb_filters
