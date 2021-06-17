@@ -18,12 +18,12 @@ def resnet50():
     * Returns: the keras model
     """
     init = K.initializers.he_normal()
-    activation = "relu"
+    activ = "relu"
     Y = K.Input(shape=(224, 224, 3))
 
     conv_1 = K.layers.Conv2D(filters=64, kernel_size=(7, 7),
                              strides=(2, 2), padding='same',
-                             activation=activation, kernel_initializer=init)(Y)
+                             activation=activ, kernel_initializer=init)(Y)
     normal_1 = K.layers.BatchNormalization()(conv_1)
     activ_1 = K.layers.Activation(activ)(normal_1)
     max_pool1 = K.layers.MaxPooling2D(pool_size=(3, 3), strides=(2, 2),
