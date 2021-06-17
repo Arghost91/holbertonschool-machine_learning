@@ -29,7 +29,7 @@ def resnet50():
     max_pool1 = K.layers.MaxPooling2D(pool_size=(3, 3), strides=(2, 2),
                                       padding='same')(activ_1)
 
-    conv_2x1 = projection_block(max_pool1, [64, 64, 256], strides=(1, 1))
+    conv_2x1 = projection_block(max_pool1, [64, 64, 256], 1)
     conv_2x2 = identity_block(conv_2x1, [64, 64, 256])
     conv_2x3 = identity_block(conv_2x2, [64, 64, 256])
 
