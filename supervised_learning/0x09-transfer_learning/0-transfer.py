@@ -62,4 +62,4 @@ if __name__ == "__main__":
                         validation_data=(testX, testY),
                         callbacks=[check_point])
     model.summary()
-    model.save("cifar10.h5"
+    model.save("cifar10.h5")
