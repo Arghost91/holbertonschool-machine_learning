@@ -22,7 +22,7 @@ def preprocess_data(X, Y):
     return X_p, Y_p
 
 if __name__ == "__main__":
-    trainX, trainY, testX, testY = K.datasets.cifar10.load_data()
+    (trainX, trainY), (testX, testY) = K.datasets.cifar10.load_data()
     trainX, trainY = preprocess_data(trainX, trainY)
     testX, testY = preprocess_data(testX, testY)
 
