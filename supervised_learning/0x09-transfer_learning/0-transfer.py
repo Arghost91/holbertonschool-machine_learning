@@ -4,6 +4,7 @@ Python script that trains a convolutional neural
 network to classify the CIFAR 10 dataset
 """
 import tensorflow.keras as K
+import tensorflow as tf
 
 
 def preprocess_data(X, Y):
@@ -61,4 +62,4 @@ if __name__ == "__main__":
                         validation_data=(testX, testY),
                         callbacks=[check_point])
     model.summary()
-    model.save('cifar10.h5')
+    model.save("cifar10.h5"
