@@ -60,6 +60,6 @@ if __name__ == "__main__":
                   metrics=['accuracy'])
     history = model.fit(trainX, trainY, batch_size=32, epochs=10, verbose=1,
                         validation_data=(testX, testY),
-                        callbacks=[check_point])
+                        callbacks=[checkpoint])
     model.summary()
     model.save("cifar10.h5")
