@@ -101,9 +101,9 @@ class Yolo:
         classes) containing the processed box class probabilities for each output, respectively
         * Returns a tuple of (filtered_boxes, box_classes, box_scores)
         """
+        box = []
         box_scores = []
         for i in range(len(boxes)):
-            box = i.reshape(-1, 4)
             box_scores.append(box_confidences[i] * box_class_probs[i])
             classes = np.argmax(box_scores[i], -1)
             class_scores = np.max(box_scores[i], -1)
@@ -111,6 +111,8 @@ class Yolo:
         classes = np.concatenate(classes)
         class_scores = np.concatenate(class_scores)
         box = np.concatenate(box)
+        
+        
 
         filtered_boxes = box[filt]
         box_classes = classes[filt]
