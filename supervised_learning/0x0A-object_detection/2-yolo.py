@@ -108,8 +108,8 @@ class Yolo:
         cla = []
         for i in range(len(boxes)):
             box_scores.append(box_confidences[i] * box_class_probs[i])
-            classes = np.argmax(box_scores[i], -1)
-            class_scores = np.max(box_scores[i], -1)
+            classes = np.argmax(box_scores[i], axis=3)
+            class_scores = np.max(box_scores[i], axis=3)
             filt = class_scores[i] >= self.class_t
         for j, k in zip(class_scores, filt):
             scores += j[k]
