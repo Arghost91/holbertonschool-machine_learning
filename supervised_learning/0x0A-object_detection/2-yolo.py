@@ -107,12 +107,14 @@ class Yolo:
             box_scores.append(box_confidences[i] * box_class_probs[i])
             classes = np.argmax(box_scores[i], -1)
             class_scores = np.max(box_scores[i], -1)
-        filt = np.where(class_scores >= self.class_t)
+            filt = class_scores[i] >= self.class_t
+        for j, k in zip(class_scores, filt):
+            scores += j[k]
+        for l, m in zip(boxes, filt):
+            boxes += l[m]
+        for n, o in zip(classes, filt):
+            cla += n[o].flatten()
         classes = np.concatenate(classes)
         class_scores = np.concatenate(class_scores)
         box = np.concatenate(box)
-
-        filtered_boxes = box[filt]
-        box_classes = classes[filt]
-        box_scores = class_scores[filt]
         return (filtered_boxes, box_classes, box_scores)
