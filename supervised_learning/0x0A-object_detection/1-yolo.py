@@ -54,6 +54,7 @@ class Yolo:
         box_confidences = []
         box_class_probs = []
         i_h, i_w = image_size
+        i = 0
         for out in outputs:
             g_h, g_w, a_b, _ = out.shape
             boxes.append(out[:, :, :, :4])
