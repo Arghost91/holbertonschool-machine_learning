@@ -103,6 +103,9 @@ class Yolo:
         """
         box = [j.reshape(-1, 4) for j in boxes]
         box_scores = []
+        scores = []
+        boxes = []
+        cla = []
         for i in range(len(boxes)):
             box_scores.append(box_confidences[i] * box_class_probs[i])
             classes = np.argmax(box_scores[i], -1)
