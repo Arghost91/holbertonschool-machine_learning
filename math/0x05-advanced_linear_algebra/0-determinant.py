@@ -13,9 +13,9 @@ def determinant(matrix):
                 raise ValueError("matrix must be a square matrix")
     else:
         if matrix == [[]]:
-            det = 1
+            return 1
         if len(matrix) == 1:
-            det = matrix[0][0]
+            return matrix[0][0]
         if len(matrix) == 2:
             diag1 = matrix[0][0] * matrix[1][1]
             diag2 = matrix[0][1] * matrix[1][0]
