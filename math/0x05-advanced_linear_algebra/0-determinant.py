@@ -12,7 +12,7 @@ def determinant(matrix):
             if len(matrix) != len(matrix[0]):
                 raise ValueError("matrix must be a square matrix")
     else:
-        if len(matrix) == 0:
+        if matrix == [[]]:
             det = 1
         elif len(matrix) == 1:
             diag1 = matrix[0][0] * matrix[1][1]
