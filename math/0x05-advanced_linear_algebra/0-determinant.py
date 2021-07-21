@@ -19,6 +19,6 @@ def determinant(matrix):
             diag2 = matrix[0,1]  *  (matrix[0,1] * matrix[2,2] - matrix[1,2] * matrix[0,3])
             diag3 = matrix[0,2]  *  (matrix[0,1] * matrix[1,2] - matrix[2,2] * matrix[0,2])
             det = diag1 - diag2 + diag3
-        elif len(matrix) = 0:
+        elif len(matrix) == 0:
             det = 1
     return det
