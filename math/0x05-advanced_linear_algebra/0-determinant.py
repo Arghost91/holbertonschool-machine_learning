@@ -14,11 +14,13 @@ def determinant(matrix):
     else:
         if matrix == [[]]:
             det = 1
-        elif len(matrix) == 1:
+        if len(matrix) == 1:
+            det = matrix[0][0]
+        if len(matrix) == 2:
             diag1 = matrix[0][0] * matrix[1][1]
             diag2 = matrix[0][1] * matrix[1][0]
             det = diag1 - diag2
-        elif len(matrix) == 2:
+        elif len(matrix) == 3:
             diag1 = matrix[0][0]  *  (matrix[1][1] * matrix[2][2] - matrix[1][2] * matrix[2][1])
             diag2 = matrix[0][1]  *  (matrix[0][1] * matrix[2][2] - matrix[1][2] * matrix[0][3])
             diag3 = matrix[0][2]  *  (matrix[0][1] * matrix[1][2] - matrix[2][2] * matrix[0][2])
