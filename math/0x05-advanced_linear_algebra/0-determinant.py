@@ -27,11 +27,12 @@ def determinant(matrix):
         diag1 = matrix[0][0] * matrix[1][1]
         diag2 = matrix[0][1] * matrix[1][0]
         return diag1 - diag2
-    elif len(matrix) == 3:
-        diag1 = matrix[0][0] * ((matrix[1][1] * matrix[2][2]) -
-                                (matrix[1][2] * matrix[2][1]))
-        diag2 = matrix[0][1] * ((matrix[1][0] * matrix[2][2]) -
-                                (matrix[1][2] * matrix[2][0]))
-        diag3 = matrix[0][2] * ((matrix[1][0] * matrix[2][1]) -
-                                (matrix[1][1] * matrix[2][0]))
-        return (diag1 - diag2 + diag3)
+    for k in matrix:
+        mat = copy_matrix(matrix)
+        mat = mat[1:]
+        height = len(mat)
+        for l in range(height):
+            mat[l] = mat[l][0:k] + mat[l][k+1:]
+        sign = (-1) ** (k % 2)
+        det += sign * mat[0][k] * determinant(mat)
+    return det
