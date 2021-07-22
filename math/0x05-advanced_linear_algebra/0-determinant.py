@@ -29,7 +29,7 @@ def determinant(matrix):
         return diag1 - diag2
     for k in matrix:
         mat = [m[:] for m in matrix]
-        mat = mat[1:]
+        del mat[0]
         for l in mat:
             del mat[i]
         sign = (-1) ** (k % 2)
