@@ -27,11 +27,14 @@ def determinant(matrix):
         diag1 = matrix[0][0] * matrix[1][1]
         diag2 = matrix[0][1] * matrix[1][0]
         return diag1 - diag2
+    first_row = matrix[0]
+    det = 0
+    cof = 1
     for k in matrix:
         mat = [m[:] for m in matrix]
         del mat[0]
         for l in mat:
             del mat[i]
-        sign = (-1) ** (k % 2)
-        det += sign * mat[0][k] * determinant(mat)
+        det += first_row[i] * determinant(mat) * cof
+        cof = cof * -1
     return det
