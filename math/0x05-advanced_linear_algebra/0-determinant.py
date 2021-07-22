@@ -5,7 +5,7 @@
 
 
 def determinant(matrix):
-    if type(matrix) is not list:
+    if type(matrix) is not list or len(matrix) is 0:
         raise TypeError("matrix must be a list of lists")
     if matrix == [[]]:
         return 1
