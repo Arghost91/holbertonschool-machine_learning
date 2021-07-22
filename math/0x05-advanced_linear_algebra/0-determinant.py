@@ -14,7 +14,7 @@ def determinant(matrix):
     * The list [[]] represents a 0x0 matrix
     * Returns: the determinant of matrix
     """
-    if type(matrix) is not list or len(matrix) is 0:
+    if type(matrix) is not list:
         raise TypeError("matrix must be a list of lists")
     if matrix == [[]]:
         return 1
