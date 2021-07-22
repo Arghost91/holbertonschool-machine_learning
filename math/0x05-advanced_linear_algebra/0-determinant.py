@@ -30,9 +30,8 @@ def determinant(matrix):
     for k in matrix:
         mat = [m[:] for m in matrix]
         mat = mat[1:]
-        height = len(mat)
-        for l in range(height):
-            mat[l] = mat[l][0:k] + mat[l][k+1:]
+        for l in mat:
+            del mat[i]
         sign = (-1) ** (k % 2)
         det += sign * mat[0][k] * determinant(mat)
     return det
