@@ -28,7 +28,7 @@ def determinant(matrix):
         diag2 = matrix[0][1] * matrix[1][0]
         return diag1 - diag2
     for k in matrix:
-        mat = k[:]
+        mat = [m[:] for m in matrix]
         mat = mat[1:]
         height = len(mat)
         for l in range(height):
