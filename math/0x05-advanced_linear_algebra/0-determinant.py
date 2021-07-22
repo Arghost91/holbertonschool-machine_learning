@@ -37,4 +37,4 @@ def determinant(matrix):
             del mat[i]
         determ += first_row[i] * determinant(next_matrix) * cof
         cof = cof * -1
-    return det
+    return determ
