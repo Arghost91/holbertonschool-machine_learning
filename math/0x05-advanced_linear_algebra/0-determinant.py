@@ -39,4 +39,4 @@ def determinant(matrix):
             del m[i]
         det += row[i] * determinant(mat) * cof
         cof = cof * -1
-    return determ
+    return det
