@@ -30,7 +30,7 @@ def determinant(matrix):
     first_row = matrix[0]
     det = 0
     cof = 1
-    for k in matrix:
+    for k in range(len(matrix[0])):
         mat = [m[:] for m in matrix]
         del mat[0]
         for l in mat:
