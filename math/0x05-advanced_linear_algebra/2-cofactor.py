@@ -26,9 +26,7 @@ def determinant(matrix):
         return matrix[0][0]
 
     if len(matrix) == 2 and len(matrix[0]) == 2:
-        diag1 = matrix[0][0] * matrix[1][1]
-        diag2 = matrix[0][1] * matrix[1][0]
-        return diag1 - diag2
+        return (matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0])
 
     row = matrix[0]
     det = 0
