@@ -94,7 +94,7 @@ def adjugate(matrix):
     for i in range(len(adj[0])):
         inner = []
         for j in range(len(adj)):
-            inner.append(adj[j][i])
+            inner.append(adjun[j][i])
         trans.append(inner)
     return trans
     
