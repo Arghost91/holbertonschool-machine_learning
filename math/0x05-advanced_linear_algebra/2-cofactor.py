@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Function that calculates the cofactor matrix of a matrix
+Calculates the cofactor matrix of a matrix
 """
 
 
