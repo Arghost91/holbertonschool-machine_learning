@@ -41,6 +41,7 @@ def determinant(matrix):
         cof = cof * -1
     return det
 
+
 def minor(matrix):
     """
     * matrix is a list of lists whose minor matrix should be calculated
@@ -73,4 +74,3 @@ def minor(matrix):
             inner.append(det)
         minor.append(inner)
     return minor
-    
