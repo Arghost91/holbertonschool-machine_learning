@@ -50,10 +50,10 @@ def minor(matrix):
     the message matrix must be a non-empty square matrix
     * Returns: the minor matrix of matrix
     """
-    if type(matrix) is not list:
+    if type(matrix) is not list or not len(matrix):
         raise TypeError("matrix must be a list of lists")
     if matrix == [[]]:
-        return 1
+        raise ValueError("matrix must be a square matrix")
     for i in range(len(matrix)):
         if len(matrix) != len(matrix[i]):
             raise ValueError("matrix must be a square matrix")
