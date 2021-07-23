@@ -34,7 +34,7 @@ def definiteness(matrix):
         if i < 0:
             negat = 1
         if i == 0:
-            semi = 0
+            semi = 1
     if posit and not negat and not semi:
         return "Positive definite"
     elif not posit and not semi and negat:
