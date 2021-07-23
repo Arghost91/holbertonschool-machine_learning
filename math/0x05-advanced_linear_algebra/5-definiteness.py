@@ -1,47 +1,50 @@
 #!/usr/bin/env python3
 """
-Function that calculates the definiteness of a matrix
+Calculates the definiteness of a matrix
 """
 import numpy as np
 
 
 def definiteness(matrix):
     """
-    * matrix is a numpy.ndarray of shape (n, n) whose definiteness should be calculated
-    * If matrix is not a numpy.ndarray, raise a TypeError with the
-    message matrix must be a numpy.ndarray
-    * If matrix is not a valid matrix, return None
-    * Return: the string Positive definite, Positive semi-definite,
-    Negative semi-definite, Negative definite, or Indefinite if the
-    matrix is positive definite, positive semi-definite, negative
-    semi-definite, negative definite of indefinite, respectively
-    * If matrix does not fit any of the above categories, return None
-    * You may import numpy as np
+    a function that calculates the definitiness of a matrix
+    :param matrix: a numpy.ndarray of shape (n, n) whose definiteness should
+    be calculated
+    :return: if the matrix is positive definite, positive semi-definite,
+    negative semi-definite, negative definite of indefinite, respectively
     """
     if not isinstance(matrix, np.ndarray):
         raise TypeError("matrix must be a numpy.ndarray")
-    if len(matrix.shape) != 2 or matrix.shape[0] != matrix.shape[1]:
+    if len(matrix.shape) != 2:
         return None
+    row, col = matrix.shape
+    if row != col:
+        return None
+    # Matrix has to be symmetric to calculate definiteness
     if not (matrix == matrix.T).all():
         return None
     eigenvalues = np.linalg.eigvals(matrix)
-    posit = 0
-    negat = 0
+
+    pos = 0
+    neg = 0
     semi = 0
     for i in eigenvalues:
         if i > 0:
-            posit = 1
+            pos = 1
         if i < 0:
-            negat = 1
+            neg = 1
         if i == 0:
             semi = 1
-    if posit and not negat and not semi:
+
+    if pos and not semi and not neg:
         return "Positive definite"
-    elif not posit and not semi and negat:
-        return "Negative definite"
-    elif posit and negat and not semi:
-        return "Indefinite"
-    elif posit and not negat and semi:
+    elif pos and semi and not neg:
         return "Positive semi-definite"
-    elif not posit and negat and semi:
+    elif not pos and not semi and neg:
+        return "Negative definite"
+    elif not pos and semi and neg:
         return "Negative semi-definite"
+    elif pos and not semi and neg:
+        return "Indefinite"
+    else:
+        return None
