@@ -71,6 +71,6 @@ def minor(matrix):
                 del m[j]
             det = determinant(mat)
             innner.append(determ)
-        minor.append(in)
+        minor.append(inner)
     return minor
     
