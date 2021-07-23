@@ -18,9 +18,9 @@ def determinant(matrix):
             raise ValueError("matrix must be a square matrix")
         if type(matrix[i]) is not list or not len(matrix[i]):
             raise TypeError("matrix must be a list of lists")
-    if len(matrix) == 1:
+    if len(matrix) == 1 and len(matrix[1]) == 1:
         return matrix[0][0]
-    if len(matrix) == 2:
+    if len(matrix) == 2 and len(matrix[1]) == 2:
         diag1 = matrix[0][0] * matrix[1][1]
         diag2 = matrix[0][1] * matrix[1][0]
         return diag1 - diag2
@@ -46,7 +46,7 @@ def cofactor(matrix):
     if type(matrix) is not list or not len(matrix):
         raise TypeError("matrix must be a list of lists")
     if matrix == [[]]:
-        raise ValueError("matrix must be a square matrix")
+        raise ValueError("matrix must be a non-empty square matrix")
     for i in range(len(matrix)):
         if len(matrix) != len(matrix[i]):
             raise ValueError("matrix must be a square matrix")
