@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Calculates the cofactor matrix of a matrix
+Calculates the minor of a matrix
 """
 
 
@@ -28,18 +28,18 @@ def determinant(matrix):
     if len(matrix) == 2 and len(matrix[0]) == 2:
         return (matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0])
 
-    row = matrix[0]
-    det = 0
-    cofact = 1
+    first_row = matrix[0]
+    determ = 0
+    cof = 1
     for i in range(len(matrix[0])):
-        mat = [l[:] for l in matrix]
-        del mat[0]
-        for m in mat:
-            del m[i]
-        det += row[i] * determinant(mat) * cofact
-        cofact = cofact * -1
+        next_matrix = [x[:] for x in matrix]
+        del next_matrix[0]
+        for mat in next_matrix:
+            del mat[i]
+        determ += first_row[i] * determinant(next_matrix) * cof
+        cof = cof * -1
 
-    return det
+    return determ
 
 
 def cofactor(matrix):
