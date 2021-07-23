@@ -40,11 +40,10 @@ def determinant(matrix):
 
 def cofactor(matrix):
     """
-    * matrix is a list of lists whose cofactor matrix should
-    be calculated
-    * param matrix: matrix is a list of lists whose minor matrix should be
+    a function that calculates the minor of a matrix
+    :param matrix: matrix is a list of lists whose minor matrix should be
     calculated
-    * Returns: the cofactor matrix of matrix
+    :return: the minor matrix of a matrix
     """
     if type(matrix) is not list or not len(matrix):
         raise TypeError("matrix must be a list of lists")
