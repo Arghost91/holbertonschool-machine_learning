@@ -33,8 +33,8 @@ def determinant(matrix):
         del mat[0]
         for m in mat:
             del m[i]
-        det += row[i] * determinant(mat) * cof
-        cof = cof * -1
+        det += row[i] * determinant(mat) * cofact
+        cofact = cofact * -1
     return det
 
 
@@ -71,6 +71,6 @@ def cofactor(matrix):
                 del m[j]
             det = determinant(mat) * cofact
             inner.append(det)
-            cofact = cofact * (-1)
+            cofact = cofact * -1
         minor.append(inner)
     return minor
