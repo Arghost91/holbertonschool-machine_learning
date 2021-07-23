@@ -6,9 +6,9 @@ Calculates the cofactor matrix of a matrix
 
 def determinant(matrix):
     """
-    * matrix is a list of lists whose determinant should be calculated
-    * param matrix: a list of lists whose determinant should be calculated
-    * Returns: the determinant of matrix
+    a funciton that calculates the determinant of a matrix
+    :param matrix: a list of lists whose determinant should be calculated
+    :return: the determinant of matrix
     """
     if type(matrix) is not list:
         raise TypeError("matrix must be a list of lists")
