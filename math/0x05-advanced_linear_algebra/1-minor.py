@@ -63,14 +63,14 @@ def minor(matrix):
         return [[1]]
     minor = []
     for i in range(len(matrix)):
-        in = []
+        inner = []
         for j in range(len(matrix)):
             mat = [l[:] for l in matrix]
             del mat[i]
             for m in mat:
                 del m[j]
             det = determinant(mat)
-            in.append(determ)
+            innner.append(determ)
         minor.append(in)
     return minor
     
