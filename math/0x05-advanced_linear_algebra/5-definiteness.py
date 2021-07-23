@@ -24,7 +24,7 @@ def definiteness(matrix):
         return None
     if not (matrix == matrix.T).all():
         return None
-    eigenvalues = np.linalg.eig(matrix)
+    eigenvalues = np.linalg.eigvals(matrix)
     posit = 0
     negat = 0
     semi = 0
