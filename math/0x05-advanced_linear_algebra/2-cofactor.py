@@ -64,21 +64,21 @@ def cofactor(matrix):
     if len(matrix) == 1:
         return [[1]]
 
-    minor = []
+    list_minor = []
     for i in range(len(matrix)):
         inner = []
-        if i % 2 != 0:
-            cofact = -1
+        if i % 2 == 0:
+            cof = 1
         else:
-            cofact = 1
+            cof = -1
         for j in range(len(matrix[0])):
-            mat = [l[:] for l in matrix]
-            del mat[i]
-            for m in mat:
-                del m[j]
-            det = determinant(mat) * cofact
-            inner.append(det)
-            cofact = cofact * -1
-        minor.append(inner)
+            next_matrix = [x[:] for x in matrix]
+            del next_matrix[i]
+            for mat in next_matrix:
+                del mat[j]
+            determ = determinant(next_matrix) * cof
+            inner.append(determ)
+            cof = cof * -1
+        list_minor.append(inner)
 
-    return minor
+    return list_minor
