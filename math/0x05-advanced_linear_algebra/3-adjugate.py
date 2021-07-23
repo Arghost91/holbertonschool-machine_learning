@@ -77,14 +77,15 @@ def cofactor(matrix):
 
 def adjugate(matrix):
     """
-    * matrix is a list of lists whose adjugate matrix should be calculated
-    * Returns: the adjugate matrix of matrix
+    a function that calculates the adjugate
+    :param matrix: a list of lists whose adjugate matrix should be calculated
+    :return: the adjugate of a matrix
     """
-    adjun = cofactor(matrix)
-    trans = []
-    for i in range(len(adjun[0])):
+    adj = cofactor(matrix)
+    transpose = []
+    for j in range(len(adj[0])):
         inner = []
-        for j in range(len(adjun)):
-            inner.append(adjun[j][i])
-        trans.append(inner)
-    return trans
+        for i in range(len(adj)):
+            inner.append(adj[i][j])
+        transpose.append(inner)
+    return transpose
