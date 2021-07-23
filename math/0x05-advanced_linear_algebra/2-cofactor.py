@@ -66,10 +66,10 @@ def cofactor(matrix):
     minor = []
     for i in range(len(matrix)):
         inner = []
-        if i % 2 == 0:
-            cofact = 1
-        else:
+        if i % 2 != 0:
             cofact = -1
+        else:
+            cofact = 1
         for j in range(len(matrix[0])):
             mat = [l[:] for l in matrix]
             del mat[i]
@@ -77,6 +77,6 @@ def cofactor(matrix):
                 del m[j]
             det = determinant(mat) * cofact
             inner.append(det)
-            cofact = cofact * 1
+            cofact = cofact * (-1)
         minor.append(inner)
     return minor
