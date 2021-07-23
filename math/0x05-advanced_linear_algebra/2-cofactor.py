@@ -27,7 +27,7 @@ def determinant(matrix):
         return diag1 - diag2
     row = matrix[0]
     det = 0
-    cof = 1
+    cofact = 1
     for i in range(len(matrix[0])):
         mat = [l[:] for l in matrix]
         del mat[0]
@@ -42,6 +42,8 @@ def cofactor(matrix):
     """
     * matrix is a list of lists whose cofactor matrix should
     be calculated
+    * param matrix: matrix is a list of lists whose minor matrix should be
+    calculated
     * Returns: the cofactor matrix of matrix
     """
     if type(matrix) is not list or not len(matrix):
@@ -50,7 +52,7 @@ def cofactor(matrix):
         raise ValueError("matrix must be a non-empty square matrix")
     for i in range(len(matrix)):
         if len(matrix) != len(matrix[i]):
-            raise ValueError("matrix must be a square matrix")
+            raise ValueError("matrix must be a non-empty square matrix")
         if type(matrix[i]) is not list or not len(matrix[i]):
             raise TypeError("matrix must be a list of lists")
     if len(matrix) == 1:
