@@ -91,7 +91,7 @@ def adjugate(matrix):
             raise TypeError("matrix must be a list of lists")
     adjun = cofactor(matrix)
     trans = []
-    for i in range(len(adj[0])):
+    for i in range(len(adjun[0])):
         inner = []
         for j in range(len(adj)):
             inner.append(adjun[j][i])
