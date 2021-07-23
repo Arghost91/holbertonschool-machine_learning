@@ -70,7 +70,7 @@ def minor(matrix):
             for m in mat:
                 del m[j]
             det = determinant(mat)
-            inner.append(determ)
+            inner.append(det)
         minor.append(inner)
     return minor
     
