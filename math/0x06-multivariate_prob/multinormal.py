@@ -26,7 +26,7 @@ class MultiNormal:
         d, n = data.shape
         if n < 2:
             raise ValueError("X must contain multiple data points")
-        self.mean = np.mean(data, axis=1).reshape(d, 1)
-        ##self.mean = np.reshape(self.mean, (d, 1))
+        self.mean = np.mean(data, axis=1)
+        self.mean = np.reshape(self.mean, (d, 1))
         sub_mean = data - self.mean
         self.cov = np.dot(sub_mean.T, sub_mean) / (n - 1)
