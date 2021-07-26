@@ -22,5 +22,6 @@ def correlation(C):
     d = C.shape[0]
     diag = np.diag(C)
     stan_dev = np.sqrt(diag)
-    corr = C / (stan_dev * stan_dev.T)
+    out_stan = np.outer(stan_dev, stan_dev)
+    corr = C / out_stan
     return corr
