@@ -20,5 +20,7 @@ def correlation(C):
     if C.shape[0] != C.shape[1]:
         raise ValueError("C must be a 2D square matrix")
     d = C.shape[0]
-    corr = np.corrcoef(C, rowvar=True)
+    diag = np.diag(C)
+    stan_dev = np.sqrt(diag)
+    corr = C / (stan_dev * stan_dev.T)
     return corr
