@@ -30,3 +30,25 @@ class MultiNormal:
         self.mean = np.reshape(self.mean, (d, 1))
         sub_mean = data - self.mean
         self.cov = np.dot(sub_mean, sub_mean.T) / (n - 1)
+
+    def pdf(self, x):
+        """
+        * x is a numpy.ndarray of shape (d, 1) containing the data point
+        whose PDF should be calculated
+            * d is the number of dimensions of the Multinomial instance
+        * If x is not a numpy.ndarray, raise a TypeError with the message
+        x must be a numpy.ndarray
+        * If x is not of shape (d, 1), raise a ValueError with the message
+        x must have the shape ({d}, 1)
+        * Returns the value of the PDF
+        """
+        if type(x) is not np.ndarray:
+            raise TypeError("x must be a numpy.ndarray")
+        if x.shape != (d, 1):
+            raise ValueError("x must have the shape ({}, 1)".format(d))
+        sub_mean = x - self.mean
+        det = np.linalg.det(self.cov)
+        sol = np.linalg.solve(self.cov, sub_mean)
+        pdf = ((1. / np.sqrt(2 * np.pi)) ** d * det *
+               np.exp(-(sol.T.dot(sub_mean)) / 2))
+        return pdf[0][0]
