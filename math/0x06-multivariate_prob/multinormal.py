@@ -5,7 +5,7 @@ Class that represents a Multivariate Normal distribution
 import numpy as np
 
 
-class Multinormal:
+class MultiNormal:
     """
     Class that represents a Multivariate Normal distribution
     """
