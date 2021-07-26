@@ -21,4 +21,4 @@ def mean_cov(X):
     mean = np.reshape(mean, (1, d))
     sub_mean = X - mean
     cov = np.dot(sub_mean.T, sub_mean) / (n - 1)
-    return mean, cov    
+    return mean, cov
