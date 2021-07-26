@@ -44,7 +44,7 @@ class MultiNormal:
         """
         if type(x) is not np.ndarray:
             raise TypeError("x must be a numpy.ndarray")
-        d = x.shape[0]
+        d = self.cov.shape[0]
         if len(x.shape) != 2 or x.shape[1] != 1 or x.shape[0] != d:
             raise ValueError("x must have the shape ({}, 1)".format(d))
         sub_mean = x - self.mean
