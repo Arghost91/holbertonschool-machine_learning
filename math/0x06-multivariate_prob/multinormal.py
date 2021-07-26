@@ -50,6 +50,6 @@ class MultiNormal:
         sub_mean = x - self.mean
         det = np.linalg.det(self.cov)
         sol = np.linalg.solve(self.cov, sub_mean)
-        pdf = ((1. / np.sqrt(2 * np.pi)) ** d * det *
+        pdf = ((1. / np.sqrt(2 * np.pi))**d * det *
                np.exp(-(sol.T.dot(sub_mean)) / 2))
         return pdf[0][0]
