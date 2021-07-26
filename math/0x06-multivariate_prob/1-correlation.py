@@ -19,7 +19,6 @@ def correlation(C):
         raise TypeError("C must be a numpy.ndarray")
     if C.shape[0] != C.shape[1]:
         raise ValueError("C must be a 2D square matrix")
-    d = C.shape[0]
     diag = np.diag(C)
     stan_dev = np.sqrt(diag)
     out_stan = np.outer(stan_dev, stan_dev)
