@@ -16,7 +16,7 @@ def mean_cov(X):
     if n < 2:
         raise ValueError("X must contain multiple data points")
     mean = np.mean(X, axis=0)
-    sub_mean = [i - mean for i in X]
-    num = sum([sub_mean[i] for i in len(sub_mean)])
-    cov = num / (n - 1)
+    mean = np.reshape(mean, (1, d))
+    sub_mean = X - mean
+    cov = np.dot(sub_mean.T, sub_mean) / (n - 1)
     return mean, cov    
