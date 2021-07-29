@@ -17,7 +17,7 @@ def pca(X, var=0.95):
     """
     u, s, vh = np.linalg.svd(X)
     cumsum = np.cumsum(s)
-    cumsum = cumsun / (np.sum(s))
+    cumsum = cumsum / (np.sum(s))
     m = np.where(cumsum > var)
     w = vh.T
     wr = w[:, :m + 1]
