@@ -30,7 +30,6 @@ def intersection(x, n, P, Pr):
     range [0, 1] where {P} is the incorrect variable
     * If Pr does not sum to 1, raise a ValueError with the message
     Pr must sum to 1 Hint: use numpy.isclose
-    * All exceptions should be raised in the above order
     """
     if type(n) is not int or n <= 0:
         raise ValueError("n must be a positive integer")
