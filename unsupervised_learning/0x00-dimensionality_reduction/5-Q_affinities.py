@@ -23,4 +23,3 @@ def Q_affinities(Y):
     np.fill_diagonal(num, 0)
     Q = num / np.sum(num)
     return Q, num
-    
