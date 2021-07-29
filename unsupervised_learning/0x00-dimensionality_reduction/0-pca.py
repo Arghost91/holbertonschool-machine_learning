@@ -19,6 +19,7 @@ def pca(X, var=0.95):
     cumsum = np.cumsum(s)
     cumsum = cumsum / (np.sum(s))
     m = np.where(cumsum > var)
+    m = np.min(m)
     w = vh.T
     wr = w[:, :m + 1]
     return wr
