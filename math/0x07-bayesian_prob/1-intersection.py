@@ -43,6 +43,7 @@ def likelihood(x, n, P):
     likelihood = likelihood * ((P ** x) * (1 - P) ** (n - x))
     return likelihood
 
+
 def intersection(x, n, P, Pr):
     """
     * x is the number of patients that develop severe side effects
