@@ -31,7 +31,7 @@ def likelihood(x, n, P):
     for i in P:
         if i < 0 or i > 1:
             raise ValueError("All values in P must be in the range [0, 1]")
-    likelihood = np.math.factorial(n)/(np.math.factorial(x) * np.math.factorial(n - x)
-                                      * ((1 - P) ** (n - x)))
+    likelihood = (np.math.factorial(n)
+                  * np.math.factorial(n - x) * ((1 - P) ** (n - x)))/(np.math.factorial(x))
     return likelihood
     
