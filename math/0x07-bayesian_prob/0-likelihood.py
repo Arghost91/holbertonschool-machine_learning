@@ -3,6 +3,7 @@
 Function that calculates the likelihood of obtaining this data given
 various hypothetical probabilities of developing severe side effects
 """
+import numpy as np
 
 
 def likelihood(x, n, P):
