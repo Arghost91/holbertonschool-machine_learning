@@ -90,6 +90,7 @@ def intersection(x, n, P, Pr):
     intersec = likelihood(x, n, P) * Pr
     return intersec
 
+
 def marginal(x, n, P, Pr):
     """
     * x is the number of patients that develop severe side effects
