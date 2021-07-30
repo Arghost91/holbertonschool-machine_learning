@@ -144,8 +144,8 @@ def posterior(x, n, P, Pr):
     is the incorrect variable
     * If Pr does not sum to 1, raise a ValueError with the message Pr must
     sum to 1
-    * Returns: the posterior probability of each probability in P given x and n,
-    respectively
+    * Returns: the posterior probability of each probability in P given x
+    and n, respectively
     """
     post = intersection(x, n, P, Pr) / marginal(x, n, P, Pr)
     return post
