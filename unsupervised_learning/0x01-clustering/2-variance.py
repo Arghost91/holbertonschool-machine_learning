@@ -1,4 +1,3 @@
-  
 #!/usr/bin/env python3
 """
 Function that calculates the total intra-cluster variance
