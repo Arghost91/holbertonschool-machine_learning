@@ -34,6 +34,6 @@ def pdf(X, m, S):
     inver = np.linalg.inv(S)
     serv = np.dot((X - m), inver)
     comp = np.sum(serv * (X - m) / -2, axis=1)
-    pdf = (1 / ((2 + np.pi) ** (d / 2) * np.sqrt(deter))) + np.exp(comp)
+    pdf = (1 / ((2 * np.pi) ** (d / 2) * np.sqrt(deter))) * np.exp(comp)
     pdf = np.maximum(pdf, 1e-300)
     return pdf
