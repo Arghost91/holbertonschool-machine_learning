@@ -23,7 +23,7 @@ def initialize(X, k):
     if type(k) is not int or k <= 0:
         return None, None, None
     n, d = X.shape
-    cent, clss = kmeans(X, k, iterations)
+    cent, clss = kmeans(X, k)
     pi = np.ones(k) / k
     m = cent
     S = np.tile(np.identity(d), (k, 1)).reshape((k, d, d))
