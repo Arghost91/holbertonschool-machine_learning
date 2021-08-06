@@ -29,7 +29,7 @@ def kmeans(X, k, iterations=1000):
         return None
     if type(k) is not int or k <= 0:
         return None
-    if iterations <= 0 or is not int:
+    if iterations <= 0 or iterations is not int:
         return None
     n, d = X.shape
     cent = np.random.uniform(np.min(X, axis=0),
