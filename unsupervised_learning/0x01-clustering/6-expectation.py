@@ -37,6 +37,6 @@ def expectation(X, pi, m, S):
     nul = np.zeros((k, n))
     for i in range(k):
         nul[i] = pdf(X, m[i], S[i]) * pi[i]
-    log = np.sum(np.log(np.sum(nul, axis=0)))
+    log_like = np.sum(np.log(np.sum(nul, axis=0)))
     g = nul / np.sum(nul, axis=0)
-    return g, log
+    return g, log_like
