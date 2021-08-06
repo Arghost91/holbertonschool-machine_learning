@@ -27,5 +27,5 @@ def variance(X, C):
     delt = X - C[:, np.newaxis]
     dist = np.sqrt((delt ** 2).sum(axis=2))
     mini = np.min(dist, axis=0)
-    var = np.sum(min ** 2)
+    var = np.sum(mini ** 2)
     return var
