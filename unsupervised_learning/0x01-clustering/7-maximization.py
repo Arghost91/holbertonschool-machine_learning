@@ -25,6 +25,10 @@ def maximization(X, g):
     n, d = X.shape
     if n != g.shape[1]:
         return None, None, None
+    clust = np.sum(g, axis=0)
+    clust = np.sum(clust)
+    if int(cluster) != X.shape[0]:
+        return None, None, None
     k = g.shape[0]
     post = np.sum(g, axis=1)
     pi = post / n
