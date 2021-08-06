@@ -32,7 +32,7 @@ def optimum_k(X, kmin=1, kmax=None, iterations=1000):
         kmax = n
     d_vars = []
     results = []
-    for i in range(kmin, kmin + 1):
+    for i in range(kmin, kmax + 1):
         C, clss = kmeans(X, i, iterations)
         results.append((C, clss))
         if i == kmin:
