@@ -37,7 +37,7 @@ def kmeans(X, k, iterations=1000):
                               size=(k, d))
     for i in range(iterations):
         cent_copy = np.ndarray.copy(cent)
-        near = X - cent_copy[:, np.newaxis]
+        near = X - cent[:, np.newaxis]
         dist = np.sqrt((near ** 2).sum(axis=2))
         clss = np.argmin(dist, axis=0)
         for j in range(k):
@@ -46,7 +46,7 @@ def kmeans(X, k, iterations=1000):
                                             np.max(X, axis=0),
                                             size=(1, d))
             else:
-                cent[j] = (X[clusters == j]).mean(axis=0)
+                cent[j] = (X[clss == j]).mean(axis=0)
         near = X - cent[:, np.newaxis]
         dist = np.sqrt((near ** 2).sum(axis=2))
         clss = np.argmin(dist, axis=0)
