@@ -17,7 +17,7 @@ def initialize(X, k):
     * You should use numpy.random.uniform exactly once
     * Returns: a numpy.ndarray of shape (k, d) containing the initialized centroids for each cluster, or None on failure
     """
-    if type(x) is not np.ndarray:
+    if type(X) is not np.ndarray:
         return None
     if type(k) is not int or k <= 0:
         return None
