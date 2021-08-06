@@ -24,8 +24,8 @@ def variance(X, C):
         return None
     if type(k) is not int or k <= 0:
         return None
-    delt = X[:, np.newaxis] - C
-    dist = np.sqrt((del ** 2).sum(axis=2))
+    delt = X - C[:, np.newaxis]
+    dist = np.sqrt((delt ** 2).sum(axis=2))
     mini = np.min(dist, axis=0)
     car = np.sum(min ** 2)
     return var
