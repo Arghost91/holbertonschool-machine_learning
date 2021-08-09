@@ -26,6 +26,6 @@ def markov_chain(P, s, t=1):
     if t <= 0:
         return None
     for i in range(t):
-        s = s * P
+        s = np.matmul(s, P)
         i += 1
     return s
