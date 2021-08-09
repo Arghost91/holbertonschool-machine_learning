@@ -25,7 +25,7 @@ def markov_chain(P, s, t=1):
         return None
     if t <= 0:
         return None
-    for i in range t:
+    for i in range(t):
         s = s * P
         i += 1
     return s
