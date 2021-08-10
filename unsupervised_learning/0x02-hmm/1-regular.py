@@ -23,4 +23,4 @@ def regular(P):
     if (P>0).all():
         evals, evecs = np.linalg.eig(P.T)
         stat = evecs / evecs.sum()
-        return stat.reshape(1, n)
+        return stat.T
