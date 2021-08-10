@@ -22,6 +22,6 @@ def regular(P):
     n = P.shape[0]
     if (P>0).all():
         evals, evecs = np.linalg.eig(P.T)
+        evecs = evecs[:, np.isclose(evals, 1)] 
         stat = evecs / evecs.sum()
-        stat = stat[np.newaxis, :]
-        return stat
+        return stat.T
