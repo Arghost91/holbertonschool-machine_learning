@@ -25,7 +25,7 @@ def forward(Observation, Emission, Transition, Initial):
     * F[i, j] is the probability of being in hidden state i at time j given the previous
     observations
     """
-    if type(observation) is not np.ndarray:
+    if type(Observation) is not np.ndarray:
         return None, None
     if type(Emission) is not np.ndarray:
         return None, None
