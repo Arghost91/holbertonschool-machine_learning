@@ -13,19 +13,28 @@ def absorbing(P):
         * n is the number of states in the markov chain
     * Returns: True if it is absorbing, or False on failure
     """
-    if type(P) is not np.ndarray or len(P.shape) != 2:
+    if type(P) is not np.ndarray:
         return False
-    if P.shape[0] != P.shape[1]:
+    if len(P.shape) != 2:
         return False
-    diag = np.diag(P)
-    ab = (diag == 1)
-    if (diag == 1).all():
+    n, n_t = P.shape
+    if n != n_t:
+        return False
+    sum_test = np.sum(P, axis=1)
+    for elem in sum_test:
+        if not np.isclose(elem, 1):
+            return False
+
+    diagonal = np.diag(P)
+    if (diagonal == 1).all():
         return True
-    for i in range(len(diag)):
-        for j in range(len(diag)):
-            if P[i, j] > 0 and ab[j]:
-                ab[i] = 1
-    ##ab2 = (ab == 1)
-    if (ab == 1).all():
+
+    absorb = (diagonal == 1)
+    for row in range(len(diagonal)):
+        for col in range(len(diagonal)):
+            if P[row, col] > 0 and absorb[col]:
+                absorb[row] = 1
+    if (absorb == 1).all():
         return True
+
     return False
