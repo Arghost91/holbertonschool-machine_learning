@@ -14,18 +14,18 @@ def absorbing(P):
     * Returns: True if it is absorbing, or False on failure
     """
     if type(P) is not np.ndarray or len(P.shape) != 2:
-        return None
+        return False
     if P.shape[0] != P.shape[1]:
-        return None
+        return False
     diag = np.diag(P)
     ab = (diag == 1)
-    if ab.all():
+    if (diag == 1).all():
         return True
     for i in range(len(diag)):
         for j in range(len(diag)):
             if P[i, j] > 0 and ab[j]:
                 ab[i] = 1
-    ab2 = (ab == 1)
-    if ab2.all():
+    ##ab2 = (ab == 1)
+    if (ab == 1).all():
         return True
     return False
