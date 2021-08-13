@@ -20,8 +20,8 @@ def regular(P):
     if P.shape[0] != P.shape[1]:
         return None
     n = P.shape[0]
-    if (P>0).all():
+    if (P > 0).all():
         evals, evecs = np.linalg.eig(P.T)
-        evecs = evecs[:, np.isclose(evals, 1)] 
+        evecs = evecs[:, np.isclose(evals, 1)]
         stat = evecs / evecs.sum()
         return stat.T
