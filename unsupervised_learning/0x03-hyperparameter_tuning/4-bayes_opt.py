@@ -46,26 +46,26 @@ class BayesianOptimization:
         self.xsi = xsi
         self.minimize = minimize
 
-        def acquisition(self):
-            """
-            Method that calculates the next best sample location
-            * Uses the Expected Improvement acquisition function
-            * Returns: X_next, EI
-                * X_next is a numpy.ndarray of shape (1,) representing the next
-                best sample point
-                * EI is a numpy.ndarray of shape (ac_samples,) containing the
-                expected improvement of each potential sample
-            """
-            mu, sigma = self.gp.predict(self.X_s)
-            if self.minimize is True:
-                mu_sample_opt = np.min(self.gp.Y)
-                imp = mu_sample_opt - mu - self.xsi
-            else:
-                mu_sample_opt = np.max(self.gp.Y)
-                imp = mu - mu_sample_opt - self.xsi
-            with np.errstate(divide='warn'):
-                Z = imp / sigma
-                ei = imp * norm.cdf(Z) + sigma * norm.pdf(Z)
-                ei[sigma == 0.0] = 0.0
-            X_next = self.X_s[np.argmax(ei)]
-            return X_next, ei
+    def acquisition(self):
+        """
+        Method that calculates the next best sample location
+        * Uses the Expected Improvement acquisition function
+        * Returns: X_next, EI
+            * X_next is a numpy.ndarray of shape (1,) representing the next
+            best sample point
+            * EI is a numpy.ndarray of shape (ac_samples,) containing the
+            expected improvement of each potential sample
+        """
+        mu, sigma = self.gp.predict(self.X_s)
+        if self.minimize is True:
+            mu_sample_opt = np.min(self.gp.Y)
+            imp = mu_sample_opt - mu - self.xsi
+        else:
+            mu_sample_opt = np.max(self.gp.Y)
+            imp = mu - mu_sample_opt - self.xsi
+        with np.errstate(divide='warn'):
+            Z = imp / sigma
+            ei = imp * norm.cdf(Z) + sigma * norm.pdf(Z)
+            ei[sigma == 0.0] = 0.0
+        X_next = self.X_s[np.argmax(ei)]
+        return X_next, ei
