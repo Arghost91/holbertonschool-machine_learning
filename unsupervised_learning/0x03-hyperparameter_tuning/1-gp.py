@@ -51,8 +51,8 @@ class GaussianProcess():
             variance for each point in X_s, respectively
         """
         K = self.kernel(self.X, self.X)
-        K_s = self.kernel(self.X, X_s, self.l, self.sigma_f)
-        K_ss = self.kernel(X_s, X_s, self.l, self.sigma_f)
+        K_s = self.kernel(self.X, X_s)
+        K_ss = self.kernel(X_s, X_s)
         K_inv = np.linalg.inv(K)
         mu = K_s.T.dot(K_inv).dot(self.Y)
         cov = K_ss - K_s.T.dot(K_inv).dot(K_s)
