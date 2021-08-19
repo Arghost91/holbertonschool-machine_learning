@@ -93,4 +93,5 @@ class BayesianOptimization:
             X_next = np.argmax(self.gp.Y)
         X_opt = self.gp.X[X_next]
         Y_opt = self.gp.Y[X_next]
+        self.gp.X = self.gp.X[:-1]
         return X_opt, Y_opt
