@@ -26,10 +26,10 @@ class GaussianProcess():
         self.sigma_f = sigma_f
         self.K = self.kernel(X_init, X_init)
 
-
     def kernel(self, X1, X2):
         """
-        Method that calculates the covariance kernel matrix between two matrices
+        Method that calculates the covariance kernel matrix between
+        two matrices
         * X1 is a numpy.ndarray of shape (m, 1)
         * X2 is a numpy.ndarray of shape (n, 1)
         * the kernel should use the Radial Basis Function (RBF)
