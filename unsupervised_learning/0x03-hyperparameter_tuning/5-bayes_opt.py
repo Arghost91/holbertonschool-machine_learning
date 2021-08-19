@@ -82,8 +82,8 @@ class BayesianOptimization:
             optimal function value
         """
         for i in range(iterations):
-            x_next, ei = self.acquisition()
-            y_next = self.f(x_next)
+            X_next, ei = self.acquisition()
+            Y_next = self.f(x_next)
             if X_next in self.gp.X:
                 break
             self.gp.update(X_next, Y_next)
