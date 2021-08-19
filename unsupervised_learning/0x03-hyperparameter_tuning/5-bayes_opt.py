@@ -83,7 +83,7 @@ class BayesianOptimization:
         """
         for i in range(iterations):
             X_next, ei = self.acquisition()
-            Y_next = self.f(x_next)
+            Y_next = self.f(X_next)
             if X_next in self.gp.X:
                 break
             self.gp.update(X_next, Y_next)
