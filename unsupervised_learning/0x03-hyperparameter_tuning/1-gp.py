@@ -50,11 +50,13 @@ class GaussianProcess():
             * sigma is a numpy.ndarray of shape (s,) containing the
             variance for each point in X_s, respectively
         """
+        s = X_s.shape[0]
         K = self.kernel(self.X, self.X)
         K_s = self.kernel(self.X, X_s)
         K_ss = self.kernel(X_s, X_s)
         K_inv = np.linalg.inv(K)
         mu = K_s.T.dot(K_inv).dot(self.Y)
+        mu = mu.reshape(s)
         cov = K_ss - K_s.T.dot(K_inv).dot(K_s)
         var = np.diagonal(cov)
         return mu, var
