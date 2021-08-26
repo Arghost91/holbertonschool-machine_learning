@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+eeeee#!/usr/bin/env python3
 """
 Function that creates an autoencoder
 """
@@ -25,7 +25,7 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
     num = len(hidden_layers)
     input_img = keras.Input(shape=(input_dims,))
     encoded = keras.layers.Dense(hidden_layers[0],
-                                activation='relu')(input_img)
+                                 activation='relu')(input_img)
     for i in range(1, num):
         encoded = keras.layers.Dense(hidden_layers[i],
                                      activation='relu')(encoded)
@@ -34,9 +34,10 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
 
     input_dec = keras.Input(shape=(latent_dims,))
     decoded = keras.layers.Dense(hidden_layers[-1],
-                                activation='relu')(input_dec)
+                                 activation='relu')(input_dec)
     for j in range(num - 2, -1, -1):
-        decoded = keras.layers.Dense(hidden_layers[j], activation='relu')(decoded)
+        decoded = keras.layers.Dense(hidden_layers[j],
+                                     activation='relu')(decoded)
     r = keras.layers.Dense(input_dims, activation='sigmoid')(decoded)
     decoder = keras.Model(inputs=input_dec, outputs=r)
 
