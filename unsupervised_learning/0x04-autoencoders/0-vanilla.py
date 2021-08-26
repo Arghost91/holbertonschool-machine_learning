@@ -37,7 +37,7 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
                                 activation='relu')(input_dec)
     for j in range(num - 2, -1, -1):
         decoded = keras.layers.Dense(hidden_layers[j], activation='relu')(decoded)
-    r = keras.layers.Dense(input_dims, activation='sigmoid')(dec)
+    r = keras.layers.Dense(input_dims, activation='sigmoid')(decoded)
     decoder = keras.Model(inputs=input_dec, outputs=r)
 
     output = decoder(encoder(input_img))
