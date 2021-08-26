@@ -46,6 +46,6 @@ def autoencoder(input_dims, filters, latent_dims):
     decoded = keras.layers.Conv2D(1, (3, 3), activation='sigmoid', padding='same')(y)
     decoder = keras.Model(inputs=input_img, outputs=decoded)
 
-    auto = Model(input_img, decoded)
+    auto = keras.Model(input_img, decoded)
     auto.compile(optimizer='adam', loss='binary_crossentropy')
     return encoder, decoder, auto
