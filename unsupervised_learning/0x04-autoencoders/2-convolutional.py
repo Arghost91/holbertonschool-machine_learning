@@ -29,7 +29,7 @@ def autoencoder(input_dims, filters, latent_dims):
     """
     input_img = keras.Input(shape=(input_dims))
 
-    x = keras.layers.Conv2D(16, (3, 3), activation='relu', padding='same')(input_img)
+    x = keras.layers.Conv2D(12, (3, 3), activation='relu', padding='same')(input_img)
     x = keras.layers.MaxPool2D((2, 2), padding='same')(x)
     x = keras.layers.Conv2D(8, (3, 3), activation='relu', padding='same')(x)
     x = keras.layers.MaxPool2D((2, 2), padding='same')(x)
@@ -39,9 +39,9 @@ def autoencoder(input_dims, filters, latent_dims):
 
     y = keras.layers.Conv2D(8, (3, 3), activation='relu', padding='same')(encoded)
     y = keras.layers.UpSampling2D((2, 2))(y)
-    y = keras.layers.Conv2D(8, (3, 3), activation='relu', padding='valid')(y)
+    y = keras.layers.Conv2D(8, (3, 3), activation='relu')(y)
     y = keras.layers.UpSampling2D((2, 2))(y)
-    y = keras.layers.Conv2D(16, (3, 3), activation='relu', padding='valid')(y)
+    y = keras.layers.Conv2D(12, (3, 3), activation='relu')(y)
     y = keras.layers.UpSampling2D((2, 2))(y)
     decoded = keras.layers.Conv2D(1, (3, 3), activation='sigmoid', padding='same')(y)
     decoder = keras.Model(inputs=input_img, outputs=decoded)
