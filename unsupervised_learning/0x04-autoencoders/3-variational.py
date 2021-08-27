@@ -20,7 +20,7 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
     * auto is the full autoencoder model
     * The autoencoder model should be compiled using adam optimization and
     binary cross-entropy loss
-    * All layers should use a relu activation except for the mean and log variance
-    layers in the encoder, which should use None, and the last layer in the decoder,
-    which should use sigmoid
+    * All layers should use a relu activation except for the mean and log
+    variance layers in the encoder, which should use None, and the last layer
+    in the decoder, which should use sigmoid
     """
