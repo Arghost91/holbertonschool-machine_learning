@@ -46,7 +46,7 @@ def autoencoder(input_dims, filters, latent_dims):
     dec = keras.layers.Conv2D(filters[0], (3, 3), activation='relu', padding='valid')(y)
     dec = keras.layers.UpSampling2D((2, 2))(dec)
     dec = keras.layers.Conv2D(input_dims[-1], (3, 3), activation='sigmoid', padding='same')(dec)
-    decoder = keras.Model(inputs=input_img, outputs=dec)
+    decoder = keras.Model(in_dec, outputs=dec)
 
     output = decoder(encoder(input_img))
     auto = keras.Model(input_img, output)
