@@ -31,14 +31,14 @@ def autoencoder(input_dims, filters, latent_dims):
     n = len(filters)
     x = keras.layers.Conv2D(filters[0], (3, 3), activation='relu', padding='same')(input_img)
     x = keras.layers.MaxPool2D((2, 2), padding='same')(x)
-    for i in range(1, n)
+    for i in range(1, n):
         x = keras.layers.Conv2D(filters[i], (3, 3), activation='relu', padding='same')(x)
         x = keras.layers.MaxPool2D((2, 2), padding='same')(x)
     encoder = keras.Model(inputs=input_img, outputs=x)
 
     y = keras.layers.Conv2D(filters[-1], (3, 3), activation='relu', padding='same')(encoded)
     y = keras.layers.UpSampling2D((2, 2))(y)
-    for j in range(n - 2, 0, -1)
+    for j in range(n - 2, 0, -1):
         y = keras.layers.Conv2D(filters[j], (3, 3), activation='relu')(y)
         y = keras.layers.UpSampling2D((2, 2))(y)
     dec = keras.layers.Conv2D(filters[0], (3, 3), activation='relu', padding='valid')(y)
