@@ -20,8 +20,8 @@ def autoencoder(input_dims, filters, latent_dims):
     padding and relu activation, followed by max pooling of size (2, 2)
     * Each convolution in the decoder, except for the last two, should use a
     filter
-    size of (3, 3) with same padding and relu activation, followed by upsampling
-    of size (2, 2)
+    size of (3, 3) with same padding and relu activation, followed by
+    upsampling of size (2, 2)
         * The second to last convolution should instead use valid padding
         * The last convolution should have the same number of filters as the
         number
@@ -30,8 +30,8 @@ def autoencoder(input_dims, filters, latent_dims):
         * encoder is the encoder model
         * decoder is the decoder model
         * auto is the full autoencoder model
-    * The autoencoder model should be compiled using adam optimization and binary
-    cross-entropy loss
+    * The autoencoder model should be compiled using adam optimization and
+    binary cross-entropy loss
     """
     input_img = keras.Input(shape=(input_dims))
     n = len(filters)
