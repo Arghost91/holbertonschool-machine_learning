@@ -35,5 +35,5 @@ class BidirectionalCell:
         * Returns: h_next, the next hidden state
         """
         x = np.concatenate((h_prev, x_t), axis=1)
-        h_next = np.tanh(np.matmul(x, self.whf) + self.bhf)
+        h_next = np.tanh(np.matmul(x, self.Whf) + self.bhf)
         return h_next
