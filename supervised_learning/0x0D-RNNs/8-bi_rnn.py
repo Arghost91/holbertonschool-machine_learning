@@ -21,7 +21,7 @@ def bi_rnn(bi_cell, X, h_0, h_t):
     """
     t, m, i = X.shape
     h = h_t.shape[1]
-    h_pev, h_ant = np.zeros((t, m, h))
+    h_pev, h_ant = np.zeros((t, m, h)), np.zeros((t, m, h))
     for i in range(t):
         x_pev = X[i]
         x_ant = X[-(i + 1)]
