@@ -35,10 +35,13 @@ class LSTMCell:
 
     def forward(self, h_prev, c_prev, x_t):
         """
-        * x_t is a numpy.ndarray of shape (m, i) that contains the data input for the cell
+        * x_t is a numpy.ndarray of shape (m, i) that contains the data input
+        for the cell
             * m is the batche size for the data
-        * h_prev is a numpy.ndarray of shape (m, h) containing the previous hidden state
-        * c_prev is a numpy.ndarray of shape (m, h) containing the previous cell state
+        * h_prev is a numpy.ndarray of shape (m, h) containing the previous
+        hidden state
+        * c_prev is a numpy.ndarray of shape (m, h) containing the previous
+        cell state
         * The output of the cell should use a softmax activation function
         * Returns: h_next, c_next, y
             * h_next is the next hidden state
