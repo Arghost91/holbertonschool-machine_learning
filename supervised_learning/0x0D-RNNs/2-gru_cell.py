@@ -51,6 +51,6 @@ class GRUCell:
         x = np.concatenate((r * h_prev, x_t), axis=1)
         h = np.tanh(np.matmul(x, self.Wh) + self.bh)
         h_next = z * h + (1 - z) * h_prev
-        y = np.dot(h_next, self.Wy) + self.by
+        y = np.matmul(h_next, self.Wy) + self.by
         y = (np.exp(y) / np.sum(np.exp(y), axis=1, keepdims=True))
         return h_next, y
