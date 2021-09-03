@@ -53,4 +53,4 @@ class GRUCell:
         h = z * h_next + (1 - z) * h_prev
         y = np.matmul(h, self.Wy) + self.by
         y = (np.exp(y) / np.sum(np.exp(y), axis=1, keepdims=True))
-        return h_next, y
+        return h, y
