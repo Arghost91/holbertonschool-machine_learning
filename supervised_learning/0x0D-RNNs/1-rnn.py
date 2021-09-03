@@ -26,7 +26,7 @@ def rnn(rnn_cell, X, h_0):
     for i in range(t):
         h_prev = H[i]
         x_t = X[i]
-        h, y = rnn.cell.forward(h_prev, x_t)
+        h, y = rnn_cell.forward(h_prev, x_t)
         H[i + 1] = h
         Y[i] = y
     return H, Y
