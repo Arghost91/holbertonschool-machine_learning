@@ -53,9 +53,9 @@ class LSTMCell:
         c = np.matmul(x, self.Wc) + self.bc
         c = np.tanh(c)
         c_next = (u * c) + (f * c_prev)
-        h_next = o * np.tanh(c_next)
         o = np.matmul(x, self.Wo) + self.bo
-        u = 1 / (1 + np.exp(-o))
+        o = 1 / (1 + np.exp(-o))
+        h_next = o * np.tanh(c_next)
         y = np.matmul(h_next, self.Wy) + self.by
         y = np.exp(y) / (np.sum(np.exp(y), axis=1, keepdims=True))
         return h_next, c_next, y
