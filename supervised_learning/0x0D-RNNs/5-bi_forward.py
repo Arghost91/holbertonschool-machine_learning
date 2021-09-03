@@ -29,9 +29,11 @@ class BidirectionalCell:
 
     def forward(self, h_prev, x_t):
         """
-        * x_t is a numpy.ndarray of shape (m, i) that contains the data input for the cell
+        * x_t is a numpy.ndarray of shape (m, i) that contains the data input
+        for the cell
             * m is the batch size for the data
-        * h_prev is a numpy.ndarray of shape (m, h) containing the previous hidden state
+        * h_prev is a numpy.ndarray of shape (m, h) containing the previous
+        hidden state
         * Returns: h_next, the next hidden state
         """
         x = np.concatenate((h_prev, x_t), axis=1)
