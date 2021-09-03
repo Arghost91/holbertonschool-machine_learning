@@ -30,5 +30,5 @@ def bi_rnn(bi_cell, X, h_0, h_t):
         h_pev[i] = H_p
         h_ant[-(i + 1)] = H_a
     H = np.concatenate((h_pev, h_ant), axis=1)
-    Y = bi_cell.output[H]
+    Y = bi_cell.output(H)
     return H, Y
