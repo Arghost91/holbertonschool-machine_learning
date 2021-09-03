@@ -44,7 +44,7 @@ class RNNCell:
         * y is the output of the cell
         """
         x = np.concatenate((h_prev, x_t), axis=1)
-        h_next = np.tanh(np.matmul(self.Wh, X) + self.bh)
+        h_next = np.tanh(np.matmul(self.Wh, x) + self.bh)
         y = np.matmul(self.Wy, h_next) + self.by
         y = np.exp(y) / (np.sum(np.exp(y), axis=1, keepdims=True))
         return h_next, y
