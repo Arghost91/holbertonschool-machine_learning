@@ -18,7 +18,7 @@ def ngram_bleu(references, sentence, n):
     ref_len = []
     words = {}
     for transl in references:
-        ref_len.append(len(translation))
+        ref_len.append(len(transl))
         for word in transl:
             if word in sentence and word not in word.keys():
                     words[word] = 1
