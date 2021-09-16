@@ -29,7 +29,7 @@ def ngram_bleu(references, sentence, n):
     if senten_lenght > best_match:
         BLEU = 1
     else:
-        BLEU = np.exp(1 - float(best_match) / float(sentence_length))
-    BLEU_score = BLEU * np.exp(np.log(total / sentence_length))
+        BLEU = np.exp(1 - float(best_match) / float(senten_lenght))
+    BLEU_score = BLEU * np.exp(np.log(total / senten_lenght))
 
     return BLEU_score
