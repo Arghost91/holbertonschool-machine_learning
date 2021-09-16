@@ -23,7 +23,7 @@ def ngram_bleu(references, sentence, n):
                     words[word] = 1
     s = len(sentence)
     total = sum(words.values())
-    index = np.argmin([abs(len(i) - senten_length) for i in references])
+    index = np.argmin([abs(len(i) - senten_lenght) for i in references])
     best_match = len(references[index])
 
     if sentence_length > best_match:
