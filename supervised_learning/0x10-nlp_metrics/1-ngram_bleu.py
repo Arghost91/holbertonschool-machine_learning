@@ -15,15 +15,16 @@ def ngram_bleu(references, sentence, n):
     """
     senten_lenght = set(sentence)
     senten_length = list(senten_lenght)
+    ref_len = []
     words = {}
     for transl in references:
+        references_length.append(len(translation))
         for word in transl:
-            if word in sentence:
-                if word not in word.keys():
+            if word in sentence and word not in word.keys():
                     words[word] = 1
     s = len(sentence)
-    total = sum(words.values()) / s
-    index = np.argmin([abs(len(i) - sentence_length) for i in references])
+    total = sum(words.values())
+    index = np.argmin([abs(len(i) - senten_length) for i in references])
     best_match = len(references[index])
 
     if sentence_length > best_match:
