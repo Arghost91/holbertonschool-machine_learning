@@ -13,7 +13,7 @@ def ngram_bleu(references, sentence, n):
     * n is the size of the n-gram to use for evaluation
     * Returns: the n-gram BLEU score
     """
-    senten_lenght = let(sentence)
+    senten_lenght = len(sentence)
     ref_len = []
     words = {}
     for transl in references:
