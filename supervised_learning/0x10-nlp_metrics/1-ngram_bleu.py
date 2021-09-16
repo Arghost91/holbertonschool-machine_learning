@@ -13,14 +13,13 @@ def ngram_bleu(references, sentence, n):
     * n is the size of the n-gram to use for evaluation
     * Returns: the n-gram BLEU score
     """
-    senten_lenght = set(sentence)
-    senten_length = list(senten_lenght)
+    senten_lenght = let(sentence)
     ref_len = []
     words = {}
     for transl in references:
         ref_len.append(len(transl))
         for word in transl:
-            if word in sentence and word not in words   .keys():
+            if word in sentence and word not in words.keys():
                     words[word] = 1
     s = len(sentence)
     total = sum(words.values())
