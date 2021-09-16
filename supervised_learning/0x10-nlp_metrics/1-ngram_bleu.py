@@ -20,7 +20,7 @@ def ngram_bleu(references, sentence, n):
         ref_len.append(len(transl))
         for word in transl:
             if word in sentence and word not in words.keys():
-                    words[word] = 1
+                words[word] = 1
     s = len(sentence)
     total = sum(words.values())
     index = np.argmin([abs(len(i) - senten_lenght) for i in references])
