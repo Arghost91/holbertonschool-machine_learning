@@ -5,7 +5,7 @@ Function that calculates the n-gram BLEU score for a sentence
 import numpy as np
 
 
-def ngram_bleu(references, sentence, n):
+def uni_bleu(references, sentence):
     """
     * references is a list of reference translations
         * each reference translation is a list of the words in the translation
