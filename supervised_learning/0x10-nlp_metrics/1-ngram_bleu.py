@@ -23,13 +23,9 @@ def ngram_bleu(references, sentence, n):
                     words[word] = 1
     s = len(sentence)
     total = sum(words.values()) / s
+    index = np.argmin([abs(len(i) - sentence_length) for i in references])
+    best_match = len(references[index])
 
-    for transl in references:
-        difer = abs(len(references) - s)
-        best_match.append((difer, len(references)))
-    sort_tuple sorted(best_match, key=(lambda x: x[0]))
-    best = sort_rup[0][1]
-    
     if sentence_length > best_match:
         BLEU = 1
     else:
