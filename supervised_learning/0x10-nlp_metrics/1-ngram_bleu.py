@@ -26,7 +26,7 @@ def ngram_bleu(references, sentence, n):
     index = np.argmin([abs(len(i) - senten_lenght) for i in references])
     best_match = len(references[index])
 
-    if senten_length > best_match:
+    if senten_lenght > best_match:
         BLEU = 1
     else:
         BLEU = np.exp(1 - float(best_match) / float(sentence_length))
