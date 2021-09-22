@@ -52,7 +52,7 @@ class RNNEncoder:
         """
         * x is a tensor of shape (batch, input_seq_len) containing the input to
         the encoder layer as word indices within the vocabulary
-        * initial is a tensor of shape (batch, units) containing the initia
+        * initial is a tensor of shape (batch, units) containing the initial
         hidden state
         * Returns: outputs, hidden
             * outputs is a tensor of shape (batch, input_seq_len, units)
@@ -60,6 +60,7 @@ class RNNEncoder:
             * hidden is a tensor of shape (batch, units) containing the last
             hidden state of the encoder
         """
-        outputs, hidden = self.gru(self.embedding(x),
+        inputs = self.embedding(x)
+        outputs, hidden = self.gru(inputs,
                                    initial_state=initial)
         return outputs, hidden
