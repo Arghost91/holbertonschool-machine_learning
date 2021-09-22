@@ -5,7 +5,7 @@ Creates the class RNNEncoder
 import tensorflow as tf
 
 
-class RNNEncoder:
+class RNNEncoder(tf.keras.layers.Layer):
     """
     Class that inherits from tensorflow.keras.layers.Layer to encode for
     machine translation
@@ -45,7 +45,8 @@ class RNNEncoder:
         hidden states
         """
         initializer = tf.keras.initializers.Zeros()
-        values = initializer(shape=(self.batch, self.units))
+        values = initializer(shape=(self.batch,
+                                    self.units))
         return values
 
     def call(self, x, initial):
@@ -60,6 +61,6 @@ class RNNEncoder:
             * hidden is a tensor of shape (batch, units) containing the last
             hidden state of the encoder
         """
-        inputs = self.embedding(x)
-        outputs, hidden = self.gru(inputs, initial_state=initial)
+        outputs, hidden = self.gru(self.embedding(x),
+                                   initial_state=initial)
         return outputs, hidden
