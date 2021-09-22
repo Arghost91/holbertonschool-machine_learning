@@ -29,10 +29,10 @@ class RNNEncoder:
                 * Recurrent weights should be initialized with glorot_uniform
         """
         super(RNNEncoder, self).__init__()
+        self.batch = batch
+        self.units = units
         self.embedding = tf.keras.layers.Embedding(vocab,
                                                    embedding)
-        self.units = units
-        self.batch = batch
         self.gru = tf.keras.layers.GRU(units,
                                        recurrent_initializer='glorot_uniform',
                                        return_sequences=True,
