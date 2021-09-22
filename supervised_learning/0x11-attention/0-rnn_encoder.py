@@ -61,6 +61,5 @@ class RNNEncoder:
             hidden state of the encoder
         """
         inputs = self.embedding(x)
-        outputs, hidden = self.gru(inputs,
-                                   initial_state=initial)
+        outputs, hidden = self.gru(inputs, initial_state=initial)
         return outputs, hidden
