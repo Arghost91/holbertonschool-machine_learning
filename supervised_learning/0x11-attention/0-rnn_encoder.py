@@ -56,11 +56,11 @@ class RNNEncoder:
         * initial is a tensor of shape (batch, units) containing the initia
         hidden state
         * Returns: outputs, hidden
-            * outputs is a tensor of shape (batch, input_seq_len, units)containing
-            the outputs of the encoder
-            * hidden is a tensor of shape (batch, units) containing the last hidden
-            state of the encoder
+            * outputs is a tensor of shape (batch, input_seq_len, units)
+            containing the outputs of the encoder
+            * hidden is a tensor of shape (batch, units) containing the last
+            hidden state of the encoder
         """
         outputs, hidden = self.gru(self.embedding(x),
-                                  initial_state=initial)
+                                   initial_state=initial)
         return outputs, hidden
