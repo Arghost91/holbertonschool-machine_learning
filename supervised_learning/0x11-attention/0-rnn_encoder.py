@@ -60,7 +60,6 @@ class RNNEncoder:
             * hidden is a tensor of shape (batch, units) containing the last
             hidden state of the encoder
         """
-        inputs = self.embadding(x)
-        outputs, hidden = self.gru(inputs,
+        outputs, hidden = self.gru(self.embedding(x),
                                    initial_state=initial)
         return outputs, hidden
