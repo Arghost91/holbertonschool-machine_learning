@@ -5,7 +5,7 @@ Creates the class SelfAttention
 import tensorflow as tf
 
 
-class SelfAttention(tensorflow.keras.layers.Layer):
+class SelfAttention(tf.keras.layers.Layer):
     """
     Class that inherits from tensorflow.keras.layers.Layer to calculate
     the attention for machine translation
