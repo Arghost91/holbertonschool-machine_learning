@@ -8,8 +8,7 @@ SelfAttention = __import__('1-self_attention').SelfAttention
 
 class RNNDecoder(tf.keras.layers.Layer):
     """
-    Class that inherits from tensorflow.keras.layers.Layer
-    to decode for machine translation
+    Class to decode for machine translation
     """
     def __init__(self, vocab, embedding, units, batch):
         """
