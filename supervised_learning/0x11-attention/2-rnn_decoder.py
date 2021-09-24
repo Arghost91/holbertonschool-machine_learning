@@ -3,6 +3,7 @@
 Creates the class SelfAttention
 """
 import tensorflow as tf
+SelfAttention = __import__('1-self_attention').
 
 
 class RNNDecoder(tf.keras.layers.Layer):
