@@ -28,7 +28,7 @@ class RNNDecoder(tf.keras.layers.Layer):
                 * Recurrent weights should be initialized with glorot_uniform
             * F - a Dense layer with vocab units
         """
-        super(RNNDecoder, self).__init__()
+        super().__init__()
         self.batch = batch
         self.units = units
         self.embedding = tf.keras.layers.Embedding(vocab,
