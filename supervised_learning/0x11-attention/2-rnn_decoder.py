@@ -18,14 +18,6 @@ class RNNDecoder(tf.keras.layers.Layer):
         * units is an integer representing the number of hidden units in
         the RNN cell
         * batch is an integer representing the batch size
-        * Sets the following public instance attributes:
-            * embedding - a keras Embedding layer that converts words from
-            the vocabulary into an embedding vector
-            * gru - a keras GRU layer with units units
-                * Should return both the full sequence of outputs as well
-                as the last hidden state
-                * Recurrent weights should be initialized with glorot_uniform
-            * F - a Dense layer with vocab units
         """
         super().__init__()
         self.batch = batch
@@ -46,14 +38,8 @@ class RNNDecoder(tf.keras.layers.Layer):
         decoder hidden state
         * hidden_states is a tensor of shape (batch, input_seq_len, units)
         containing the outputs of the encoder
-        * You should use SelfAttention = __import__('1-self_attention').
-        SelfAttention
         * You should concatenate the context vector with x in that order
         * Returns: y, s
-            * y is a tensor of shape (batch, vocab) containing the output word
-            as a one hot vector in the target vocabulary
-            * s is a tensor of shape (batch, units) containing the new decoder
-            hidden state
         """
         units = s_prev.shape[1]
         attention = SelfAttention(units)
