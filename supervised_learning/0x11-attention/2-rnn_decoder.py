@@ -5,7 +5,7 @@ Creates the class SelfAttention
 import tensorflow as tf
 
 
-Class RNNDecoder(tf.keras.layers.Layer):
+class RNNDecoder(tf.keras.layers.Layer):
     """
     Class that inherits from tensorflow.keras.layers.Layer
     to decode for machine translation
