@@ -15,5 +15,5 @@ def from_numpy(array):
     * Returns: the newly created pd.DataFrame
     """
     alphabet = list(string.ascii_uppercase)
-    df = pd.DataFrame(array, columns=alphabet)
+    df = pd.DataFrame(index=array, columns=alphabet)
     return df
