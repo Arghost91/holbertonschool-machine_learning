@@ -14,6 +14,8 @@ def from_numpy(array):
     and capitalized. There will not be more than 26 columns.
     * Returns: the newly created pd.DataFrame
     """
+    lenght = len(array[0])
     alphabet = list(string.ascii_uppercase)
+    alphabet = alphabet[0: lenght]
     df = pd.DataFrame(data=array, columns=alphabet)
     return df
