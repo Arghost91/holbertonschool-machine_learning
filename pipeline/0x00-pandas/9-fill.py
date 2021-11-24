@@ -7,7 +7,7 @@ df = from_file('coinbaseUSD_1-min_data_2014-12-01_to_2019-01-09.csv', ',')
 
 df.drop('Weighted_Price', inplace=True, axis=1)
 
-df[Close].fillna(method='ffill', inplace=True)
+df['Close'].fillna(method='ffill', inplace=True)
 df = df.fillna({'High': df['Close'].shift(periods=1, fill_value=0),
                 'Low': df['Close'].shift(periods=1, fill_value=0),
                 'Open': df['Close'].shift(periods=1, fill_value=0)})
