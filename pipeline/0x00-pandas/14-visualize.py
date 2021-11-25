@@ -19,7 +19,7 @@ df['Volume_(BTC)'].fillna(value=0, inplace=True)
 df['Volume_(Currency)'].fillna(value=0, inplace=True)
 df = df[(df.index >= '2017-01-01')]
 df = df.resample('D').agg({'Open': 'first', 'High': 'max', 'Low': 'min',
-                          'Close': 'last', Volume_(BTC)': 'sum',
+                          'Close': 'last', 'Volume_(BTC)': 'sum',
                           'Volume_(Currency)': 'sum'})
 df = df.drop(['Weighted_Price'], axis=1)
 
