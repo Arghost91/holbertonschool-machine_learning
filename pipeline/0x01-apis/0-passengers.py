@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Method that returns the list of ships that can hold a given number of passengers
+Method that returns the list of ships that can
+hold a given number of passengers
 """
 import requests
 
