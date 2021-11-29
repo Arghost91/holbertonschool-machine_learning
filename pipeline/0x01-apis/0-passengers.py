@@ -22,5 +22,6 @@ def availableShips(passengerCount):
                 continue
             if int(passengers) >= passengerCount:
                 ships.append(ship["name"])
-        url = json_result["next"]
+        next = r.json()["next"]
+        r = request.get(next)
     return ships
