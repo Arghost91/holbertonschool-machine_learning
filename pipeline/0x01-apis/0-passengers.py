@@ -17,7 +17,7 @@ def availableShips(passengerCount):
     while(r.status_code == 200):
         json_result = r.json()["results"]
         for ship in json_result:
-            passen = ship["passen"].replace(',', '')
+            passengers = ship['passengers'].replace(',', '')
             if int(passen) >= passengerCount:
                 ships.append(ship["name"])
             elif passen == 'unknown' or passen == 'n/a':
