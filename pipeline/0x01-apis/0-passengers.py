@@ -18,7 +18,7 @@ def availableShips(passengerCount):
         json_result = r.json()["results"]
         for ship in json_result:
             passengers = ship['passengers'].replace(',', '')
-            if passengers == 'unknown' or passen == 'n/a':
+            if passengers == 'unknown' or passengers == 'n/a':
                 continue
             if int(passengers) >= passengerCount:
                 ships.append(ship["name"])
