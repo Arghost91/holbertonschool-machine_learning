@@ -12,7 +12,7 @@ def availableShips(passengerCount):
     * If no ship available, return an empty list.
     """
     url = "https://swapi-api.hbtn.io/api/starships/"
-    r = requests.get('url')
+    r = requests.get(url)
     ships = []
     while(r.status_code == 200):
         json_result = r.json()["results"]
