@@ -22,5 +22,7 @@ def sentientPlanets():
                     url_plan = specie["homeworld"]
                     planets.append(requests.get(url_plan).json()["name"])
         next = r.json()["next"]
+        if(next is None):
+            break
         r = requests.get(next)
     return planets
