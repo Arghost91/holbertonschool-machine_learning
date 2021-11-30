@@ -12,7 +12,7 @@ if __name__ == '__main__':
     r_req = r.status_code
     if r_req == 200:
         print(r.json()["location"])
-    elif r_req == 403:
+    if r_req == 403:
         ratelimit = int(r.headers["X-Ratelimit-Reset"])
         time = int(time.time())
         reset = (ratelimit - time) / 60
