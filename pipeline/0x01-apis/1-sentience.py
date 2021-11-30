@@ -20,8 +20,7 @@ def sentientPlanets():
             if specie["designation"] == "sentient" or specie["classification"]:
                 if specie["homeworld"] is not None:
                     url_plan = specie["homeworld"]
-                    planets.append(request.get(url_plan).json()
-                                   ["name"])
+                    planets.append(request.get(url_plan).json()["name"])
         next = r.json()["next"]
         if(next is None):
             break
