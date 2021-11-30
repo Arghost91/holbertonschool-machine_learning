@@ -1,21 +1,28 @@
 #!/usr/bin/env python3
-"""Return a list of ships"""
-
-
+"""
+Method that returns the list of names of the
+home planets of all sentient species.
+"""
 import requests
 
 
 def sentientPlanets():
-    """Return a list of ships"""
+    """
+    * Prototype: def sentientPlanets():
+    * Don’t forget the pagination
+    """
+    url = "https://swapi-api.hbtn.io/api/species/"
+    r = requests.get(url)
     planets = []
-    url = 'https://swapi-api.hbtn.io/api/species'
-    while url is not None:
-        data = requests.get(url).json()
-        for species in data['results']:
-            if ((species['designation'] == 'sentient'
-                 or species['designation'] == 'reptilian')):
-                if species['homeworld'] is not None:
-                    hw = requests.get(species['homeworld']).json()
-                    planets.append(hw['name'])
-        url = data['next']
+    while(r.status_code == 200):
+        json_result = r.json()["results"]
+        for specie in json_result:
+            if specie["designation"] == "sentient" or specie["classification"] == "reptilian":
+                if specie["homeworld"] is not None:
+                    url_plan = specie["homeworld"]
+                    planets.append(requests.get(url_plan).json()["name"])
+        next = r.json()["next"]
+        if(next is None):
+            break
+        r = requests.get(next)
     return planets
