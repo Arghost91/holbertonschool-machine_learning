@@ -10,7 +10,8 @@ if __name__ == '__main__':
     r_get = r.json()
     for i in r_get:
         dates = i["date_unix"]
-    next = r_get[dates.index(min(dates))]
+    index = dates.index(min(dates))
+    next = r_get[index]
     name = next["name"]
     date_local = next["date_local"]
     rocket = next["rocket"]
