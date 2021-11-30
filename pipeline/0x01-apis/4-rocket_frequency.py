@@ -9,7 +9,7 @@ if __name__ == '__main__':
     r = requests.get("https://api.spacexdata.com/v4/launches/")
     rockets = {}
     r_get = r.json()
-    for launch in launches:
+    for launch in r_get:
         rocket = launch["rocket"]
         rocket_url = "https://api.spacexdata.com/v4/rockets/" + rocket
         r_rocket = requests.get(rocket_url)
