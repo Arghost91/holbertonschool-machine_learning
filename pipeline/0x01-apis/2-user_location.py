@@ -17,5 +17,5 @@ if __name__ == '__main__':
         time = int(time.time())
         reset = (ratelimit - time) / 60
         print("Reset in {} min".format(reset))
-    else:
+    if r_req == 404:
         print("Not Found")
