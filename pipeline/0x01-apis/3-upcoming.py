@@ -16,13 +16,13 @@ if __name__ == '__main__':
     date_local = next_la["date_local"]
 
     rocket = next_la["rocket"]
-    rocket_url = "https://api.spacexdata.com/v4/rockets" + rocket
+    rocket_url = "https://api.spacexdata.com/v4/rockets/" + rocket
     r_rocket = requests.get(rocket_url)
     r_rocket_get = r_rocket.json()
     rocket_name = r_rocket_get["name"]
 
     launchpad = next_la["launchpad"]
-    launchpad_url = "https://api.spacexdata.com/v4/launchpads" + launchpad
+    launchpad_url = "https://api.spacexdata.com/v4/launchpads/" + launchpad
     r_launchpad = requests.get(launchpad_url)
     r_launchpad_get = r_launchpad.json()
     launchpad_name = r_launchpad_get["name"]
