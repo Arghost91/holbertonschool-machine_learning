@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Prints the location of a specific Github user
+Script that prints the location of a specific user
 """
 import requests
 import sys
@@ -8,18 +8,14 @@ import time
 
 
 if __name__ == '__main__':
-    url = "https://api.github.com/users/holbertonschool"
-    headers = {'Accept': 'application/vnd.github.v3+json'}
-    r = requests.get(url, headers=headers)
-
-    if r.status_code == 200:
-        print(r.json()['location'])
-
-    if r.status_code == 404:
-        print("Not found")
-
-    if r.status_code == 403:
-        rate_limit = int(r.headers['X-Ratelimit-Reset'])
-        now = int(time.time())
-        minutes = int((rate_limit - now) / 60)
-        print("Reset in {} min".format(minutes))
+    r = requests.get("https://api.github.com/users/holbertonschool")
+    r_req = r.status_code
+    if r_req == 200:
+        print(r.json()["location"])
+    elif r_req == 403:
+        ratelimit = int(r.headers["X-Ratelimit-Reset"])
+        time = int(time.time())
+        reset = (ratelimit - time) / 60
+        print("Reset in {} min".format(reset))
+    else:
+        print("Not Found")
