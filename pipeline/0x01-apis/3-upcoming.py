@@ -28,8 +28,8 @@ if __name__ == '__main__':
     launchpad_name = r_launchpad_get["name"]
 
     launchpad_locality = r_launchpad_get["locality"]
-print("{} ({}) {} - {} ({})".format(name,
-                                    date_local,
-                                    rocket_name,
-                                    launchpad_name,
-                                    launchpad_locality))
+    print("{} ({}) {} - {} ({})".format(name,
+                                        date_local,
+                                        rocket_name,
+                                        launchpad_name,
+                                        launchpad_locality))
