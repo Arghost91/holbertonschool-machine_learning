@@ -1,20 +1,21 @@
 #!/usr/bin/env python3
-"""Print location of a user"""
-
-
+"""
+Script that prints the location of a specific user
+"""
 import requests
 import sys
 import time
 
 
 if __name__ == '__main__':
-    data = requests.get(sys.argv[1])
-    response = data.status_code
-    if response == 200:
-        print(data.json()['location'])
-    elif response == 403:
-        reset = data.headers['X-Ratelimit-Reset']
-        reset = int(reset) - int(time.time())
-        print("Reset in {} min".format(int(reset / 60)))
+    r = requests.get(sys.argv[1])
+    r_req = r.status_code
+    if r_req == 200:
+        print(r.json()["location"])
+    elif r_req == 403:
+        ratelimit = int(r.headers["X-Ratelimit-Reset"])
+        time = int(time.time())
+        reset = (ratelimit - time) / 60
+        print("Reset in {} min".format(reset))
     else:
-        print("Not found")
+        print("Not Found")
