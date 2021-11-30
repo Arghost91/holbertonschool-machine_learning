@@ -16,9 +16,9 @@ if __name__ == '__main__':
         r_rocket_get = r_rocket.json()
         rocket_name = r_rocket_get["name"]
         if rocket_name in rockets.keys():
-            rockets[rocket] = rockets[rocket] + 1
+            rockets[rocket_name] = rockets[rocket_name] + 1
         else:
-            rockets[rocket] = 1
+            rockets[rocket_name] = 1
     sorting = sorted(rockets.items(), key=lambda x: x[0])
     sorting = sorted(sorting, key=lambda x: x[1], reverse=True)
     for i in sorting:
