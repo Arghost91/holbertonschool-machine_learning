@@ -1,31 +1,35 @@
 #!/usr/bin/env python3
-"""  task 3 """
+"""
+Script that displays the upcoming launch with these information
+"""
 import requests
 
 
 if __name__ == '__main__':
-    """
-    give lunch info
-    """
-    ADRESS = "https://api.spacexdata.com/v4/launches/upcoming"
-    RES = requests.get(ADRESS)
-    data = RES.json()
-    data.sort(key=lambda json: json['date_unix'])
-    data = data[0]
+    r = requests.get("https://api.spacexdata.com/v4/launches/upcoming")
+    r_get = r.json()
+    dates = [i['date_unix'] for i in r_get]
+    next_la = r_get[dates.index(min(dates))]
 
-    F_NOM = data["name"]
+    name = next_la["name"]
 
-    F_tmp_LOC = data["date_local"]
+    date_local = next_la["date_local"]
 
-    ADRESS2 = "https://api.spacexdata.com/v4/rockets/" + data["rocket"]
-    F_NOM_ROCK = requests.get(ADRESS2).json()['name']
+    rocket = next_la["rocket"]
+    rocket_url = "https://api.spacexdata.com/v4/rockets/" + rocket
+    r_rocket = requests.get(rocket_url)
+    r_rocket_get = r_rocket.json()
+    rocket_name = r_rocket_get["name"]
 
-    ADRESS3 = "https://api.spacexdata.com/v4/launchpads/" +\
-        data["launchpad"]
-    REQUTTE = requests.get(ADRESS3).json()
-    F_NOM_LUNCH = REQUTTE['name']
-    F_LUNCH_LOC = REQUTTE['locality']
+    launchpad = next_la["launchpad"]
+    launchpad_url = "https://api.spacexdata.com/v4/launchpads/" + launchpad
+    r_launchpad = requests.get(launchpad_url)
+    r_launchpad_get = r_launchpad.json()
+    launchpad_name = r_launchpad_get["name"]
 
-    print("{} ({}) {} - {} ({})".format(F_NOM, F_tmp_LOC,
-                                        F_NOM_ROCK, F_NOM_LUNCH,
-                                        F_LUNCH_LOC))
+    launchpad_locality = r_launchpad_get["locality"]
+print("{} ({}) {} - {} ({})".format(name,
+                                    date_local,
+                                    rocket_name,
+                                    launchpad_name,
+                                    launchpad_locality))
