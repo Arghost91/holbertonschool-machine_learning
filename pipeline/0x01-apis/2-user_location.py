@@ -15,9 +15,7 @@ if __name__ == '__main__':
     * If the status code is 403, print Reset in X min where X is the number
     of minutes from now and the value of X-Ratelimit-Reset
     """
-    url = sys.argv[1]
-    par = {"Accept: application/vnd.github.v3+json"}
-    r = requests.get(url, par=par)
+    r = requests.get(sys.argv[1])
     r_req = r.status_code
     if r_req == 200:
         print(r.json()["location"])
