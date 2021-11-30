@@ -8,7 +8,7 @@ import time
 
 
 if __name__ == '__main__':
-    r = requests.get("https://api.github.com/users/holbertonschool")
+    r = requests.get(sys.argv[1])
     r_req = r.status_code
     if r_req == 200:
         print(r.json()["location"])
