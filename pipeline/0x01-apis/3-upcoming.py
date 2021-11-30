@@ -8,7 +8,7 @@ import requests
 if __name__ == '__main__':
     r = requests.get("https://api.spacexdata.com/v4/launches/upcoming")
     r_get = r.json()
-    dates = [x['date_unix'] for x in r_get]
+    dates = [i['date_unix'] for i in r_get]
     index = dates.index(min(dates))
     next = r_get[index]
     name = next["name"]
@@ -16,7 +16,7 @@ if __name__ == '__main__':
     rocket = next["rocket"]
     rocket_url = "https://api.spacexdata.com/v4/rockets" + rocket
     r_rocket = requests.get(rocket_url)
-    r_rocket_get = r_roquet.json()
+    r_rocket_get = r_rocket.json()
     rocket_name = r_rocket_get["name"]
     launchpad = next["launchpad"]
     launchpad_url = "https://api.spacexdata.com/v4/launchpads" + launchpad
