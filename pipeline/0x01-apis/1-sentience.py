@@ -18,7 +18,7 @@ def sentientPlanets():
         json_result = r.json()["results"]
         for specie in json_result:
             if (specie["designation"] == "sentient" or
-                specie["classification"].lower() == "sentient"):
+                    specie["classification"].lower() == "sentient"):
                 url_plan = specie["homeworld"]
                 if (url_plan is not None):
                     planets.append(requests.get(url_plan).json()["name"])
