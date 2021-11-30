@@ -1,28 +1,38 @@
 #!/usr/bin/env python3
+"""script for getting info from web pages
 """
-Method that returns the list of names of the
-home planets of all sentient species.
-"""
+
 import requests
 
 
 def sentientPlanets():
+    """[Returns the list of names of the home planets of all sentient species]
+    Args:
+        None
+    Returns
+        The list of planets
     """
-    * Prototype: def sentientPlanets():
-    * Don’t forget the pagination
-    """
-    url = "https://swapi-api.hbtn.io/api/species/"
-    r = requests.get(url)
+
     planets = []
-    while(r.status_code == 200):
-        json_result = r.json()["results"]
-        for specie in json_result:
-            if (specie["designation"] or specie["classification"]) == "sentient":
-                if specie["homeworld"] is not None:
-                    url_plan = specie["homeworld"]
-                    planets.append(requests.get(url_plan).json()["name"])
-        next = r.json()["next"]
-        if(next is None):
+    url = 'https://swapi-api.hbtn.io/api/species/'
+    response = requests.get(url)  # No authentication is required
+    r_code = response.status_code
+    next_url = url
+    while(r_code == 200):
+
+        json_data = response.json()['results']
+
+        for specie in json_data:
+            if(specie['designation'] == "sentient" or
+               specie["classification"].lower() == "sentient"):
+                url_planet = specie['homeworld']
+                if (url_planet is not None):
+                    planets.append(requests.get(url_planet).json()['name'])
+
+        next_url = response.json()['next']
+        if(next_url is None):
             break
-        r = requests.get(next)
-    return planets
+
+        response = requests.get(next_url)
+
+    return (planets)
