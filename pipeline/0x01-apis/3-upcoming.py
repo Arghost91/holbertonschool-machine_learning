@@ -8,8 +8,7 @@ import requests
 if __name__ == '__main__':
     r = requests.get("https://api.spacexdata.com/v4/launches/upcoming")
     r_get = r.json()
-    for i in r_get:
-        dates = i["date_unix"]
+    dates = [x['date_unix'] for x in r_get]
     index = dates.index(min(dates))
     next = r_get[index]
     name = next["name"]
