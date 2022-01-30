@@ -9,7 +9,7 @@ CREATE PROCEDURE AddBonus (
   IN project_name VARCHAR(255),
   IN score INT)
 BEGIN
-  IF NOT EXIST(
+  IF NOT EXISTS(
     SELECT name
     FROM projects
     WHERE name = projects_name) THEN
