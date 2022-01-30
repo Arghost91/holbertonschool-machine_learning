@@ -12,7 +12,8 @@ BEGIN
   IF NOT EXIST(
     SELECT name
     FROM projects
-    WHERE name = projects_name)
+    WHERE name = projects_name) THEN
+    INSERT INTO projects (name) VALUES (project_name);
   END IF;
   INSERT INTO corrections (
     user_id, project_id, score)
