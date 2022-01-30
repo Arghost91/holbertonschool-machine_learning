@@ -5,5 +5,5 @@
 --    Your script can be executed on any database
 SELECT band_name, IF(split IS NULL, (2022 - formed), split) formed AS lifespan
 FROM metal_bands
-WHERE style REGEXP 'Glam rock'
+WHERE style REGEXP "Glam rock"
 ORDER BY lifespans DESC;
