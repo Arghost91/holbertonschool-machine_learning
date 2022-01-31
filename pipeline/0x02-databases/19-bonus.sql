@@ -20,4 +20,4 @@ BEGIN
   VALUES (
     user_id, (SELECT id FROM projects WHERE name = project_name), score);
 END $$
-DDELIMITER ;
+DELIMITER ;
