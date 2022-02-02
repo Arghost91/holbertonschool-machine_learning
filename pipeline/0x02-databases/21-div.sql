@@ -8,6 +8,7 @@ DELIMITER $$
 CREATE FUNCTION SafeDiv(a INT, b INT)
 RETURNS FLOAT
 BEGIN
+  DECLARE num FLOAT;
   IF b != 0 THEN
     SET num = a / b;
   END IF;
