@@ -6,8 +6,8 @@ BEGIN
   SET average_score = (
     SELECT SUM(weight * score) / SUM(weight)
     FROM corrections, projects
-    WHERE corrections.user_id = user_id
+    WHERE corrections.user_id = new_user_id
     AND corrections.project_id = projects.id)
-    WHERE id = user_id;
+    WHERE users.id = new_user_id;
 END $$
 DELIMITER ;
