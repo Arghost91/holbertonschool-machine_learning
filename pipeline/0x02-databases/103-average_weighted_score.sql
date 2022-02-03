@@ -7,7 +7,7 @@ BEGIN
     SELECT SUM(weight * score) / SUM(weight)
     FROM corrections, projects
     WHERE corrections.user_id = user_id
-    AND corrections.project_id = projects_id)
+    AND corrections.project_id = projects.id)
     WHERE id = user_id;
 END $$
 DELIMITER ;
