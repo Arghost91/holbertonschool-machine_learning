@@ -14,4 +14,4 @@ def update_topics(mongo_collection, name, topics):
     """
     na = {"name" : name}
     top = {"topics" : topics}
-    mongo_collection.update_many(na, {$set: top})
+    mongo_collection.update_many(na, {"$set": top})
